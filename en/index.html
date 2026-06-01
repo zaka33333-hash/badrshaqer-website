@@ -7,6 +7,29 @@
   <title>Badr Shaqer · Founder Advisor</title>
   <meta name="description" content="Badr Shaqer · founder advisor. I take real companies apart until the revenue problem shows itself, then give the founder the moves to reach seven figures. 1:1 consulting · book." />
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png" />
+
+  <!-- Open Graph (update DOMAIN constant if hosted elsewhere) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://badrshaqer.com/en/" />
+  <meta property="og:title" content="Badr Shaqer · Founder Advisor" />
+  <meta property="og:description" content="I take real companies apart until the revenue problem shows itself, then give the founder the moves to reach seven figures." />
+  <meta property="og:image" content="https://badrshaqer.com/assets/og-backdrop.webp" />
+  <meta property="og:image:width" content="1536" />
+  <meta property="og:image:height" content="1024" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="ar_AE" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Badr Shaqer · Founder Advisor" />
+  <meta name="twitter:description" content="I take real companies apart until the revenue problem shows itself, then give the founder the moves to reach seven figures." />
+  <meta name="twitter:image" content="https://badrshaqer.com/assets/og-backdrop.webp" />
+
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Amiri:ital,wght@0,400;0,700;1,400&family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -826,7 +849,13 @@
     .book::before {
       content: '';
       position: absolute; inset: 0;
-      background: radial-gradient(ellipse at center, rgba(200, 40, 30, 0.18) 0%, transparent 65%);
+      background:
+        /* warm carmine glow at center — preserves the original mood */
+        radial-gradient(ellipse at center, rgba(200, 40, 30, 0.18) 0%, transparent 65%),
+        /* dark veil so the photo stays atmospheric, never dominant */
+        linear-gradient(180deg, rgba(10, 8, 6, 0.86) 0%, rgba(10, 8, 6, 0.78) 100%),
+        /* ambient open-book photograph — the 'reading room' mood */
+        url("../assets/book-interior.webp") center / cover no-repeat;
       pointer-events: none; z-index: 0;
     }
     .book__grid {
