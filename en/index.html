@@ -887,19 +887,15 @@
       order: 1;
       aspect-ratio: 3 / 4;
       width: clamp(16rem, 26vw, 24rem);
-      background: linear-gradient(135deg, var(--carmine) 0%, var(--carmine-deep) 100%);
+      background:
+        linear-gradient(to bottom, rgba(20, 8, 6, 0.45) 0%, transparent 22%),
+        linear-gradient(to top, rgba(20, 8, 6, 0.55) 0%, transparent 28%),
+        url("../assets/book-cover-cherry.webp") center / cover no-repeat,
+        var(--carmine);
       box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 10px 30px rgba(200, 40, 30, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.12);
       padding: clamp(1.5rem, 2.5vw, 2.2rem);
       display: flex; flex-direction: column; justify-content: space-between;
       position: relative; isolation: isolate;
-    }
-    .book__cover::before {
-      content: '';
-      position: absolute; inset: 0;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.45 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-      mix-blend-mode: overlay;
-      opacity: 0.5;
-      pointer-events: none; z-index: -1;
     }
     .book__cover-top {
       font-family: var(--mono);
@@ -1289,7 +1285,7 @@
             From <em>zero</em><br/>to <em>seven figures.</em>
           </h1>
           <p class="hero__promise" data-reveal="rise-slow" style="--delay:200ms">
-            I guide founders and companies to their first seven figures in revenue. With a roadmap, not guesswork.
+            I take real companies apart until the revenue problem shows itself. Then I give the founder the moves, the order, and the pressure required to get to seven figures.
           </p>
           <div class="hero__credentials" data-reveal="fade" style="--delay:500ms">
             <span>BBA</span>
@@ -1329,7 +1325,7 @@
               For founders <em>tired of guessing.</em>
             </h2>
             <p class="section-deck" data-reveal="rise-slow" style="--delay:200ms">
-              A precise diagnostic session. Ninety minutes. A clear, executable roadmap you can apply Monday morning. <strong>No theory, no philosophy</strong> · a mechanical teardown of your company and the next steps that actually move it.
+              Bring the company, the numbers, and the ugly part. Ninety minutes with me on Zoom: we break the constraint down in plain English. Within twenty-four hours, the written priorities land in your inbox. <strong>Use them Monday.</strong>
             </p>
 
             <div class="consulting__bullets">
@@ -1337,28 +1333,28 @@
                 <span class="consulting__bullet-num">01</span>
                 <div>
                   <h3 class="consulting__bullet-head">Pre-session diagnostic</h3>
-                  <p class="consulting__bullet-body">You send your numbers, business model, and what's blocking you. I read everything before we meet.</p>
+                  <p class="consulting__bullet-body">You send your numbers, your business model, and the part that's stuck. I read all of it before we meet.</p>
                 </div>
               </div>
               <div class="consulting__bullet" data-reveal="rise-fast" style="--delay:350ms">
                 <span class="consulting__bullet-num">02</span>
                 <div>
                   <h3 class="consulting__bullet-head">90 minutes on Zoom</h3>
-                  <p class="consulting__bullet-body">We tear down the biggest constraint in your company. Each question opens three more. You leave with priorities.</p>
+                  <p class="consulting__bullet-body">We attack the biggest constraint in your company. Each answer exposes the next layer. You leave with priorities, not options.</p>
                 </div>
               </div>
               <div class="consulting__bullet" data-reveal="rise-fast" style="--delay:500ms">
                 <span class="consulting__bullet-num">03</span>
                 <div>
                   <h3 class="consulting__bullet-head">Written roadmap</h3>
-                  <p class="consulting__bullet-body">Within 24 hours after the call, you get a written summary: what we agreed, the next steps, the priorities.</p>
+                  <p class="consulting__bullet-body">Within 24 hours of the call, a written summary lands: what we agreed, the next moves, the order to run them in.</p>
                 </div>
               </div>
               <div class="consulting__bullet" data-reveal="rise-fast" style="--delay:650ms">
                 <span class="consulting__bullet-num">04</span>
                 <div>
                   <h3 class="consulting__bullet-head">30-day follow-up</h3>
-                  <p class="consulting__bullet-body">A short follow-up session (30 minutes) to review execution and adjust course if needed.</p>
+                  <p class="consulting__bullet-body">A short follow-up (30 minutes) to look at execution and correct course where it slipped.</p>
                 </div>
               </div>
             </div>
@@ -1366,9 +1362,9 @@
 
           <aside class="consulting__card" data-reveal="scale">
             <div class="consulting__card-tag">Consulting · 1 to 1</div>
-            <h3 class="consulting__card-head">A precise diagnostic session for one founder.</h3>
+            <h3 class="consulting__card-head">I read the business before the call. Then we deal with the real problem.</h3>
             <p class="consulting__card-deck">
-              Designed for founders past the idea stage who run a real company but are stuck. You need an outside eye that sees what you don't.
+              Founders waste months naming symptoms. I look at the model, the market, and the blockage, then tell you what deserves attention first.
             </p>
             <div class="consulting__card-meta">
               <div><span>Duration</span><strong>90 min</strong></div>
@@ -1414,18 +1410,18 @@
               How to <em>sell</em><br/>like a drug dealer.
             </h2>
             <p class="book__subtitle" data-reveal="rise-slow" style="--delay:200ms">
-              The fastest way to get more customers and sales than you can handle.
+              Selling gets simple the day you stop worshipping campaigns and start understanding demand.
             </p>
 
             <div class="book__reasons">
               <div class="book__reason" data-reveal="rise-fast" style="--delay:300ms">
-                Because a drug dealer has no marketing budget and no sales team · and still outsells you.
+                Because a dealer has no marketing budget, no sales team, no pitch deck · and still understands demand better than most founders who have all three.
               </div>
               <div class="book__reason" data-reveal="rise-fast" style="--delay:450ms">
-                Because the principles he uses (scarcity, addiction, distribution networks) are the same ones the biggest brands use.
+                Because scarcity, addiction, and distribution networks run the street market. The biggest brands in the world run on the same machinery, dressed up.
               </div>
               <div class="book__reason" data-reveal="rise-fast" style="--delay:600ms">
-                Because after reading this book, you'll understand why your product isn't selling · and you won't need a marketing agency again.
+                Because after this book, blaming the agency for your sales numbers will feel childish.
               </div>
             </div>
 
@@ -1450,7 +1446,7 @@
           The numbers built by <em>founders who worked with me.</em>
         </h2>
         <p class="section-deck" data-reveal="rise-slow" style="--delay:200ms">
-          Ten years working with founders at every stage · pre-launch, first million, multi-market expansion. Here are the network's numbers:
+          Ten years inside founder problems across MENA. Pre-launch fog, first-million pressure, multi-market expansion. The pattern gets boring once you see it: bad priorities cost more than bad ideas.
         </p>
 
         <div class="proof__numbers" data-reveal="rise-slow" style="--delay:400ms; margin-top: clamp(2rem, 4vw, 3rem)">
@@ -1462,7 +1458,7 @@
 
         <div class="proof__quotes">
           <article class="proof__quote" data-tilt data-tilt-max="6" data-reveal="rise-fast" style="--delay:200ms">
-            <p class="proof__quote-text">"One session with Badr cleared up six months of confusion. I left with a written, executable roadmap. Applied it in three weeks. Doubled revenue."</p>
+            <p class="proof__quote-text">"One session with Badr cleared up six months of confusion. I left with written priorities, ran them for three weeks, doubled revenue."</p>
             <div class="proof__quote-author">
               <span class="proof__quote-name">Founder · SaaS company</span>
               <span class="proof__quote-role">Riyadh · 2024</span>
@@ -1500,10 +1496,10 @@
               Almobadir · <em>a publication of business</em><br/>and finance for the Arab world.
             </h2>
             <p class="section-deck" data-reveal="rise-slow" style="--delay:200ms">
-              A monthly publication for founders, investors, and operators. <strong>One voice, four angles.</strong> We write for those who have built · not for those who dream of building. A network of three million readers, five thousand newsletter subscribers.
+              Almobadir is my monthly publication for the Arab world. I write for people already carrying payroll, risk, and decisions · not the audience that's still planning to start. <strong>The network: three million readers, five thousand newsletter subscribers.</strong>
             </p>
             <p class="section-deck" data-reveal="rise-slow" style="--delay:400ms">
-              Almobadir is where I write between me and the readers. This page is where I work with founders one to one.
+              Almobadir is the public work. This page is the private room.
             </p>
             <a class="publication__cta" href="https://almobadir.com" target="_blank" rel="noopener" data-cursor="VISIT" data-reveal="rise-fast" style="--delay:600ms">
               <span>Read the latest issue</span>
@@ -1526,10 +1522,10 @@
       <div class="wrap outro__inner">
         <span class="outro__tag" data-reveal="fade">Let's start</span>
         <h2 class="outro__head" data-reveal="rise-slow">
-          If you read all this,<br/><em>you're ready.</em>
+          You have a real company.<br/><em>Act like it.</em>
         </h2>
         <p class="outro__sub" data-reveal="rise-slow" style="--delay:200ms">
-          Book your call, or start with the book. Both lead to the same place: a real understanding of your company, and executable next steps.
+          Book the call, or start with the book. Either way, stop circling the same problem and start dealing with how the company actually makes money.
         </p>
         <div class="outro__ctas" data-reveal="rise-fast" style="--delay:400ms">
           <a class="cta cta--primary magnetic" data-cursor-style="button" href="https://calendly.com/badrshaqer_consulting" target="_blank" rel="noopener" data-cursor="BOOK">

@@ -916,7 +916,11 @@
       justify-self: center;
       aspect-ratio: 3 / 4;
       width: clamp(16rem, 26vw, 24rem);
-      background: linear-gradient(135deg, var(--carmine) 0%, var(--carmine-deep) 100%);
+      background:
+        linear-gradient(to bottom, rgba(20, 8, 6, 0.45) 0%, transparent 22%),
+        linear-gradient(to top, rgba(20, 8, 6, 0.55) 0%, transparent 28%),
+        url("assets/book-cover-cherry.webp") center / cover no-repeat,
+        var(--carmine);
       box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6),
                   0 10px 30px rgba(200, 40, 30, 0.3),
                   inset 0 1px 0 rgba(255, 255, 255, 0.12);
@@ -926,16 +930,6 @@
       justify-content: space-between;
       position: relative;
       isolation: isolate;
-    }
-    .book__cover::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.45 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-      mix-blend-mode: overlay;
-      opacity: 0.5;
-      pointer-events: none;
-      z-index: -1;
     }
     .book__cover-top {
       font-family: var(--mono);
@@ -1341,18 +1335,17 @@
 
       <div class="wrap hero__grid">
         <div class="hero__copy">
-          <span class="hero__overline" data-reveal="fade">بدر شاكر · مرشد المؤسسين</span>
+          <span class="hero__overline" data-reveal="fade">بدر شاكر · مستشار المؤسّسين</span>
           <h1 class="hero__name" data-reveal="rise-slow">
             من <em>صفر</em><br/>إلى <em>سبعةِ أرقام.</em>
           </h1>
           <p class="hero__promise" data-reveal="rise-slow" style="--delay:200ms">
-            أرشدُ المؤسّسين والشركات للوصول لأوّل سبعة أرقام في إيراداتهم.
-            بِخريطةِ طريق، لا بالتخمين.
+            أُفكِّكُ الشركاتِ الحقيقيّة حتى تَنكشفَ مشكلةُ الإيرادات. ثُمَّ أُعطي المؤسِّسَ الحركاتِ، التَّرتيبَ، والضَّغطَ المطلوبَ للوصولِ إلى سبعةِ أرقام.
           </p>
           <div class="hero__credentials" data-reveal="fade" style="--delay:500ms">
-            <span>بكالوريوس بزنس</span>
+            <span>بكالوريوس إدارة أعمال</span>
             <span>ماجستير تسويق</span>
-            <span>10+ سنوات</span>
+            <span>+١٠ سنوات</span>
           </div>
           <div class="hero__ctas" data-reveal="rise-fast" style="--delay:700ms">
             <a class="cta cta--primary magnetic" data-cursor-style="button" href="https://calendly.com/badrshaqer_consulting" target="_blank" rel="noopener" data-cursor="BOOK">
@@ -1391,10 +1384,10 @@
         <div class="consulting__grid">
           <div>
             <h2 class="section-title" data-reveal="rise-slow">
-              للمؤسّسين الذين تعِبوا من <em>التخمين.</em>
+              للمؤسّسين الذين ملّوا <em>التخمين.</em>
             </h2>
             <p class="section-deck" data-reveal="rise-slow" style="--delay:200ms">
-              جلسةُ تشخيصٍ دقيقة. ساعةٌ ونصف. خَريطةُ طريقٍ واضحة وعَمَلِيّة. <strong>لا نظريّاتٍ، لا فلسفة</strong>: تَفكيكٌ مَيكانيكيّ لشركتك، وخطواتٌ تنفيذيّةٌ تخرج بها لتطبّقها يوم الإثنين الصُّبح.
+              أَحضِر شَركتك، أرقامك، والجزء القبيح. تسعون دقيقةً معي على Zoom: نُفَكِّك العائقَ بلا تَنميق. خلال ٢٤ ساعة، يَصِلُك المُلَخَّص المكتوب بالأولويّات. <strong>طبّقه يوم الإثنين.</strong>
             </p>
 
             <div class="consulting__bullets">
@@ -1402,38 +1395,38 @@
                 <span class="consulting__bullet-num">01</span>
                 <div>
                   <h3 class="consulting__bullet-head">تَشخيصٌ قبلَ الجلسة</h3>
-                  <p class="consulting__bullet-body">تُرسلُ أرقامَك، نَموذجَ عملك، والمَشاكل التي تَوقّفك. أَدْرُسها قبلَ ما نَلتقي.</p>
+                  <p class="consulting__bullet-body">تُرسلُ أرقامَك، نموذجَ عملك، والجزءَ الذي توقّفَ عن العمل. أَدْرُسُه كاملاً قبل أن نَلتقي.</p>
                 </div>
               </div>
               <div class="consulting__bullet" data-reveal="rise-fast" style="--delay:350ms">
                 <span class="consulting__bullet-num">02</span>
                 <div>
                   <h3 class="consulting__bullet-head">٩٠ دقيقة على Zoom</h3>
-                  <p class="consulting__bullet-body">نُفَكِّك أكبرَ مُعَوِّق في شركتك. كلُّ سؤالٍ يَفتح ثلاثة. تَخرج بِأولويّاتٍ واضحة.</p>
+                  <p class="consulting__bullet-body">نَهجم على أكبرِ عائقٍ في شركتك. كلُّ إجابةٍ تَكشف الطّبقةَ التالية. تَخرج بأولويّاتٍ، لا بخيارات.</p>
                 </div>
               </div>
               <div class="consulting__bullet" data-reveal="rise-fast" style="--delay:500ms">
                 <span class="consulting__bullet-num">03</span>
                 <div>
-                  <h3 class="consulting__bullet-head">خَريطةُ طريقٍ مكتوبة</h3>
-                  <p class="consulting__bullet-body">بَعدَ الجلسة بـ٢٤ ساعة، تَستلم مُلخّصاً مَكتوباً: ما اتّفقنا عليه، الخطوات، والأَولويّات.</p>
+                  <h3 class="consulting__bullet-head">خُلاصةٌ مكتوبة</h3>
+                  <p class="consulting__bullet-body">خلال ٢٤ ساعة من الجلسة، يَصِلُك مُلَخَّص: ما اتّفقنا عليه، الحَركات، والتَّرتيب الذي تَنفّذها به.</p>
                 </div>
               </div>
               <div class="consulting__bullet" data-reveal="rise-fast" style="--delay:650ms">
                 <span class="consulting__bullet-num">04</span>
                 <div>
                   <h3 class="consulting__bullet-head">مُتابعةٌ بعد ٣٠ يوماً</h3>
-                  <p class="consulting__bullet-body">جلسةُ مُتابعةٍ قصيرة (٣٠ دقيقة) لِنُراجع التَّنفيذ ونُعَدِّل المسار إن لَزِم.</p>
+                  <p class="consulting__bullet-body">جلسةٌ قصيرة (٣٠ دقيقة) لِنَنظرَ في التَّنفيذ ونُصَحِّحَ ما انحرف منه.</p>
                 </div>
               </div>
             </div>
           </div>
 
           <aside class="consulting__card" data-reveal="scale">
-            <div class="consulting__card-tag">استشارة بزنس · 1 لـ 1</div>
-            <h3 class="consulting__card-head">جلسةُ تشخيصٍ دقيقةٍ لمؤسّس واحد.</h3>
+            <div class="consulting__card-tag">استشارة أعمال · 1 لـ 1</div>
+            <h3 class="consulting__card-head">أَدرُس الشركة قبل الجلسة. ثم نَتعامَل مع المشكلةِ الحقيقيّة.</h3>
             <p class="consulting__card-deck">
-              مُصَمَّمة للمؤسّسين الذين تَجاوزوا مَرحلةَ "الفكرة" ويُديرون شركةً فِعليّة، لكنّهم عَلِقوا. تَحتاج إلى عينٍ خارجيّةٍ تَرى ما لا تَراه.
+              المؤسّسون يُهدِرون شُهوراً في تَسميةِ الأعراض. أنا أنظر إلى النَّموذج، السُّوق، والعائق، ثم أَقول لك أيُّها يَستحقُّ الانتباهَ أوّلاً.
             </p>
             <div class="consulting__card-meta">
               <div><span>المُدّة</span><strong>٩٠ دقيقة</strong></div>
@@ -1468,18 +1461,18 @@
               كيف <em>تبيع</em><br/>كتاجرِ المخدّرات.
             </h2>
             <p class="book__subtitle" data-reveal="rise-slow" style="--delay:200ms">
-              أسرعُ طريقةٍ لتَحصل على عملاءَ ومبيعاتٍ أكثرَ ممّا تَحتمل.
+              البيعُ يَصير سَهلاً يومَ تَتوقّف عن عبادةِ الحَملات وتَبدأ بفَهْمِ الطَّلَب.
             </p>
 
             <div class="book__reasons">
               <div class="book__reason" data-reveal="rise-fast" style="--delay:300ms">
-                لأنّ تاجرَ المخدّرات لا يَملك ميزانيّةَ تسويقٍ ولا فريقَ مبيعات &mdash; ومع ذلك يَبيع أكثرَ منك.
+                لأنّ التاجرَ لا يَملك ميزانيّةَ تسويق، ولا فريقَ مبيعات، ولا عَرضاً تَقديميّاً · ومع ذلك يَفهَم الطَّلَب أكثر من أكثر المؤسّسين الذين يَملكون الثَّلاثة.
               </div>
               <div class="book__reason" data-reveal="rise-fast" style="--delay:450ms">
-                لأنّ مبادئَ البيعِ التي يَستخدمها (نَدرة، إدمان، شَبكةُ تَوزيع) هي نَفسُها التي يَستخدمها أكبرُ الماركات.
+                لأنّ النَّدرة والإدمان وشَبكاتِ التَّوزيع هي ما يُحرِّك سوقَ الشّارع. وأكبرُ الماركات في العالَم تَدور على نَفس الآلة، بِزينةٍ مختلفة.
               </div>
               <div class="book__reason" data-reveal="rise-fast" style="--delay:600ms">
-                لأنّك بَعدَ قراءة الكتاب ستَفهم لماذا منتجك لا يَبيع، ولن تَحتاج وكالةَ تسويقٍ مرّةً أخرى.
+                لأنّك بعدَ هذا الكتاب، سَيَصير لومُ وكالةِ التَّسويق على أرقام مَبيعاتك تَصرُّفاً طُفوليّاً.
               </div>
             </div>
 
@@ -1521,7 +1514,7 @@
           الأرقام التي بناها <em>الذين عَمِلوا معي.</em>
         </h2>
         <p class="section-deck" data-reveal="rise-slow" style="--delay:200ms" style2="margin-bottom: clamp(2rem, 4vw, 3rem)">
-          ١٠ سنواتٍ من العَمَل معَ المؤسّسين في كلِّ مَرحلة &mdash; من قبل الإطلاق، إلى الوصول لأوّل مليون، إلى تَوسُّعٍ متعدّدِ الأسواق. هذه أرقامُ الشَّبكة:
+          عَشَرُ سنواتٍ داخلَ مشاكل المؤسّسين في كلِّ المنطقة العربيّة. ضَبابُ ما قبل الإطلاق، ضَغطُ المليون الأوّل، التَّوسُّعُ متعدّدُ الأسواق. النَّمَط مُمِلٌّ حين تَراه: الأولويّاتُ السّيّئة تُكَلِّفك أكثر من الأفكار السَّيّئة.
         </p>
 
         <div class="proof__numbers" data-reveal="rise-slow" style="--delay:400ms; margin-top: clamp(2rem, 4vw, 3rem)">
@@ -1533,7 +1526,7 @@
 
         <div class="proof__quotes">
           <article class="proof__quote" data-tilt data-tilt-max="6" data-reveal="rise-fast" style="--delay:200ms">
-            <p class="proof__quote-text">«جلسةٌ واحدةٌ مع بدر فكَّكت ٦ أشهرٍ من الحَيرة. خَرَجتُ بِخَريطةٍ تَنفيذيّةٍ مَكتوبة، طبَّقتها في ثلاثةِ أسابيع، وضاعَفنا الإيرادات.»</p>
+            <p class="proof__quote-text">«جلسةٌ واحدةٌ مع بدر فكَّكت ستّةَ أشهرٍ من الحَيرة. خَرَجتُ بأولويّاتٍ مكتوبة، طبَّقتها ثلاثةَ أسابيع، فضاعَفنا الإيرادات.»</p>
             <div class="proof__quote-author">
               <span class="proof__quote-name">مؤسّس · شركة SaaS</span>
               <span class="proof__quote-role">الرياض · 2024</span>
@@ -1574,10 +1567,10 @@
               المبادر · <em>منشورُ الأعمال</em><br/>والمال في العالم العربيّ.
             </h2>
             <p class="section-deck" data-reveal="rise-slow" style="--delay:200ms">
-              منشورٌ شَهريّ لِرُوّاد الأعمال، المستثمرين، والمُشغّلين. <strong>صوتٌ واحد، أربعُ زوايا</strong>. نَكتُب لِمَن بَنى، لا لِمَن يَحلَم أن يَبني. شَبكةٌ من ثلاثة ملايين قارئ، خَمسة آلاف مُشترك في النَّشرة الأسبوعيّة.
+              المبادر منشوري الشَّهريّ للعالم العربيّ. أكتُبُ لِمَن يَحمل الرَّواتب، والمَخاطر، والقرارات · لا للجُمهور الذي ما زال يُخَطِّطُ للبدء. <strong>الشَّبكة: ثلاثة ملايين قارئ، خَمسة آلاف مُشترك في النَّشرة الأسبوعيّة.</strong>
             </p>
             <p class="section-deck" data-reveal="rise-slow" style="--delay:400ms">
-              المبادر هو حَيث أَكتُبُ بَيني وبَين القرّاء. هذه الصفحة هي حيث أَعملُ معَ المؤسّسين واحداً وواحداً.
+              المبادر هو العَمَل العَلَنيّ. هذه الصفحة هي الغُرفة الخاصّة.
             </p>
             <a class="publication__cta" href="https://almobadir.com" target="_blank" rel="noopener" data-cursor="VISIT" data-reveal="rise-fast" style="--delay:600ms">
               <span>اقرأ العَدَد الأخير</span>
@@ -1603,10 +1596,10 @@
       <div class="wrap outro__inner">
         <span class="outro__tag" data-reveal="fade">لنبدأ</span>
         <h2 class="outro__head" data-reveal="rise-slow">
-          إذا قَرأتَ كلَّ هذا،<br/><em>أنتَ جاهز.</em>
+          عِندَك شَركةٌ حقيقيّة.<br/><em>تَصَرَّفْ مِثلَها.</em>
         </h2>
         <p class="outro__sub" data-reveal="rise-slow" style="--delay:200ms">
-          احجز جلستكَ، أو ابدأ بالكتاب. كِلاهُما يَقودُك إلى نَفسِ المكان: فَهْمٌ حقيقيٌّ لشركتك، وخَطَواتٌ تَنفيذيّة.
+          احجز الجلسة، أو ابدأ بالكتاب. الطَّريقان يَقودان إلى نَفسِ المكان: تَوَقَّفْ عن الدَّوران حَولَ نَفس المشكلة، وابدأْ في التَّعامل مع آليّةِ كَسْب شَركتك للمال.
         </p>
         <div class="outro__ctas" data-reveal="rise-fast" style="--delay:400ms">
           <a class="cta cta--primary magnetic" data-cursor-style="button" href="https://calendly.com/badrshaqer_consulting" target="_blank" rel="noopener" data-cursor="BOOK">
