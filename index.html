@@ -1,0 +1,1960 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0d0b07" />
+  <title>بدر شاكر · خبير تسويق وأعمال</title>
+  <meta name="description" content="بدر شاكر · خبير تسويق وأعمال. أرشد المؤسسين والشركات للوصول لـ 7 أرقام. استشارة بزنس 1 لـ 1 · كتاب." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Amiri:ital,wght@0,400;0,700;1,400&family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" defer></script>
+
+  <style>
+    /* ═══════════════════════════════════════════════════════════════
+       BADR SHAQER · personal site
+       Operator-grade. Same DNA as Almobadir, sharper commercial edges.
+       ═══════════════════════════════════════════════════════════════ */
+
+    :root {
+      --parchment: #efede8;
+      --cream:     #f7f3ea;
+      --paper:     #fbf7ee;
+      --ink:       #0d0b07;
+      --ink-mid:   #1c1812;
+      --ink-soft:  #3d362b;
+      --brass:     #ad7d3a;
+      --brass-deep:#8a5d24;
+      --brass-pale:#d4b483;
+      --carmine:   #c8281e;
+      --carmine-deep:#8a1a13;
+      --stone:     #5c544a;
+
+      --display-ar: 'Reem Kufi', 'IBM Plex Sans Arabic', serif;
+      --body-ar:    'IBM Plex Sans Arabic', system-ui;
+      --quote-ar:   'Amiri', 'IBM Plex Sans Arabic', serif;
+      --display-en: 'Fraunces', 'Source Serif 4', Georgia, serif;
+      --sans-en:    'Inter Tight', system-ui, sans-serif;
+      --mono:       'JetBrains Mono', ui-monospace, monospace;
+
+      --wide: 96rem;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-mid: cubic-bezier(0.65, 0, 0.35, 1);
+      --ease-osmo: cubic-bezier(0.625, 0.05, 0, 1);
+      --ease-elastic: cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: auto; }
+    body {
+      background: var(--parchment);
+      color: var(--ink);
+      font-family: var(--body-ar);
+      font-size: clamp(15px, 1vw + 0.4rem, 17px);
+      line-height: 1.6;
+      overflow-x: hidden;
+      cursor: none;
+      transition: background-color 1100ms var(--ease-mid), color 700ms var(--ease-mid);
+      font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: -50%;
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.06;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.5 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+      mix-blend-mode: multiply;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { background: none; border: 0; color: inherit; font: inherit; cursor: inherit; }
+    img { display: block; max-width: 100%; }
+
+    .stage {
+      position: relative;
+      min-height: 100svh;
+      padding: clamp(2rem, 6vw, 5rem) clamp(1.2rem, 4vw, 3.5rem);
+      display: grid;
+      align-content: center;
+      isolation: isolate;
+    }
+    .wrap { max-width: var(--wide); width: 100%; margin-inline: auto; position: relative; }
+
+    /* ═══════════════ HUD + MENU ═══════════════ */
+    .hud {
+      position: fixed; top: 0; inset-inline: 0; z-index: 100;
+      padding: 1.4rem clamp(1.2rem, 4vw, 3.5rem);
+      display: flex; justify-content: flex-start;
+      pointer-events: none;
+      mix-blend-mode: difference;
+      color: var(--parchment);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .hud > * { pointer-events: auto; }
+    .menu-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.85rem;
+      cursor: pointer;
+    }
+    .menu-toggle__bars {
+      display: inline-flex; flex-direction: column; gap: 5px; width: 22px;
+    }
+    .menu-toggle__bars span {
+      display: block; width: 100%; height: 1px;
+      background: currentColor;
+      transition: transform 320ms var(--ease-out);
+    }
+    .menu-toggle[aria-expanded="true"] .menu-toggle__bars span:nth-child(1) {
+      transform: translateY(3px) rotate(45deg);
+    }
+    .menu-toggle[aria-expanded="true"] .menu-toggle__bars span:nth-child(2) {
+      transform: translateY(-3px) rotate(-45deg);
+    }
+    .menu-panel {
+      position: fixed;
+      top: 3.5rem;
+      inset-inline-start: clamp(1.2rem, 4vw, 3.5rem);
+      z-index: 99;
+      display: flex; flex-direction: column; gap: 0.85rem;
+      padding: 1.2rem 1.4rem;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(22px) saturate(160%);
+      -webkit-backdrop-filter: blur(22px) saturate(160%);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 14px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 12px 36px rgba(0, 0, 0, 0.28);
+      opacity: 0; pointer-events: none;
+      transform: translateY(-8px);
+      transition: opacity 280ms var(--ease-out), transform 280ms var(--ease-out);
+      mix-blend-mode: difference;
+      color: var(--parchment);
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .menu-panel.is-open { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .menu-panel a { padding: 0.3rem 0; transition: opacity 200ms; }
+    .menu-panel a:hover { opacity: 0.55; }
+
+    /* ═══════════════ CURSOR · conscious of bg, element, velocity ═══════════════ */
+    .cursor {
+      position: fixed; top: 0; left: 0;
+      width: 1px; height: 1px;
+      pointer-events: none;
+      z-index: 9999;
+      mix-blend-mode: difference;
+      transform: translate3d(-100px, -100px, 0);
+      transition: opacity 240ms;
+    }
+    .cursor__ring {
+      position: absolute; top: 50%; left: 50%;
+      width: 44px; height: 44px;
+      margin: -22px 0 0 -22px;
+      border: 1px solid var(--parchment);
+      border-radius: 50%;
+      opacity: 0.55;
+      transition: width 360ms var(--ease-out), height 360ms var(--ease-out),
+                  margin 360ms var(--ease-out), border-color 280ms,
+                  border-width 240ms, background 240ms;
+    }
+    .cursor__dot {
+      position: absolute; top: 50%; left: 50%;
+      width: 5px; height: 5px;
+      margin: -2.5px 0 0 -2.5px;
+      background: var(--parchment);
+      border-radius: 50%;
+      transition: opacity 200ms;
+    }
+    .cursor__label {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      color: var(--parchment);
+      opacity: 0; white-space: nowrap; text-transform: uppercase;
+      transition: opacity 240ms;
+    }
+    body.cursor-link .cursor__ring {
+      width: 70px; height: 70px;
+      margin: -35px 0 0 -35px;
+      border-color: var(--carmine);
+      border-width: 1.5px;
+    }
+    body.cursor-link .cursor__dot { opacity: 0; }
+    body.cursor-link .cursor__label { opacity: 1; color: var(--carmine); }
+    body.cursor-button .cursor__ring {
+      width: 96px; height: 96px;
+      margin: -48px 0 0 -48px;
+      background: var(--carmine);
+      border-color: var(--carmine);
+      mix-blend-mode: normal;
+    }
+    body.cursor-button .cursor__dot { opacity: 0; }
+    body.cursor-button .cursor__label { opacity: 1; color: var(--cream); font-size: 10px; }
+    body.cursor-text .cursor__ring {
+      width: 2px; height: 24px;
+      margin: -12px 0 0 -1px;
+      border-radius: 0;
+      background: var(--parchment);
+      border: 0;
+    }
+    body.cursor-text .cursor__dot { opacity: 0; }
+    body:has(:focus-visible) { cursor: auto; }
+    body:has(:focus-visible) .cursor { display: none; }
+
+    .cursor-trail {
+      position: fixed; top: 0; left: 0;
+      width: 8px; height: 8px;
+      margin: -4px 0 0 -4px;
+      pointer-events: none;
+      z-index: 9998;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(200,40,30,0.5) 0%, transparent 70%);
+      transform: translate3d(-100px, -100px, 0);
+      opacity: 0;
+      transition: opacity 220ms;
+      mix-blend-mode: screen;
+    }
+    body.cursor-moving .cursor-trail { opacity: 1; }
+
+    ::selection { background: var(--carmine); color: var(--cream); }
+    ::-moz-selection { background: var(--carmine); color: var(--cream); }
+
+    .scroll-progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 1.5px;
+      width: var(--p, 0%);
+      background: linear-gradient(90deg, var(--carmine) 0%, var(--brass-pale) 100%);
+      z-index: 200;
+      transition: width 80ms linear;
+      pointer-events: none;
+    }
+
+    /* ═══════════════ PAGE FRAME ═══════════════ */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: clamp(0.4rem, 1vw, 1rem);
+      border: 1px solid rgba(247, 243, 234, 0.10);
+      border-radius: clamp(8px, 1.4vw, 18px);
+      pointer-events: none;
+      z-index: 1000;
+      transition: border-color 700ms var(--ease-mid);
+    }
+    body[data-bg="light"]::after { border-color: rgba(13, 11, 7, 0.09); }
+    body[data-bg="dark"]::after  { border-color: rgba(247, 243, 234, 0.14); }
+
+    /* ═══════════════ CONTACT PILLS (juanmora-style) ═══════════════ */
+    .contact-pills {
+      position: fixed;
+      top: 1.2rem;
+      inset-inline-end: clamp(1.2rem, 4vw, 3.5rem);
+      z-index: 100;
+      display: flex;
+      gap: 0.35rem;
+      pointer-events: none;
+    }
+    .contact-pills a {
+      pointer-events: auto;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.7rem 1.15rem;
+      border-radius: 999px;
+      border: 0;
+      color: var(--brass-pale);
+      background: radial-gradient(ellipse at center,
+        rgba(212, 180, 131, 0.30) 0%,
+        rgba(212, 180, 131, 0.10) 55%,
+        transparent 82%);
+      transition: background 360ms var(--ease-osmo),
+                  color 260ms var(--ease-osmo),
+                  transform 320ms var(--ease-elastic);
+    }
+    .contact-pills a:hover {
+      background: radial-gradient(ellipse at center,
+        rgba(255, 220, 180, 0.55) 0%,
+        rgba(212, 180, 131, 0.22) 55%,
+        transparent 85%);
+      color: var(--cream);
+      transform: translateY(-2px);
+    }
+    body[data-bg="light"] .contact-pills a {
+      color: var(--brass-deep);
+      background: radial-gradient(ellipse at center,
+        rgba(173, 125, 58, 0.18) 0%,
+        rgba(173, 125, 58, 0.06) 55%,
+        transparent 82%);
+    }
+    body[data-bg="light"] .contact-pills a:hover {
+      background: radial-gradient(ellipse at center,
+        rgba(200, 40, 30, 0.22) 0%,
+        rgba(173, 125, 58, 0.10) 55%,
+        transparent 85%);
+      color: var(--carmine);
+    }
+    @media (max-width: 720px) {
+      .contact-pills { gap: 0.25rem; }
+      .contact-pills a { padding: 0.55rem 0.85rem; font-size: 10px; }
+    }
+    @media (max-width: 480px) {
+      .contact-pills a:not(:first-child):not(:nth-child(2)) { display: none; }
+    }
+
+    /* ═══════════════ WORD-IN-PILL ═══════════════ */
+    .pill-em {
+      display: inline-block;
+      background: var(--carmine);
+      color: var(--cream);
+      padding: 0 0.4em 0.05em;
+      border-radius: 999px;
+      font-style: normal;
+      line-height: 1.05;
+      transform: translateY(-0.04em);
+      transition: background 280ms var(--ease-out), transform 280ms var(--ease-out);
+    }
+
+    /* ═══════════════ BIG BACKGROUND GLYPH ═══════════════ */
+    .bg-glyph {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      display: grid;
+      place-items: center;
+      font-family: var(--display-en);
+      font-variation-settings: 'opsz' 144, 'SOFT' 30;
+      font-weight: 700;
+      font-size: clamp(20rem, 50vw, 50rem);
+      line-height: 0.8;
+      color: var(--carmine);
+      opacity: 0.06;
+      letter-spacing: -0.04em;
+      user-select: none;
+      overflow: hidden;
+    }
+    .bg-glyph--dark { color: var(--brass-pale); opacity: 0.08; }
+
+    /* ═══════════════ PAGE LOADER ═══════════════ */
+    .page-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: var(--ink);
+      display: grid;
+      place-items: center;
+      pointer-events: none;
+      transition: transform 900ms var(--ease-osmo), opacity 600ms var(--ease-osmo);
+    }
+    .page-loader__line {
+      width: 0%;
+      height: 1px;
+      background: linear-gradient(90deg, var(--carmine) 0%, var(--brass-pale) 100%);
+      transition: width 1100ms var(--ease-osmo);
+    }
+    .page-loader__name {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--display-ar);
+      font-weight: 700;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      color: var(--cream);
+      letter-spacing: -0.01em;
+      opacity: 0;
+      transition: opacity 500ms var(--ease-osmo);
+    }
+    .page-loader__name em { color: var(--carmine); font-style: normal; font-family: inherit; }
+    .page-loader.is-loading .page-loader__line { width: 100%; }
+    .page-loader.is-loading .page-loader__name { opacity: 1; }
+    .page-loader.is-gone {
+      transform: translateY(-100%);
+      pointer-events: none;
+    }
+
+    /* ═══════════════ TYPING CARET ═══════════════ */
+    .caret {
+      display: inline-block;
+      width: 0.06em;
+      height: 0.95em;
+      background: var(--carmine);
+      vertical-align: -0.08em;
+      margin-inline-start: 0.08em;
+      animation: caret-blink 1.1s steps(2) infinite;
+    }
+    @keyframes caret-blink {
+      0%, 49.99% { opacity: 1; }
+      50%, 100%  { opacity: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .caret { animation: none; opacity: 0.5; }
+    }
+
+    /* ═══════════════ SCENE RAIL ═══════════════ */
+    .scenes {
+      position: fixed;
+      top: 50%;
+      inset-inline-start: clamp(1rem, 2.5vw, 2.4rem);
+      transform: translateY(-50%);
+      z-index: 90;
+      display: flex; flex-direction: column; gap: 0.85rem;
+      mix-blend-mode: difference;
+      color: var(--parchment);
+      font-family: var(--display-en);
+    }
+    .scenes__item {
+      display: flex; align-items: center; gap: 0.7rem;
+      opacity: 0.32;
+      transition: opacity 380ms var(--ease-out);
+      cursor: pointer;
+    }
+    .scenes__item:hover { opacity: 0.65; }
+    .scenes__item.is-active { opacity: 1; }
+    .scenes__num {
+      font-family: var(--display-en);
+      font-style: italic;
+      font-size: 14px;
+      line-height: 1;
+      min-width: 12px;
+      text-align: center;
+    }
+    .scenes__line {
+      width: 0; height: 1px;
+      background: currentColor;
+      transition: width 460ms var(--ease-out);
+    }
+    .scenes__label {
+      font-family: var(--body-ar);
+      font-size: 13px;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateX(6px);
+      transition: opacity 460ms var(--ease-out), transform 460ms var(--ease-out);
+    }
+    /* Hover-only reveal — active state shown via number opacity only */
+    .scenes__item:hover .scenes__line { width: 32px; }
+    .scenes__item:hover .scenes__label { opacity: 1; transform: translateX(0); }
+    @media (max-width: 720px) { .scenes { display: none; } }
+
+    /* ═══════════════ ATMOSPHERE (hero only) ═══════════════ */
+    .atmosphere {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+      mix-blend-mode: screen;
+      opacity: 0.95;
+    }
+    .atmosphere canvas { display: block; width: 100%; height: 100%; }
+    @media (prefers-reduced-motion: reduce) { .atmosphere { display: none; } }
+
+    /* ═══════════════ HERO ═══════════════ */
+    .hero {
+      background: var(--ink);
+      color: var(--cream);
+      min-height: 100svh;
+      align-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero__grid { z-index: 2; }
+
+    /* Section transition · multi-stop "sunset fade" that bridges the
+       hero's WebGL warm atmosphere into the next section. Tall enough
+       (22-26vh) that the warm mid-tones read as the page slowly
+       brightening, not a band. */
+    .hero__grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: clamp(2rem, 6vw, 6rem);
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    .hero__copy { display: flex; flex-direction: column; gap: clamp(1.2rem, 2.5vw, 2rem); }
+    .hero__overline {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--brass-pale);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .hero__overline::before {
+      content: '';
+      width: 32px; height: 1px;
+      background: currentColor;
+    }
+    .hero__name {
+      font-family: var(--display-ar);
+      font-weight: 700;
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+    }
+    .hero__name em {
+      font-family: inherit;
+      font-style: inherit;
+      font-weight: inherit;
+      color: var(--carmine);
+    }
+    .hero__promise {
+      font-family: var(--display-ar);
+      font-weight: 400;
+      font-size: clamp(1.2rem, 1.9vw, 1.7rem);
+      line-height: 1.45;
+      color: #ffffff;
+      mix-blend-mode: difference;
+      max-width: 32rem;
+      position: relative;
+      z-index: 3;
+    }
+    .hero__credentials {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #ffffff;
+      mix-blend-mode: difference;
+      position: relative;
+      z-index: 3;
+    }
+    .hero__credentials span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .hero__credentials span::before {
+      content: '·';
+      color: var(--brass);
+    }
+    .hero__credentials span:first-child::before { display: none; }
+    .hero__ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 1.1rem 2rem;
+      font-family: var(--body-ar);
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0;
+      transition: background 280ms var(--ease-osmo), color 280ms var(--ease-osmo),
+                  transform 280ms var(--ease-osmo), border-color 280ms;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .cta--primary { background: var(--carmine); color: var(--cream); border: 1px solid var(--carmine); }
+    .cta--primary:hover { background: var(--carmine-deep); border-color: var(--carmine-deep); transform: translateY(-2px); }
+    .cta--secondary { background: transparent; color: var(--cream); border: 1px solid rgba(247, 243, 234, 0.35); }
+    .cta--secondary:hover { border-color: var(--cream); background: rgba(247, 243, 234, 0.06); transform: translateY(-2px); }
+
+    .cta__icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: width 600ms var(--ease-elastic), opacity 280ms var(--ease-osmo),
+                  transform 600ms var(--ease-elastic);
+    }
+    .cta__icon svg { flex-shrink: 0; transform: rotate(180deg); }
+    .cta__icon--lead { width: 0; opacity: 0; transform: rotate(-90deg); }
+    .cta__icon--trail { width: 1.4rem; opacity: 1; transform: rotate(0); }
+    .cta:hover .cta__icon--lead {
+      width: 1.4rem;
+      opacity: 1;
+      transform: rotate(0);
+    }
+    .cta:hover .cta__icon--trail {
+      width: 0;
+      opacity: 0;
+      transform: rotate(-90deg);
+      transition-duration: 240ms;
+      transition-timing-function: var(--ease-osmo);
+    }
+    .cta.is-copied { background: var(--brass-pale); color: var(--ink); border-color: var(--brass-pale); }
+
+    .hero__portrait {
+      position: relative;
+      justify-self: center;
+      width: clamp(18rem, 30vw, 30rem);
+      aspect-ratio: 1;
+    }
+    .hero__portrait img {
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 30px 80px rgba(200, 40, 30, 0.35),
+                  0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+    .hero__portrait::before {
+      content: '';
+      position: absolute;
+      inset: -6%;
+      border: 1px solid rgba(212, 180, 131, 0.22);
+      border-radius: 50%;
+      animation: portrait-spin 64s linear infinite;
+    }
+    @keyframes portrait-spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 900px) {
+      .hero__grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero__portrait { width: clamp(14rem, 60vw, 22rem); }
+    }
+
+    /* ═══════════════ COMMON SECTION HEADERS ═══════════════ */
+    .section-head {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: end;
+      gap: 1.4rem;
+      margin-bottom: clamp(2.5rem, 5vw, 4rem);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+    .section-head__num {
+      color: var(--carmine);
+      font-family: var(--display-en);
+      font-style: italic;
+      font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+      line-height: 1;
+    }
+    .section-head__line {
+      height: 1px;
+      background: currentColor;
+      opacity: 0.2;
+    }
+    .section-head__label {
+      color: var(--ink-soft);
+    }
+    .section-title {
+      font-family: var(--display-ar);
+      font-weight: 600;
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      line-height: 1.1;
+      letter-spacing: -0.018em;
+      color: var(--ink);
+      max-width: 28ch;
+      margin-bottom: clamp(1.2rem, 2vw, 1.8rem);
+    }
+    .section-title em {
+      font-family: inherit;
+      font-style: inherit;
+      font-weight: inherit;
+      color: var(--carmine);
+    }
+    .section-deck {
+      font-family: var(--body-ar);
+      font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+      line-height: 1.8;
+      color: var(--ink-soft);
+      max-width: 36rem;
+    }
+    .section-deck strong { color: var(--ink); font-weight: 600; }
+
+    /* ═══════════════ CONSULTING ═══════════════ */
+    .consulting {
+      background: var(--cream);
+      color: var(--ink);
+    }
+    .consulting__grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: clamp(2rem, 6vw, 5rem);
+      align-items: start;
+    }
+    .consulting__bullets {
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+      margin: clamp(1.5rem, 3vw, 2.5rem) 0 clamp(1.5rem, 3vw, 2.5rem);
+    }
+    .consulting__bullet {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.2rem;
+      align-items: start;
+      padding-bottom: 1.4rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+    .consulting__bullet:last-child { border-bottom: 0; }
+    .consulting__bullet-num {
+      font-family: var(--display-en);
+      font-style: italic;
+      font-variation-settings: 'opsz' 60, 'SOFT' 50;
+      font-size: 1.3rem;
+      color: var(--carmine);
+      line-height: 1;
+      padding-top: 0.15rem;
+    }
+    .consulting__bullet-head {
+      font-family: var(--display-ar);
+      font-weight: 600;
+      font-size: 1.15rem;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+    }
+    .consulting__bullet-body {
+      font-family: var(--body-ar);
+      font-size: 0.98rem;
+      line-height: 1.7;
+      color: var(--ink-soft);
+    }
+    .consulting__card {
+      background: var(--ink);
+      color: var(--cream);
+      padding: clamp(1.8rem, 3vw, 2.5rem);
+      position: sticky;
+      top: 5rem;
+      isolation: isolate;
+    }
+    .consulting__card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at top right, rgba(200, 40, 30, 0.4) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: -1;
+    }
+    .consulting__card-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--brass-pale);
+      margin-bottom: 0.8rem;
+    }
+    .consulting__card-head {
+      font-family: var(--display-ar);
+      font-weight: 600;
+      font-size: clamp(1.4rem, 2vw, 1.8rem);
+      line-height: 1.25;
+      color: var(--cream);
+      margin-bottom: 1rem;
+    }
+    .consulting__card-deck {
+      font-family: var(--body-ar);
+      font-size: 0.98rem;
+      line-height: 1.7;
+      color: rgba(247, 243, 234, 0.78);
+      margin-bottom: 1.6rem;
+    }
+    .consulting__card-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      padding: 1.2rem 0;
+      border-top: 1px solid rgba(212, 180, 131, 0.25);
+      border-bottom: 1px solid rgba(212, 180, 131, 0.25);
+      margin-bottom: 1.5rem;
+    }
+    .consulting__card-meta div {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(247, 243, 234, 0.78);
+    }
+    .consulting__card-meta strong {
+      color: var(--brass-pale);
+      font-weight: 500;
+    }
+    .consulting__card-cta {
+      width: 100%;
+      justify-content: center;
+      background: var(--carmine);
+      color: var(--cream);
+      padding: 1.1rem 1.5rem;
+      font-family: var(--body-ar);
+      font-weight: 500;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      transition: background 240ms;
+    }
+    .consulting__card-cta:hover { background: var(--carmine-deep); }
+
+    @media (max-width: 900px) {
+      .consulting__grid { grid-template-columns: 1fr; }
+      .consulting__card { position: static; }
+    }
+
+    /* ═══════════════ BOOK ═══════════════ */
+    .book {
+      background: var(--ink);
+      color: var(--cream);
+      overflow: hidden;
+      position: relative;
+    }
+    .book::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(200, 40, 30, 0.18) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .book__grid {
+      display: grid;
+      grid-template-columns: 1fr 0.85fr;
+      gap: clamp(2rem, 6vw, 5rem);
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .book__copy { display: flex; flex-direction: column; gap: 1.5rem; }
+    .book .section-head__label { color: rgba(247, 243, 234, 0.6); }
+    .book__title {
+      font-family: var(--display-ar);
+      font-weight: 700;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: 0.98;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+    }
+    .book__title em {
+      font-family: inherit;
+      font-style: inherit;
+      font-weight: inherit;
+      color: var(--carmine);
+    }
+    .book__subtitle {
+      font-family: var(--quote-ar);
+      font-style: italic;
+      font-size: clamp(1.15rem, 1.6vw, 1.4rem);
+      line-height: 1.5;
+      color: var(--brass-pale);
+      max-width: 32rem;
+    }
+    .book__reasons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      margin: 0.8rem 0 1rem;
+    }
+    .book__reason {
+      display: flex;
+      align-items: baseline;
+      gap: 0.9rem;
+      font-family: var(--body-ar);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: rgba(247, 243, 234, 0.88);
+    }
+    .book__reason::before {
+      content: counter(reason);
+      counter-increment: reason;
+      font-family: var(--display-en);
+      font-style: italic;
+      font-size: 0.85rem;
+      color: var(--carmine);
+      flex-shrink: 0;
+    }
+    .book__reasons { counter-reset: reason; }
+    .book__cover {
+      justify-self: center;
+      aspect-ratio: 3 / 4;
+      width: clamp(16rem, 26vw, 24rem);
+      background: linear-gradient(135deg, var(--carmine) 0%, var(--carmine-deep) 100%);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6),
+                  0 10px 30px rgba(200, 40, 30, 0.3),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      padding: clamp(1.5rem, 2.5vw, 2.2rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      isolation: isolate;
+    }
+    .book__cover::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.45 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+      mix-blend-mode: overlay;
+      opacity: 0.5;
+      pointer-events: none;
+      z-index: -1;
+    }
+    .book__cover-top {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(247, 243, 234, 0.78);
+    }
+    .book__cover-title {
+      font-family: var(--display-ar);
+      font-weight: 700;
+      font-size: clamp(1.4rem, 2.2vw, 2rem);
+      line-height: 1.05;
+      color: var(--cream);
+    }
+    .book__cover-bottom {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(247, 243, 234, 0.7);
+      display: flex;
+      justify-content: space-between;
+    }
+    .book__cta {
+      align-self: flex-start;
+      background: var(--cream);
+      color: var(--ink);
+      padding: 1.1rem 2.2rem;
+      font-family: var(--body-ar);
+      font-weight: 500;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.9rem;
+      transition: background 240ms, color 240ms, transform 280ms var(--ease-out);
+      border: 1px solid var(--cream);
+    }
+    .book__cta:hover {
+      background: var(--brass-pale);
+      border-color: var(--brass-pale);
+      transform: translateY(-2px);
+    }
+    .book__cta svg { transform: rotate(180deg); transition: transform 360ms var(--ease-out); }
+    .book__cta:hover svg { transform: rotate(180deg) translateX(4px); }
+
+    @media (max-width: 900px) {
+      .book__grid { grid-template-columns: 1fr; }
+      .book__cover { width: clamp(12rem, 70vw, 18rem); }
+    }
+
+    /* ═══════════════ PROOF ═══════════════ */
+    .proof { background: var(--parchment); color: var(--ink); }
+    .proof__numbers {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(0.4rem, 1vw, 1rem);
+      margin-bottom: clamp(3rem, 6vw, 5rem);
+    }
+    .proof__numbers > div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      padding: clamp(1.2rem, 2vw, 1.8rem) 0.5rem;
+      border-top: 1px solid var(--brass);
+      position: relative;
+    }
+    .proof__numbers strong {
+      font-family: var(--display-en);
+      font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;
+      font-weight: 400;
+      font-size: clamp(2rem, 4vw, 3.6rem);
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    .proof__numbers span {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      text-align: center;
+    }
+    @media (max-width: 720px) { .proof__numbers { grid-template-columns: repeat(2, 1fr); } }
+
+    .proof__quotes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(1rem, 2vw, 2rem);
+    }
+    .proof__quote {
+      padding: clamp(1.4rem, 2vw, 2rem);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      background: var(--cream);
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .proof__quote-text {
+      font-family: var(--quote-ar);
+      font-style: italic;
+      font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+      line-height: 1.65;
+      color: var(--ink);
+    }
+    .proof__quote-author {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+    }
+    .proof__quote-name {
+      font-family: var(--body-ar);
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--ink);
+    }
+    .proof__quote-role {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+    @media (max-width: 900px) { .proof__quotes { grid-template-columns: 1fr; } }
+
+    /* ═══════════════ PUBLICATION (Almobadir cross-link) ═══════════════ */
+    .publication {
+      background: var(--paper);
+      color: var(--ink);
+    }
+    .publication__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 6vw, 5rem);
+      align-items: center;
+    }
+    .publication__copy { display: flex; flex-direction: column; gap: 1.4rem; }
+    .publication__visual {
+      aspect-ratio: 4 / 5;
+      width: 100%;
+      max-width: 22rem;
+      justify-self: center;
+      background: var(--ink);
+      color: var(--cream);
+      padding: clamp(1.5rem, 2.5vw, 2.2rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      isolation: isolate;
+    }
+    .publication__visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 20%, rgba(173, 125, 58, 0.45) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: -1;
+    }
+    .publication__visual-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--brass-pale);
+    }
+    .publication__visual-mark {
+      align-self: center;
+      width: clamp(10rem, 60%, 16rem);
+      height: auto;
+      display: block;
+    }
+    .publication__visual-foot {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(247, 243, 234, 0.6);
+      display: flex;
+      justify-content: space-between;
+    }
+    .publication__cta {
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--carmine);
+      font-family: var(--body-ar);
+      font-weight: 500;
+      font-size: 1rem;
+      color: var(--ink);
+      transition: color 240ms;
+    }
+    .publication__cta::after {
+      content: '↖';
+      color: var(--carmine);
+      transition: transform 280ms var(--ease-out);
+    }
+    .publication__cta:hover { color: var(--carmine); }
+    .publication__cta:hover::after { transform: translate(-3px, -3px); }
+    @media (max-width: 900px) { .publication__grid { grid-template-columns: 1fr; } }
+
+    /* ═══════════════ OUTRO ═══════════════ */
+    .outro {
+      background: var(--ink);
+      color: var(--cream);
+      text-align: center;
+      align-content: center;
+      gap: 2rem;
+      display: grid;
+      grid-template-rows: 1fr auto 1fr auto;
+    }
+    .outro__inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: clamp(1.5rem, 3vw, 2.5rem);
+      grid-row: 2;
+    }
+    .outro__tag {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--brass-pale);
+    }
+    .outro__head {
+      font-family: var(--display-ar);
+      font-weight: 700;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: 1.05;
+      letter-spacing: -0.018em;
+      color: var(--cream);
+      max-width: 22ch;
+    }
+    .outro__head em {
+      font-family: inherit;
+      font-style: inherit;
+      font-weight: inherit;
+      color: var(--carmine);
+    }
+    .outro__sub {
+      font-family: var(--body-ar);
+      font-size: clamp(1rem, 1.3vw, 1.15rem);
+      line-height: 1.7;
+      color: rgba(247, 243, 234, 0.75);
+      max-width: 32rem;
+    }
+    .outro__ctas {
+      display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+    }
+    .outro__foot {
+      grid-row: 4;
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(247, 243, 234, 0.5);
+      padding-top: 2rem;
+      border-top: 1px solid rgba(212, 180, 131, 0.15);
+    }
+    .outro__socials {
+      display: flex;
+      gap: 1.2rem;
+    }
+    .outro__socials a {
+      color: rgba(247, 243, 234, 0.7);
+      transition: color 200ms;
+    }
+    .outro__socials a:hover { color: var(--brass-pale); }
+    @media (max-width: 640px) {
+      .outro__foot { flex-direction: column; gap: 1.2rem; align-items: flex-start; text-align: start; }
+    }
+
+    /* ═══════════════ 3D TILT ═══════════════ */
+    [data-tilt] {
+      perspective: 1200px;
+      transform-style: preserve-3d;
+    }
+    [data-tilt] > * {
+      transition: transform 600ms var(--ease-out);
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+
+    /* ═══════════════ MAGNETIC ═══════════════ */
+    .magnetic {
+      transition: transform 400ms var(--ease-out);
+      will-change: transform;
+    }
+
+    /* ═══════════════ BREATHING ═══════════════ */
+    @keyframes breathe {
+      0%, 100% { opacity: 1; transform: translateY(0); }
+      50%      { opacity: 0.92; transform: translateY(-1.5px); }
+    }
+    .proof__quote { animation: breathe 8s ease-in-out infinite; }
+    .proof__quote:nth-child(2) { animation-delay: -2.5s; }
+    .proof__quote:nth-child(3) { animation-delay: -5s; }
+
+    /* ═══════════════ REVEAL ANIMATIONS ═══════════════ */
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1100ms var(--ease-out), transform 1100ms var(--ease-out);
+      transition-delay: var(--delay, 0ms);
+    }
+    [data-reveal].is-in { opacity: 1; transform: translateY(0); }
+    [data-reveal="rise-fast"] { transition-duration: 700ms; transform: translateY(20px); }
+    [data-reveal="rise-slow"] { transition-duration: 1400ms; transform: translateY(60px); }
+    [data-reveal="fade"] { transform: none; }
+    [data-reveal="scale"] { transform: scale(0.96); transform-origin: center; }
+    [data-reveal="scale"].is-in { transform: scale(1); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      [data-reveal] { opacity: 1 !important; transform: none !important; }
+      body { cursor: auto; }
+      .cursor { display: none; }
+    }
+
+    /* ═══════════════ MOBILE GENERAL ═══════════════ */
+    @media (max-width: 640px) {
+      body { cursor: auto; }
+      .cursor { display: none; }
+      .section-head { grid-template-columns: 1fr; gap: 0.4rem; }
+      .section-head__line { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-loader" id="pageLoader" aria-hidden="true">
+    <h1 class="page-loader__name">بدر <em>شاكر.</em></h1>
+    <div class="page-loader__line"></div>
+  </div>
+
+  <!-- ═════════════ HUD ═════════════ -->
+  <header class="hud" role="banner">
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="menuPanel" aria-label="فتح القائمة">
+      <span class="menu-toggle__bars" aria-hidden="true"><span></span><span></span></span>
+      <span class="menu-toggle__text">القائمة</span>
+    </button>
+  </header>
+
+  <nav class="menu-panel" id="menuPanel" aria-label="القائمة الرئيسيّة" aria-hidden="true">
+    <a href="#s-01">استشارة بزنس</a>
+    <a href="#s-02">الكتاب</a>
+    <a href="#s-03">نتائج</a>
+    <a href="https://almobadir.com" target="_blank" rel="noopener">المبادر</a>
+    <a href="en/index.html">EN</a>
+    <a href="https://calendly.com/badrshaqer_consulting" target="_blank" rel="noopener">احجز جلسة</a>
+  </nav>
+
+  <!-- ═════════════ CURSOR ═════════════ -->
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <div class="cursor__ring"></div>
+    <div class="cursor__dot"></div>
+    <div class="cursor__label" id="cursorLabel"></div>
+  </div>
+  <div class="cursor-trail" id="cursorTrail" aria-hidden="true"></div>
+
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- ═════════════ CONTACT PILLS ═════════════ -->
+  <nav class="contact-pills" aria-label="تواصل">
+    <a href="mailto:badr@almobadir.com" data-cursor-style="link" data-cursor="EMAIL"><span>بريد</span></a>
+    <a href="https://twitter.com/badrshaqer" target="_blank" rel="noopener" data-cursor-style="link" data-cursor="X"><span>X</span></a>
+    <a href="https://instagram.com/badrshaqer" target="_blank" rel="noopener" data-cursor-style="link" data-cursor="IG"><span>IG</span></a>
+    <a href="https://www.tiktok.com/@badrshaqer" target="_blank" rel="noopener" data-cursor-style="link" data-cursor="TT"><span>TT</span></a>
+  </nav>
+
+  <!-- ═════════════ SCENE RAIL ═════════════ -->
+  <nav class="scenes" id="scenesNav" aria-label="الفصول">
+    <a href="#s-00" class="scenes__item is-active" data-idx="01"><span class="scenes__num">1</span><span class="scenes__line"></span><span class="scenes__label">من أنا</span></a>
+    <a href="#s-01" class="scenes__item" data-idx="02"><span class="scenes__num">2</span><span class="scenes__line"></span><span class="scenes__label">الاستشارة</span></a>
+    <a href="#s-02" class="scenes__item" data-idx="03"><span class="scenes__num">3</span><span class="scenes__line"></span><span class="scenes__label">الكتاب</span></a>
+    <a href="#s-03" class="scenes__item" data-idx="04"><span class="scenes__num">4</span><span class="scenes__line"></span><span class="scenes__label">نتائج</span></a>
+    <a href="#s-04" class="scenes__item" data-idx="05"><span class="scenes__num">5</span><span class="scenes__line"></span><span class="scenes__label">المبادر</span></a>
+    <a href="#s-05" class="scenes__item" data-idx="06"><span class="scenes__num">6</span><span class="scenes__line"></span><span class="scenes__label">لنبدأ</span></a>
+  </nav>
+
+  <main>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         00 · HERO
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="stage hero" id="s-00" data-idx="01" data-label="HERO">
+      <div class="atmosphere" aria-hidden="true">
+        <canvas id="atmoCanvas"></canvas>
+      </div>
+
+      <div class="wrap hero__grid">
+        <div class="hero__copy">
+          <span class="hero__overline" data-reveal="fade">بدر شاكر · مرشد المؤسسين</span>
+          <h1 class="hero__name" data-reveal="rise-slow">
+            من <em>صفر</em><br/>إلى <em>سبعةِ أرقام.</em>
+          </h1>
+          <p class="hero__promise" data-reveal="rise-slow" style="--delay:200ms">
+            أرشدُ المؤسّسين والشركات للوصول لأوّل سبعة أرقام في إيراداتهم.
+            بِخريطةِ طريق، لا بالتخمين.
+          </p>
+          <div class="hero__credentials" data-reveal="fade" style="--delay:500ms">
+            <span>بكالوريوس بزنس</span>
+            <span>ماجستير تسويق</span>
+            <span>10+ سنوات</span>
+          </div>
+          <div class="hero__ctas" data-reveal="rise-fast" style="--delay:700ms">
+            <a class="cta cta--primary magnetic" data-cursor-style="button" href="https://calendly.com/badrshaqer_consulting" target="_blank" rel="noopener" data-cursor="BOOK">
+              <span class="cta__icon cta__icon--lead"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              <span>احجز جلسة استشارية</span>
+              <span class="cta__icon cta__icon--trail"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </a>
+            <a class="cta cta--secondary magnetic" data-cursor-style="link" href="#s-02" data-cursor="READ">
+              <span class="cta__icon cta__icon--lead"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+              <span>اقرأ الكتاب</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero__portrait" data-reveal="scale" data-tilt data-tilt-max="14" style="--delay:300ms">
+          <img src="assets/badr-portrait.webp" alt="بدر شاكر" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         01 · CONSULTING · primary product
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="stage consulting" id="s-01" data-idx="02" data-label="CONSULTING">
+      <div class="bg-glyph" aria-hidden="true">٠١</div>
+      <div class="wrap">
+        <div class="section-head" data-reveal="fade">
+          <span class="section-head__num">01</span>
+          <span class="section-head__line"></span>
+          <span class="section-head__label">المنتج الأوّل · استشارة</span>
+        </div>
+
+        <div class="consulting__grid">
+          <div>
+            <h2 class="section-title" data-reveal="rise-slow">
+              للمؤسّسين الذين تعِبوا من <em>التخمين.</em>
+            </h2>
+            <p class="section-deck" data-reveal="rise-slow" style="--delay:200ms">
+              جلسةُ تشخيصٍ دقيقة. ساعةٌ ونصف. خَريطةُ طريقٍ واضحة وعَمَلِيّة. <strong>لا نظريّاتٍ، لا فلسفة</strong>: تَفكيكٌ مَيكانيكيّ لشركتك، وخطواتٌ تنفيذيّةٌ تخرج بها لتطبّقها يوم الإثنين الصُّبح.
+            </p>
+
+            <div class="consulting__bullets">
+              <div class="consulting__bullet" data-reveal="rise-fast" style="--delay:200ms">
+                <span class="consulting__bullet-num">01</span>
+                <div>
+                  <h3 class="consulting__bullet-head">تَشخيصٌ قبلَ الجلسة</h3>
+                  <p class="consulting__bullet-body">تُرسلُ أرقامَك، نَموذجَ عملك، والمَشاكل التي تَوقّفك. أَدْرُسها قبلَ ما نَلتقي.</p>
+                </div>
+              </div>
+              <div class="consulting__bullet" data-reveal="rise-fast" style="--delay:350ms">
+                <span class="consulting__bullet-num">02</span>
+                <div>
+                  <h3 class="consulting__bullet-head">٩٠ دقيقة على Zoom</h3>
+                  <p class="consulting__bullet-body">نُفَكِّك أكبرَ مُعَوِّق في شركتك. كلُّ سؤالٍ يَفتح ثلاثة. تَخرج بِأولويّاتٍ واضحة.</p>
+                </div>
+              </div>
+              <div class="consulting__bullet" data-reveal="rise-fast" style="--delay:500ms">
+                <span class="consulting__bullet-num">03</span>
+                <div>
+                  <h3 class="consulting__bullet-head">خَريطةُ طريقٍ مكتوبة</h3>
+                  <p class="consulting__bullet-body">بَعدَ الجلسة بـ٢٤ ساعة، تَستلم مُلخّصاً مَكتوباً: ما اتّفقنا عليه، الخطوات، والأَولويّات.</p>
+                </div>
+              </div>
+              <div class="consulting__bullet" data-reveal="rise-fast" style="--delay:650ms">
+                <span class="consulting__bullet-num">04</span>
+                <div>
+                  <h3 class="consulting__bullet-head">مُتابعةٌ بعد ٣٠ يوماً</h3>
+                  <p class="consulting__bullet-body">جلسةُ مُتابعةٍ قصيرة (٣٠ دقيقة) لِنُراجع التَّنفيذ ونُعَدِّل المسار إن لَزِم.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="consulting__card" data-reveal="scale">
+            <div class="consulting__card-tag">استشارة بزنس · 1 لـ 1</div>
+            <h3 class="consulting__card-head">جلسةُ تشخيصٍ دقيقةٍ لمؤسّس واحد.</h3>
+            <p class="consulting__card-deck">
+              مُصَمَّمة للمؤسّسين الذين تَجاوزوا مَرحلةَ "الفكرة" ويُديرون شركةً فِعليّة، لكنّهم عَلِقوا. تَحتاج إلى عينٍ خارجيّةٍ تَرى ما لا تَراه.
+            </p>
+            <div class="consulting__card-meta">
+              <div><span>المُدّة</span><strong>٩٠ دقيقة</strong></div>
+              <div><span>المنصّة</span><strong>Zoom</strong></div>
+              <div><span>اللغة</span><strong>العربيّة</strong></div>
+              <div><span>المُتابعة</span><strong>٣٠ يوماً</strong></div>
+            </div>
+            <a class="consulting__card-cta magnetic" data-cursor-style="button" href="https://calendly.com/badrshaqer_consulting" target="_blank" rel="noopener" data-cursor="BOOK">
+              <span>احجز جلستك الآن</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="transform:rotate(180deg)"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         02 · BOOK
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="stage book" id="s-02" data-idx="03" data-label="BOOK">
+      <div class="bg-glyph bg-glyph--dark" aria-hidden="true">٠٢</div>
+      <div class="wrap">
+        <div class="section-head" data-reveal="fade">
+          <span class="section-head__num">02</span>
+          <span class="section-head__line" style="background:rgba(247,243,234,0.2)"></span>
+          <span class="section-head__label">الكتاب</span>
+        </div>
+
+        <div class="book__grid">
+          <div class="book__copy">
+            <h2 class="book__title" data-reveal="rise-slow">
+              كيف <em>تبيع</em><br/>كتاجرِ المخدّرات.
+            </h2>
+            <p class="book__subtitle" data-reveal="rise-slow" style="--delay:200ms">
+              أسرعُ طريقةٍ لتَحصل على عملاءَ ومبيعاتٍ أكثرَ ممّا تَحتمل.
+            </p>
+
+            <div class="book__reasons">
+              <div class="book__reason" data-reveal="rise-fast" style="--delay:300ms">
+                لأنّ تاجرَ المخدّرات لا يَملك ميزانيّةَ تسويقٍ ولا فريقَ مبيعات &mdash; ومع ذلك يَبيع أكثرَ منك.
+              </div>
+              <div class="book__reason" data-reveal="rise-fast" style="--delay:450ms">
+                لأنّ مبادئَ البيعِ التي يَستخدمها (نَدرة، إدمان، شَبكةُ تَوزيع) هي نَفسُها التي يَستخدمها أكبرُ الماركات.
+              </div>
+              <div class="book__reason" data-reveal="rise-fast" style="--delay:600ms">
+                لأنّك بَعدَ قراءة الكتاب ستَفهم لماذا منتجك لا يَبيع، ولن تَحتاج وكالةَ تسويقٍ مرّةً أخرى.
+              </div>
+            </div>
+
+            <a class="book__cta magnetic" data-cursor-style="button" href="https://zaap.bio/badrshaqer/كيف-تبيع-كتاجر-المخدرات" target="_blank" rel="noopener" data-cursor="BUY" data-reveal="rise-fast" style="--delay:800ms">
+              <span>احصل على نسختك</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+
+          <div class="book__cover" data-tilt data-tilt-max="10" data-reveal="scale" style="--delay:300ms">
+            <div class="book__cover-top">
+              <div>بدر شاكر</div>
+              <div style="opacity:0.7">٢٠٢٥</div>
+            </div>
+            <div class="book__cover-title">
+              كيف تبيع<br/>كتاجرِ<br/>المخدّرات.
+            </div>
+            <div class="book__cover-bottom">
+              <span>كتاب</span>
+              <span>الفصلُ الأوّل مجّاناً</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         03 · PROOF
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="stage proof" id="s-03" data-idx="04" data-label="PROOF">
+      <div class="wrap">
+        <div class="section-head" data-reveal="fade">
+          <span class="section-head__num">03</span>
+          <span class="section-head__line"></span>
+          <span class="section-head__label">نتائجُ · لا نظريّات</span>
+        </div>
+
+        <h2 class="section-title" data-reveal="rise-slow">
+          الأرقام التي بناها <em>الذين عَمِلوا معي.</em>
+        </h2>
+        <p class="section-deck" data-reveal="rise-slow" style="--delay:200ms" style2="margin-bottom: clamp(2rem, 4vw, 3rem)">
+          ١٠ سنواتٍ من العَمَل معَ المؤسّسين في كلِّ مَرحلة &mdash; من قبل الإطلاق، إلى الوصول لأوّل مليون، إلى تَوسُّعٍ متعدّدِ الأسواق. هذه أرقامُ الشَّبكة:
+        </p>
+
+        <div class="proof__numbers" data-reveal="rise-slow" style="--delay:400ms; margin-top: clamp(2rem, 4vw, 3rem)">
+          <div><strong data-count="5000" data-count-suffix="+">+5K</strong><span>مؤسّس استشار</span></div>
+          <div><strong data-count="3000000" data-count-suffix="+">+3M</strong><span>قارئ عبر الشبكة</span></div>
+          <div><strong data-count="200" data-count-suffix="+">+200</strong><span>شركة عَمِلت معها</span></div>
+          <div><strong data-count="10" data-count-suffix="+">+10</strong><span>سنواتُ خبرة</span></div>
+        </div>
+
+        <div class="proof__quotes">
+          <article class="proof__quote" data-tilt data-tilt-max="6" data-reveal="rise-fast" style="--delay:200ms">
+            <p class="proof__quote-text">«جلسةٌ واحدةٌ مع بدر فكَّكت ٦ أشهرٍ من الحَيرة. خَرَجتُ بِخَريطةٍ تَنفيذيّةٍ مَكتوبة، طبَّقتها في ثلاثةِ أسابيع، وضاعَفنا الإيرادات.»</p>
+            <div class="proof__quote-author">
+              <span class="proof__quote-name">مؤسّس · شركة SaaS</span>
+              <span class="proof__quote-role">الرياض · 2024</span>
+            </div>
+          </article>
+          <article class="proof__quote" data-tilt data-tilt-max="6" data-reveal="rise-fast" style="--delay:350ms">
+            <p class="proof__quote-text">«قَرأتُ كتابَ بدر بِجَلسةٍ واحدة. غيَّر فَهمي للبيعِ من جذوره. لَستُ أَحتاج وكالةَ تسويقٍ بَعدَ اليوم.»</p>
+            <div class="proof__quote-author">
+              <span class="proof__quote-name">مؤسّسة · علامةُ تجزئة</span>
+              <span class="proof__quote-role">دبيّ · 2025</span>
+            </div>
+          </article>
+          <article class="proof__quote" data-tilt data-tilt-max="6" data-reveal="rise-fast" style="--delay:500ms">
+            <p class="proof__quote-text">«بَدرُ لا يَبيعُك الحُلم. يُريك المَيكانيكا. وهذا بالضبط ما كنتُ أحتاجه. وَفَّر علَيَّ سنواتٍ من الأخطاء.»</p>
+            <div class="proof__quote-author">
+              <span class="proof__quote-name">مؤسّس · منصّة محتوى</span>
+              <span class="proof__quote-role">القاهرة · 2024</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         04 · PUBLICATION (Almobadir cross-link)
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="stage publication" id="s-04" data-idx="05" data-label="ALMOBADIR">
+      <div class="wrap">
+        <div class="section-head" data-reveal="fade">
+          <span class="section-head__num">04</span>
+          <span class="section-head__line"></span>
+          <span class="section-head__label">ما الذي أَبنيه حاليّاً</span>
+        </div>
+
+        <div class="publication__grid">
+          <div class="publication__copy">
+            <h2 class="section-title" data-reveal="rise-slow">
+              المبادر · <em>منشورُ الأعمال</em><br/>والمال في العالم العربيّ.
+            </h2>
+            <p class="section-deck" data-reveal="rise-slow" style="--delay:200ms">
+              منشورٌ شَهريّ لِرُوّاد الأعمال، المستثمرين، والمُشغّلين. <strong>صوتٌ واحد، أربعُ زوايا</strong>. نَكتُب لِمَن بَنى، لا لِمَن يَحلَم أن يَبني. شَبكةٌ من ثلاثة ملايين قارئ، خَمسة آلاف مُشترك في النَّشرة الأسبوعيّة.
+            </p>
+            <p class="section-deck" data-reveal="rise-slow" style="--delay:400ms">
+              المبادر هو حَيث أَكتُبُ بَيني وبَين القرّاء. هذه الصفحة هي حيث أَعملُ معَ المؤسّسين واحداً وواحداً.
+            </p>
+            <a class="publication__cta" href="https://almobadir.com" target="_blank" rel="noopener" data-cursor="VISIT" data-reveal="rise-fast" style="--delay:600ms">
+              <span>اقرأ العَدَد الأخير</span>
+            </a>
+          </div>
+
+          <div class="publication__visual" data-reveal="scale" style="--delay:300ms">
+            <div class="publication__visual-tag">منشور · العدد ٠١</div>
+            <img class="publication__visual-mark" src="assets/almobadir-mark-white.png" alt="المبادر" width="706" height="294" />
+            <div class="publication__visual-foot">
+              <span>+3M قارئ</span>
+              <span>+5K مشترك</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         05 · OUTRO
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="stage outro" id="s-05" data-idx="06" data-label="ENTER">
+      <div class="wrap outro__inner">
+        <span class="outro__tag" data-reveal="fade">لنبدأ</span>
+        <h2 class="outro__head" data-reveal="rise-slow">
+          إذا قَرأتَ كلَّ هذا،<br/><em>أنتَ جاهز.</em>
+        </h2>
+        <p class="outro__sub" data-reveal="rise-slow" style="--delay:200ms">
+          احجز جلستكَ، أو ابدأ بالكتاب. كِلاهُما يَقودُك إلى نَفسِ المكان: فَهْمٌ حقيقيٌّ لشركتك، وخَطَواتٌ تَنفيذيّة.
+        </p>
+        <div class="outro__ctas" data-reveal="rise-fast" style="--delay:400ms">
+          <a class="cta cta--primary magnetic" data-cursor-style="button" href="https://calendly.com/badrshaqer_consulting" target="_blank" rel="noopener" data-cursor="BOOK">
+            <span>احجز جلسة استشارية</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="cta cta--secondary magnetic" data-cursor-style="link" href="https://zaap.bio/badrshaqer/كيف-تبيع-كتاجر-المخدرات" target="_blank" rel="noopener" data-cursor="BUY">
+            <span>احصل على الكتاب</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="wrap outro__foot">
+        <span>© ٢٠٢٦ بدر شاكر · جميع الحقوق محفوظة</span>
+        <nav class="outro__socials" aria-label="حسابات التواصل">
+          <a href="https://instagram.com/badrshaqer" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.tiktok.com/@badrshaqer" target="_blank" rel="noopener">TikTok</a>
+          <a href="https://twitter.com/badrshaqer" target="_blank" rel="noopener">X</a>
+          <a href="https://almobadir.com" target="_blank" rel="noopener">Almobadir</a>
+        </nav>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+  (function () {
+    'use strict';
+
+    // ─── WebGL atmosphere (hero only) ─────────────────────────────────
+    (function initAtmosphere() {
+      const canvas = document.getElementById('atmoCanvas');
+      if (!canvas) return;
+      const gl = canvas.getContext('webgl', { alpha: true, premultipliedAlpha: false, antialias: false });
+      if (!gl) return;
+
+      const vertSrc = `
+        attribute vec2 a_position;
+        varying vec2 v_uv;
+        void main() { v_uv = a_position * 0.5 + 0.5; gl_Position = vec4(a_position, 0.0, 1.0); }
+      `;
+      const fragSrc = `
+        precision highp float;
+        varying vec2 v_uv;
+        uniform vec2 u_resolution;
+        uniform float u_time;
+        float hash(vec2 p){p=fract(p*vec2(123.34,456.21));p+=dot(p,p+45.32);return fract(p.x*p.y);}
+        float noise(vec2 p){vec2 i=floor(p);vec2 f=fract(p);vec2 u=f*f*(3.0-2.0*f);return mix(mix(hash(i),hash(i+vec2(1.0,0.0)),u.x),mix(hash(i+vec2(0.0,1.0)),hash(i+vec2(1.0,1.0)),u.x),u.y);}
+        float fbm(vec2 p){float v=0.0;float a=0.5;for(int i=0;i<4;i++){v+=a*noise(p);p*=2.0;a*=0.5;}return v;}
+        float smin(float a,float b,float k){float h=max(k-abs(a-b),0.0)/k;return min(a,b)-h*h*k*0.25;}
+        float blob(vec2 p,vec2 c,float r){return length(p-c)-r;}
+        void main(){
+          vec2 aspect = vec2(u_resolution.x/u_resolution.y, 1.0);
+          vec2 uv = v_uv * aspect;
+          float t = u_time * 0.18;
+          vec2 warp = vec2(fbm(uv*1.8+vec2(t*0.4,0.0)), fbm(uv*1.8+vec2(0.0,t*0.4)+5.7));
+          vec2 wuv = uv + (warp-0.5)*0.55;
+          vec2 c1 = vec2(0.18+sin(t*0.42)*0.18, 0.32+cos(t*0.31)*0.14)*aspect;
+          vec2 c2 = vec2(1.28+sin(t*0.35+1.7)*0.14, 0.72+cos(t*0.46)*0.13)*aspect;
+          vec2 c3 = vec2(0.85+sin(t*0.27+3.1)*0.22, 0.42+cos(t*0.38+1.2)*0.18)*aspect;
+          float r1=0.18, r2=0.20, r3=0.16;
+          float d1=blob(wuv,c1,r1), d2=blob(wuv,c2,r2), d3=blob(wuv,c3,r3);
+          float dMin = smin(smin(d1,d2,0.30), d3, 0.30);
+          float intensity = 1.0 - smoothstep(-0.05, 0.40, dMin);
+          float i1=exp(-d1*5.0), i2=exp(-d2*5.0), i3=exp(-d3*5.0);
+          float sum = i1+i2+i3+0.0001;
+          vec3 carmine = vec3(0.95, 0.18, 0.14);     // the brand signature
+          vec3 brass   = vec3(1.00, 0.72, 0.28);
+          vec3 amber   = vec3(1.00, 0.85, 0.55);
+          vec3 color = (carmine*i1 + brass*i2 + amber*i3) / sum;
+          color *= 0.85 + fbm(uv*6.0+t*0.5)*0.25;
+          float alpha = intensity * 0.85;
+          gl_FragColor = vec4(color, alpha);
+        }
+      `;
+      const compile = (type, src) => { const s=gl.createShader(type); gl.shaderSource(s,src); gl.compileShader(s); if(!gl.getShaderParameter(s,gl.COMPILE_STATUS)){console.error(gl.getShaderInfoLog(s));return null;} return s; };
+      const vs = compile(gl.VERTEX_SHADER, vertSrc);
+      const fs = compile(gl.FRAGMENT_SHADER, fragSrc);
+      if (!vs || !fs) return;
+      const prog = gl.createProgram();
+      gl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);
+      if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) { console.error(gl.getProgramInfoLog(prog)); return; }
+      gl.useProgram(prog);
+      const buf = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,1,1]), gl.STATIC_DRAW);
+      const posLoc = gl.getAttribLocation(prog, 'a_position');
+      gl.enableVertexAttribArray(posLoc);
+      gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
+      const uRes = gl.getUniformLocation(prog, 'u_resolution');
+      const uTime = gl.getUniformLocation(prog, 'u_time');
+      const resize = () => {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = canvas.clientWidth * dpr;
+        canvas.height = canvas.clientHeight * dpr;
+        gl.viewport(0, 0, canvas.width, canvas.height);
+      };
+      resize();
+      window.addEventListener('resize', resize);
+      const start = performance.now();
+      let raf = 0;
+      const tick = () => {
+        const t = (performance.now() - start) * 0.001;
+        gl.uniform2f(uRes, canvas.width, canvas.height);
+        gl.uniform1f(uTime, t);
+        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+        raf = requestAnimationFrame(tick);
+      };
+      tick();
+      const hero = document.getElementById('s-00');
+      if (hero && 'IntersectionObserver' in window) {
+        new IntersectionObserver((entries) => {
+          entries.forEach(e => {
+            if (e.isIntersecting && !raf) raf = requestAnimationFrame(tick);
+            else if (!e.isIntersecting && raf) { cancelAnimationFrame(raf); raf = 0; }
+          });
+        }, { threshold: 0 }).observe(hero);
+      }
+    })();
+
+    // ─── Lenis smooth scroll ──────────────────────────────────────────
+    const initLenis = () => {
+      if (typeof Lenis === 'undefined') return setTimeout(initLenis, 80);
+      const lenis = new Lenis({ smoothWheel: true, wheelMultiplier: 0.9, touchMultiplier: 1.5, lerp: 0.085 });
+      const raf = (t) => { lenis.raf(t); requestAnimationFrame(raf); };
+      requestAnimationFrame(raf);
+      window.__lenis = lenis;
+    };
+    initLenis();
+
+    // ─── Reveal observer ─────────────────────────────────────────────
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); revealObserver.unobserve(e.target); } });
+    }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
+
+    // ─── Scene rail observer ─────────────────────────────────────────
+    // Selector must be SPECIFIC. '[data-idx]' alone matches the rail
+    // items themselves, so the observer would fire on those and cause
+    // the wrong section to read as active.
+    const sections = document.querySelectorAll('main section[data-idx]');
+    const scenesItems = document.querySelectorAll('.scenes__item');
+    const setActive = (idx) => {
+      scenesItems.forEach(item => {
+        item.classList.toggle('is-active', item.getAttribute('data-idx') === idx);
+      });
+    };
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) setActive(entry.target.getAttribute('data-idx')); });
+    }, { rootMargin: '-40% 0px -40% 0px', threshold: 0 });
+    sections.forEach(s => sectionObserver.observe(s));
+
+    // ─── Hamburger menu ──────────────────────────────────────────────
+    const menuToggle = document.getElementById('menuToggle');
+    const menuPanel = document.getElementById('menuPanel');
+    if (menuToggle && menuPanel) {
+      const closeMenu = () => {
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuPanel.classList.remove('is-open');
+        menuPanel.setAttribute('aria-hidden', 'true');
+      };
+      const openMenu = () => {
+        menuToggle.setAttribute('aria-expanded', 'true');
+        menuPanel.classList.add('is-open');
+        menuPanel.setAttribute('aria-hidden', 'false');
+      };
+      menuToggle.addEventListener('click', () => {
+        menuToggle.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu();
+      });
+      menuPanel.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+    }
+
+    // ─── Cursor (lerp + trail + state-aware) ─────────────────────────
+    const cursor = document.getElementById('cursor');
+    const cursorTrail = document.getElementById('cursorTrail');
+    const cursorLabel = document.getElementById('cursorLabel');
+    let mX = innerWidth/2, mY = innerHeight/2;
+    let cX = mX, cY = mY, tX2 = mX, tY2 = mY;
+    let movingTimer = null;
+    if (cursor && matchMedia('(pointer: fine)').matches) {
+      addEventListener('mousemove', e => {
+        mX = e.clientX; mY = e.clientY;
+        document.body.classList.add('cursor-moving');
+        clearTimeout(movingTimer);
+        movingTimer = setTimeout(() => document.body.classList.remove('cursor-moving'), 140);
+      });
+      // FPS-independent lerp
+      let lastT = performance.now();
+      const draw = (t) => {
+        const dt = Math.min((t - lastT) / 16.667, 4);
+        lastT = t;
+        const k = 1 - Math.pow(1 - 0.22, dt);
+        const kT = 1 - Math.pow(1 - 0.08, dt);
+        cX += (mX - cX) * k; cY += (mY - cY) * k;
+        tX2 += (mX - tX2) * kT; tY2 += (mY - tY2) * kT;
+        cursor.style.transform = `translate3d(${cX}px, ${cY}px, 0)`;
+        if (cursorTrail) cursorTrail.style.transform = `translate3d(${tX2}px, ${tY2}px, 0)`;
+        requestAnimationFrame(draw);
+      };
+      requestAnimationFrame(draw);
+      document.querySelectorAll('a, button, [data-cursor]').forEach(el => {
+        const style = el.getAttribute('data-cursor-style') || 'link';
+        el.addEventListener('mouseenter', () => {
+          document.body.classList.remove('cursor-link','cursor-button','cursor-text');
+          document.body.classList.add('cursor-' + style);
+          const l = el.getAttribute('data-cursor');
+          if (cursorLabel) cursorLabel.textContent = l || '';
+        });
+        el.addEventListener('mouseleave', () => {
+          document.body.classList.remove('cursor-link','cursor-button','cursor-text');
+        });
+      });
+    }
+
+    // ─── Magnetic CTAs ───────────────────────────────────────────────
+    document.querySelectorAll('.magnetic').forEach(el => {
+      let rect = null;
+      const update = () => { rect = el.getBoundingClientRect(); };
+      window.addEventListener('resize', update);
+      window.addEventListener('scroll', update, { passive: true });
+      update();
+      let isHover = false;
+      el.addEventListener('mouseenter', () => { isHover = true; update(); });
+      el.addEventListener('mouseleave', () => { isHover = false; el.style.transform = ''; });
+      el.addEventListener('mousemove', e => {
+        if (!isHover || !rect) return;
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        el.style.transform = `translate(${x * 0.25}px, ${y * 0.35}px)`;
+      });
+    });
+
+    // ─── 3D tilt ─────────────────────────────────────────────────────
+    document.querySelectorAll('[data-tilt]').forEach(el => {
+      const maxAngle = parseFloat(el.getAttribute('data-tilt-max')) || 10;
+      const child = el.firstElementChild || el;
+      let rect = null, raf = 0;
+      let targetX = 0, targetY = 0, curX = 0, curY = 0;
+      const update = () => { rect = el.getBoundingClientRect(); };
+      window.addEventListener('resize', update);
+      window.addEventListener('scroll', update, { passive: true });
+      update();
+      el.addEventListener('mouseenter', () => update());
+      el.addEventListener('mousemove', e => {
+        if (!rect) return;
+        const px = (e.clientX - rect.left) / rect.width;
+        const py = (e.clientY - rect.top) / rect.height;
+        targetX = (py - 0.5) * -2 * maxAngle;
+        targetY = (px - 0.5) *  2 * maxAngle;
+        if (!raf) raf = requestAnimationFrame(tick);
+      });
+      el.addEventListener('mouseleave', () => {
+        targetX = 0; targetY = 0;
+        if (!raf) raf = requestAnimationFrame(tick);
+      });
+      const tick = () => {
+        curX += (targetX - curX) * 0.12;
+        curY += (targetY - curY) * 0.12;
+        child.style.transform = `rotateX(${curX}deg) rotateY(${curY}deg)`;
+        if (Math.abs(targetX - curX) > 0.05 || Math.abs(targetY - curY) > 0.05) raf = requestAnimationFrame(tick);
+        else raf = 0;
+      };
+    });
+
+    // ─── Count-up ────────────────────────────────────────────────────
+    const formatVal = (n, suffix) => {
+      if (n >= 1000000) return suffix + Math.round(n / 100000) / 10 + 'M';
+      if (n >= 1000) return suffix + Math.round(n / 100) / 10 + 'K';
+      return suffix + n;
+    };
+    document.querySelectorAll('[data-count]').forEach(el => {
+      const target = parseInt(el.getAttribute('data-count'), 10) || 0;
+      const suffix = el.getAttribute('data-count-suffix') || '';
+      el.textContent = suffix + '0';
+      let started = false;
+      new IntersectionObserver((entries, obs) => {
+        entries.forEach(e => {
+          if (e.isIntersecting && !started) {
+            started = true;
+            const duration = 1800;
+            const start = performance.now();
+            const animate = t => {
+              const progress = Math.min(1, (t - start) / duration);
+              const eased = 1 - Math.pow(1 - progress, 4);
+              const val = Math.round(target * eased);
+              el.textContent = formatVal(val, suffix);
+              if (progress < 1) requestAnimationFrame(animate);
+              else el.textContent = formatVal(target, suffix);
+            };
+            requestAnimationFrame(animate);
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.4 }).observe(el);
+    });
+
+    // ─── Scroll progress + page awareness ────────────────────────────
+    const body = document.body;
+    const scrollProgressEl = document.getElementById('scrollProgress');
+    let lastScrollY = window.scrollY;
+    let velTimer = null;
+    const updateScrollProgress = () => {
+      const scrolled = window.scrollY;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const p = max > 0 ? (scrolled / max) * 100 : 0;
+      if (scrollProgressEl) scrollProgressEl.style.setProperty('--p', p + '%');
+      const dy = Math.abs(scrolled - lastScrollY);
+      lastScrollY = scrolled;
+      body.classList.toggle('scrolling-fast', dy > 40);
+      clearTimeout(velTimer);
+      velTimer = setTimeout(() => body.classList.remove('scrolling-fast'), 200);
+    };
+    window.addEventListener('scroll', updateScrollProgress, { passive: true });
+    updateScrollProgress();
+
+    const sectionBg = { 's-00': 'dark', 's-01': 'light', 's-02': 'dark', 's-03': 'light', 's-04': 'light', 's-05': 'dark' };
+    document.querySelectorAll('main section[data-idx]').forEach(s => {
+      new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            body.setAttribute('data-section', e.target.getAttribute('data-idx'));
+            body.setAttribute('data-bg', sectionBg[e.target.id] || 'light');
+          }
+        });
+      }, { rootMargin: '-40% 0px -40% 0px', threshold: 0 }).observe(s);
+    });
+
+    // ─── Anchor scrolling ────────────────────────────────────────────
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href');
+        if (id && id.length > 1) {
+          const target = document.querySelector(id);
+          if (target && window.__lenis) { e.preventDefault(); window.__lenis.scrollTo(target, { offset: 0, duration: 1.4 }); }
+        }
+      });
+    });
+
+    // ─── Click-to-copy on primary CTAs ──────────────────────────────
+    const COPY_EMAIL = 'badr@almobadir.com';
+    document.querySelectorAll('.cta--primary, .consulting__card-cta').forEach(cta => {
+      cta.setAttribute('data-cursor', 'نُسخ البريد');
+      cta.addEventListener('click', () => {
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(COPY_EMAIL).then(() => {
+            cta.classList.add('is-copied');
+            const originalLabel = cursorLabel ? cursorLabel.textContent : '';
+            if (cursorLabel) cursorLabel.textContent = 'تَمّ النَّسخ';
+            setTimeout(() => {
+              cta.classList.remove('is-copied');
+              if (cursorLabel) cursorLabel.textContent = originalLabel;
+            }, 1800);
+          }).catch(() => {});
+        }
+      });
+    });
+
+    // ─── Page loader ────────────────────────────────────────────────
+    const loader = document.getElementById('pageLoader');
+    if (loader) {
+      requestAnimationFrame(() => loader.classList.add('is-loading'));
+      window.addEventListener('load', () => {
+        setTimeout(() => loader.classList.add('is-gone'), 900);
+        setTimeout(() => { loader.style.display = 'none'; }, 2000);
+      });
+      setTimeout(() => {
+        loader.classList.add('is-gone');
+        setTimeout(() => { loader.style.display = 'none'; }, 1200);
+      }, 2200);
+    }
+
+  })();
+  </script>
+
+</body>
+</html>
