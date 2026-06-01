@@ -1089,12 +1089,35 @@
     .publication {
       background: var(--paper);
       color: var(--ink);
+      position: relative;
+      overflow: hidden;
+    }
+    /* ضبابٌ دافئ يرتفع من أسفل قسم النشرة، حتى يتدرّج اللون من
+       الكريمي إلى الحُمرة الخافتة قبل الدخول إلى قسم الختام. */
+    .publication::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 55%;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 55% 60% at 22% 115%, rgba(178, 37, 49, 0.40), transparent 65%),
+        radial-gradient(ellipse 60% 55% at 78% 115%, rgba(210, 110, 60, 0.36), transparent 65%),
+        radial-gradient(ellipse 75% 50% at 50% 110%, rgba(190, 60, 45, 0.30), transparent 60%),
+        linear-gradient(to top,
+          rgba(178, 37, 49, 0.22) 0%,
+          rgba(178, 37, 49, 0.10) 35%,
+          transparent 80%
+        );
     }
     .publication__grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: clamp(2rem, 6vw, 5rem);
       align-items: center;
+      position: relative;
+      z-index: 1;
     }
     .publication__copy { display: flex; flex-direction: column; gap: 1.4rem; }
     .publication__visual {
