@@ -462,6 +462,10 @@
       overflow: hidden;
       mix-blend-mode: screen;
       opacity: 0.95;
+      /* Soft fade at the bottom so the warm WebGL atmosphere dissolves
+         into ink before meeting the section-transition gradient. */
+      -webkit-mask-image: linear-gradient(to bottom, black 0%, black 60%, transparent 98%);
+              mask-image: linear-gradient(to bottom, black 0%, black 60%, transparent 98%);
     }
     .atmosphere canvas { display: block; width: 100%; height: 100%; }
     @media (prefers-reduced-motion: reduce) { .atmosphere { display: none; } }
@@ -477,10 +481,29 @@
     }
     .hero__grid { z-index: 2; }
 
-    /* Section transition · multi-stop "sunset fade" that bridges the
-       hero's WebGL warm atmosphere into the next section. Tall enough
-       (22-26vh) that the warm mid-tones read as the page slowly
-       brightening, not a band. */
+    /* Section transition · the hero dissolves its WebGL atmosphere
+       into ink at the bottom (via mask on .atmosphere), so this strip
+       starts in true ink and continues the brightening through warm
+       mid-tones into cream. */
+    .section-transition {
+      height: clamp(18rem, 32vh, 30rem);
+      background: linear-gradient(
+        to bottom,
+        var(--ink) 0%,
+        rgba(28, 22, 17, 1) 16%,
+        rgba(58, 44, 32, 1) 32%,
+        rgba(118, 92, 68, 1) 50%,
+        rgba(182, 158, 128, 1) 68%,
+        rgba(220, 204, 180, 1) 84%,
+        rgba(238, 228, 210, 1) 94%,
+        var(--cream) 100%
+      );
+      position: relative;
+      z-index: 1;
+      pointer-events: none;
+      display: block;
+    }
+
     .hero__grid {
       display: grid;
       grid-template-columns: 1.1fr 1fr;
@@ -1349,6 +1372,9 @@
         </div>
       </div>
     </section>
+
+    <!-- جسرٌ شفقي · يصِلُ غلافَ الهيرو الدافئ بقسم الاستشارات الكريمي -->
+    <div class="section-transition" aria-hidden="true"></div>
 
     <!-- ═══════════════════════════════════════════════════════════════
          01 · CONSULTING · primary product
