@@ -704,8 +704,11 @@
     }
 
     @media (max-width: 900px) {
-      .hero__grid { grid-template-columns: 1fr; gap: clamp(1.4rem, 4vw, 2.2rem); }
-      .hero__portrait { width: clamp(9rem, 44vw, 15rem); }
+      .hero__grid { grid-template-columns: 1fr; gap: clamp(1.1rem, 3.5vw, 1.7rem); }
+      .hero__portrait { width: clamp(8rem, 36vw, 11rem); order: 1; justify-self: start; }
+      .hero__copy { order: 2; gap: clamp(0.85rem, 2.2vw, 1.25rem); }
+      .hero__name { font-size: clamp(2.5rem, 10vw, 3.6rem); }
+      .hero__promise { font-size: clamp(1.05rem, 3.3vw, 1.2rem); line-height: 1.7; }
     }
 
     /* ═══════════════ COMMON SECTION HEADERS ═══════════════ */
