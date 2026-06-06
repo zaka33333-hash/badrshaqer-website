@@ -704,11 +704,15 @@
     }
 
     @media (max-width: 900px) {
-      .hero__grid { grid-template-columns: 1fr; gap: clamp(1.1rem, 3.5vw, 1.7rem); }
-      .hero__portrait { width: clamp(8rem, 36vw, 11rem); order: 1; justify-self: start; }
-      .hero__copy { order: 2; gap: clamp(0.85rem, 2.2vw, 1.25rem); }
+      .hero__grid { grid-template-columns: 1fr; gap: clamp(1.1rem, 3.5vw, 1.7rem); justify-items: center; }
+      .hero__portrait { width: clamp(8rem, 36vw, 11rem); order: 1; justify-self: center; }
+      .hero__copy { order: 2; gap: clamp(0.9rem, 2.3vw, 1.3rem); align-items: center; text-align: center; width: 100%; }
+      .hero__overline::before { display: none; }
       .hero__name { font-size: clamp(2.5rem, 10vw, 3.6rem); }
-      .hero__promise { font-size: clamp(1.05rem, 3.3vw, 1.2rem); line-height: 1.7; }
+      .hero__promise { font-size: clamp(1.05rem, 3.3vw, 1.2rem); line-height: 1.7; margin-inline: auto; }
+      .hero__credentials { justify-content: center; }
+      .hero__ctas { flex-direction: column; align-items: stretch; width: 100%; max-width: 23rem; margin-inline: auto; }
+      .hero__ctas .cta { justify-content: center; }
     }
 
     /* ═══════════════ COMMON SECTION HEADERS ═══════════════ */
