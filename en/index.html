@@ -11,7 +11,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png" />
-  <link rel="manifest" href="../site.webmanifest" />
+  <link rel="manifest" href="site.webmanifest" />
 
   <!-- Canonical + hreflang (bilingual) -->
   <link rel="canonical" href="https://badrshaqer.com/en/" />
@@ -221,19 +221,24 @@
 
     /* Hover states */
     body.cursor-link .cursor__ring {
-      width: 70px; height: 70px;
-      margin: -35px 0 0 -35px;
+      width: 66px; height: 66px;
+      margin: -33px 0 0 -33px;
       border-color: var(--carmine);
-      border-width: 1.5px;
+      border-width: 1.75px;
+      background: rgba(200, 40, 30, 0.06);
+      mix-blend-mode: normal;
     }
     body.cursor-link .cursor__dot { opacity: 0; }
     body.cursor-link .cursor__label { opacity: 1; color: var(--carmine); }
 
     body.cursor-button .cursor__ring {
-      width: 96px; height: 96px;
-      margin: -48px 0 0 -48px;
-      background: var(--carmine);
-      border-color: var(--carmine);
+      width: 84px; height: 84px;
+      margin: -42px 0 0 -42px;
+      background: rgba(200, 40, 30, 0.22);
+      border: 1.5px solid var(--brass-pale);
+      backdrop-filter: blur(3px) saturate(125%);
+      -webkit-backdrop-filter: blur(3px) saturate(125%);
+      box-shadow: 0 8px 24px -8px rgba(200, 40, 30, 0.5);
       mix-blend-mode: normal;
     }
     body.cursor-button .cursor__dot { opacity: 0; }
@@ -254,15 +259,16 @@
     /* Cursor trail · a faded ghost ring that lags behind */
     .cursor-trail {
       position: fixed; top: 0; left: 0;
-      width: 8px; height: 8px;
-      margin: -4px 0 0 -4px;
+      width: 28px; height: 28px;
+      margin: -14px 0 0 -14px;
       pointer-events: none;
       z-index: 9998;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(200,40,30,0.5) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(212, 180, 131, 0.30) 0%, rgba(200, 40, 30, 0.12) 45%, transparent 72%);
+      filter: blur(2px);
       transform: translate3d(-100px, -100px, 0);
       opacity: 0;
-      transition: opacity 220ms;
+      transition: opacity 260ms;
       mix-blend-mode: screen;
     }
     body.cursor-moving .cursor-trail { opacity: 1; }
@@ -282,20 +288,6 @@
       transition: width 80ms linear;
       pointer-events: none;
     }
-
-    /* ═══════════════ PAGE FRAME (juanmora-inspired) ═══════════════ */
-    body::after {
-      content: '';
-      position: fixed;
-      inset: clamp(0.4rem, 1vw, 1rem);
-      border: 1px solid rgba(247, 243, 234, 0.10);
-      border-radius: clamp(8px, 1.4vw, 18px);
-      pointer-events: none;
-      z-index: 1000;
-      transition: border-color 700ms var(--ease-mid);
-    }
-    body[data-bg="light"]::after { border-color: rgba(13, 11, 7, 0.09); }
-    body[data-bg="dark"]::after  { border-color: rgba(247, 243, 234, 0.14); }
 
     /* ═══════════════ CONTACT PILLS (juanmora-style, lit from within) ═══════════════
        Soft radial-gradient glow instead of hard borders. Mix-blend-mode
@@ -400,8 +392,11 @@
       transition: transform 900ms var(--ease-osmo), opacity 600ms var(--ease-osmo);
     }
     .page-loader__line {
+      position: absolute;
+      left: 0;
+      bottom: 0;
       width: 0%;
-      height: 1px;
+      height: 2px;
       background: linear-gradient(90deg, var(--carmine) 0%, var(--brass-pale) 100%);
       transition: width 1100ms var(--ease-osmo);
     }
@@ -478,9 +473,7 @@
       mix-blend-mode: screen;
       opacity: 0.95;
       /* Soft fade at the bottom so the warm WebGL atmosphere dissolves
-         into ink before meeting the section-transition gradient.
-         Without this, the WebGL slams into the transition with full
-         carmine/brass intensity, creating a visible horizontal seam. */
+         into ink at the base of the hero. */
       -webkit-mask-image: linear-gradient(to bottom, black 0%, black 60%, transparent 98%);
               mask-image: linear-gradient(to bottom, black 0%, black 60%, transparent 98%);
     }
@@ -497,29 +490,6 @@
     }
     .hero__grid { z-index: 2; }
 
-    /* Section transition · the hero dissolves its WebGL atmosphere
-       into ink at the bottom (via mask on .atmosphere), so this strip
-       starts in true ink and continues the brightening through warm
-       mid-tones into cream. */
-    .section-transition {
-      height: clamp(18rem, 32vh, 30rem);
-      background: linear-gradient(
-        to bottom,
-        var(--ink) 0%,
-        rgba(28, 22, 17, 1) 16%,
-        rgba(58, 44, 32, 1) 32%,
-        rgba(118, 92, 68, 1) 50%,
-        rgba(182, 158, 128, 1) 68%,
-        rgba(220, 204, 180, 1) 84%,
-        rgba(238, 228, 210, 1) 94%,
-        var(--cream) 100%
-      );
-      position: relative;
-      z-index: 1;
-      pointer-events: none;
-      display: block;
-    }
-
     .hero__grid {
       display: grid;
       grid-template-columns: 1fr 1.1fr;
@@ -534,21 +504,36 @@
     .hero__copy::before {
       content: '';
       position: absolute;
-      inset: -10% -8%;
+      inset: -20% -6%;
       z-index: -1;
       pointer-events: none;
-      background: radial-gradient(ellipse 82% 76% at 50% 48%, rgba(13, 11, 7, 0.8) 0%, rgba(13, 11, 7, 0.6) 46%, rgba(13, 11, 7, 0.24) 74%, transparent 92%);
-      filter: blur(24px);
+      background: radial-gradient(ellipse 80% 98% at 50% 40%, rgba(13, 11, 7, 0.88) 0%, rgba(13, 11, 7, 0.74) 44%, rgba(13, 11, 7, 0.42) 72%, transparent 92%);
+      filter: blur(28px);
     }
     .hero__overline {
       font-family: var(--mono);
       font-size: 12px;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--brass-pale);
+      color: var(--cream);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
       display: inline-flex;
       align-items: center;
       gap: 0.8rem;
+      position: relative;
+      z-index: 0;
+    }
+    /* Local backing so the eyebrow stays legible where it overruns the copy
+       scrim into a bright atmosphere spot — invisible over the dark desktop hero. */
+    .hero__overline::after {
+      content: '';
+      position: absolute;
+      inset: -0.4em -0.75em;
+      z-index: -1;
+      background: rgba(13, 11, 7, 0.8);
+      border-radius: 1em;
+      filter: blur(8px);
+      pointer-events: none;
     }
     .hero__overline::before {
       content: '';
@@ -613,14 +598,48 @@
       position: relative; overflow: hidden;
       cursor: pointer;
     }
-    .cta--primary { background: var(--carmine); color: var(--cream); border: 1px solid var(--carmine); }
+    /* label + icons ride above the sheen */
+    .cta > * { position: relative; z-index: 1; }
+    /* warm light-sweep on hover (uses the .cta overflow:hidden) */
+    .cta::before {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0; left: -40%;
+      width: 55%;
+      background: linear-gradient(100deg, transparent 0%, rgba(255, 240, 220, 0.20) 50%, transparent 100%);
+      transform: skewX(-18deg) translateX(-260%);
+      transition: transform 760ms var(--ease-osmo);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .cta:hover::before { transform: skewX(-18deg) translateX(420%); }
+
+    .cta--primary {
+      background: linear-gradient(180deg, var(--carmine) 0%, #bf2619 100%);
+      color: var(--cream);
+      border: 1px solid var(--carmine-deep);
+      box-shadow: 0 2px 8px -3px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+      transition: background 280ms var(--ease-osmo), transform 280ms var(--ease-osmo),
+                  box-shadow 320ms var(--ease-osmo), border-color 280ms;
+    }
     .cta--primary:hover {
-      background: var(--carmine-deep);
+      background: linear-gradient(180deg, var(--carmine) 0%, var(--carmine-deep) 100%);
       border-color: var(--carmine-deep);
       transform: translateY(-2px);
+      box-shadow: 0 16px 36px -12px rgba(200, 40, 30, 0.62), 0 4px 12px -6px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.2);
     }
-    .cta--secondary { background: transparent; color: var(--cream); border: 1px solid rgba(247, 243, 234, 0.35); }
-    .cta--secondary:hover { border-color: var(--cream); background: rgba(247, 243, 234, 0.06); transform: translateY(-2px); }
+    .cta--secondary {
+      background: transparent; color: var(--cream);
+      border: 1px solid rgba(247, 243, 234, 0.35);
+      transition: background 280ms var(--ease-osmo), color 280ms var(--ease-osmo),
+                  transform 280ms var(--ease-osmo), border-color 280ms, box-shadow 320ms var(--ease-osmo);
+    }
+    .cta--secondary:hover {
+      border-color: var(--brass-pale);
+      background: rgba(212, 180, 131, 0.08);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px -14px rgba(0, 0, 0, 0.55);
+    }
 
     /* Icon swap pattern (juanmora) · leading icon springs in elastic on
        hover, trailing icon shrinks out. Both icons share the .cta__icon
@@ -683,8 +702,9 @@
     @keyframes portrait-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
     @media (max-width: 900px) {
-      .hero__grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .hero__portrait { width: clamp(14rem, 60vw, 22rem); }
+      .hero__grid { grid-template-columns: 1fr; gap: clamp(1.4rem, 4vw, 2.2rem); }
+      .hero__copy { order: 1; }
+      .hero__portrait { width: clamp(9rem, 44vw, 15rem); order: 2; }
     }
 
     .section-head {
@@ -1282,6 +1302,19 @@
       .section-head { grid-template-columns: 1fr; gap: 0.4rem; }
       .section-head__line { display: none; }
     }
+    /* ── Refined focus + press for every CTA (placed last to win over :hover) ── */
+    .cta:focus-visible, .cta--secondary:focus-visible,
+    .book__cta:focus-visible, .consulting__card-cta:focus-visible, .publication__cta:focus-visible {
+      outline: 2px solid var(--carmine);
+      outline-offset: 3px;
+    }
+    .cta--primary:focus-visible { outline: 2px solid var(--brass-pale); outline-offset: 3px; }
+    .cta:active, .cta--primary:active, .cta--secondary:active,
+    .book__cta:active, .consulting__card-cta:active {
+      transform: translateY(0) scale(0.985);
+      box-shadow: 0 2px 6px -3px rgba(0, 0, 0, 0.4);
+      transition-duration: 110ms;
+    }
   </style>
 
   <script type="application/ld+json">
@@ -1410,9 +1443,6 @@
       </div>
     </section>
 
-    <!-- Sunset fade: bridges hero's WebGL atmosphere into the cream consulting section -->
-    <div class="section-transition" aria-hidden="true"></div>
-
     <section class="stage consulting" id="s-01" data-idx="02">
       <div class="bg-glyph" aria-hidden="true">01</div>
       <div class="wrap">
@@ -1528,7 +1558,7 @@
               </div>
             </div>
 
-            <a class="book__cta magnetic" data-cursor-style="button" href="https://zaap.bio/badrshaqer/كيف-تبيع-كتاجر-المخدرات" target="_blank" rel="noopener" data-cursor="BUY" data-reveal="rise-fast" style="--delay:800ms">
+            <a class="book__cta magnetic" data-cursor-style="button" href="https://zaap.bio/badrshaqer/كيف-تبيع-كتاجر-المخدرات" target="_blank" rel="noopener" data-cursor="BUY">
               <span>Get your copy</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
@@ -1766,7 +1796,10 @@
     let tX2 = mX, tY2 = mY;
     let movingTimer = null;
     if (cursor && matchMedia('(pointer: fine)').matches && !reduceMotion) {
+      cursor.style.opacity = '0';
+      let cursorShown = false;
       addEventListener('mousemove', e => {
+        if (!cursorShown) { cursorShown = true; cursor.style.opacity = '1'; }
         mX = e.clientX; mY = e.clientY;
         document.body.classList.add('cursor-moving');
         clearTimeout(movingTimer);
@@ -1864,6 +1897,7 @@
     document.querySelectorAll('[data-count]').forEach(el => {
       const target = parseInt(el.getAttribute('data-count'), 10) || 0;
       const suffix = el.getAttribute('data-count-suffix') || '';
+      if (reduceMotion) { el.textContent = formatVal(target, suffix); return; }
       el.textContent = '0' + suffix;
       let started = false;
       new IntersectionObserver((entries, obs) => {
