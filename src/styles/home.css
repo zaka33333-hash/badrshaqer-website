@@ -81,10 +81,10 @@
 }
 .hero__shapes .shape { pointer-events: auto; cursor: grab; }
 .hero__shapes .shape:active { cursor: grabbing; }
-.hero__shapes .shape--teal  { width: clamp(64px, 9vw, 130px); height: clamp(64px, 9vw, 130px); left: 37%; bottom: 7%; }
-.hero__shapes .shape--navy  { width: clamp(58px, 8.2vw, 118px); height: clamp(58px, 8.2vw, 118px); left: 45%; bottom: 4.5%; }
-.hero__shapes .shape--coral { width: clamp(62px, 8.8vw, 126px); height: clamp(62px, 8.8vw, 126px); left: 52%; bottom: 8%; }
-.hero__shapes .shape--amber { width: clamp(56px, 8vw, 114px); height: clamp(56px, 8vw, 114px); left: 59%; bottom: 5%; }
+.hero__shapes .shape--flousak { width: clamp(64px, 9vw, 130px); height: clamp(64px, 9vw, 130px); left: 37%; bottom: 7%; }
+.hero__shapes .shape--media   { width: clamp(58px, 8.2vw, 118px); height: clamp(58px, 8.2vw, 118px); left: 45%; bottom: 4.5%; }
+.hero__shapes .shape--main    { width: clamp(62px, 8.8vw, 126px); height: clamp(62px, 8.8vw, 126px); left: 52%; bottom: 8%; }
+.hero__shapes .shape--mindset { width: clamp(56px, 8vw, 114px); height: clamp(56px, 8vw, 114px); left: 59%; bottom: 5%; }
 
 .hero__scrollcue {
   position: absolute;
@@ -148,10 +148,10 @@
   }
   .hero__name .w { justify-content: center; }
   .hero__scrollcue { display: none; }
-  .hero__shapes .shape--teal  { left: 10%; bottom: 47%; }
-  .hero__shapes .shape--navy  { left: 30%; bottom: 44%; }
-  .hero__shapes .shape--coral { left: 51%; bottom: 48%; }
-  .hero__shapes .shape--amber { left: 70%; bottom: 44.5%; }
+  .hero__shapes .shape--flousak { left: 10%; bottom: 47%; }
+  .hero__shapes .shape--media   { left: 30%; bottom: 44%; }
+  .hero__shapes .shape--main    { left: 51%; bottom: 48%; }
+  .hero__shapes .shape--mindset { left: 70%; bottom: 44.5%; }
 }
 
 /* ── 02 · STATEMENT — light counterpoint ── */

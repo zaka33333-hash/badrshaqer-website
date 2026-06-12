@@ -77,3 +77,10 @@ typographic system (Reem Kufi/Fraunces editorial spine + Alexandria/Bricolage st
 counterpoint vs. one geometric sans), and the same full-bleed giant-name composition. The gap
 that remains is photographic: juanmora's hero is a real cinematic photo of its subject; ours
 stands on brand textures until the owner supplies the shot.
+
+### Addendum — channel-logo draggables (post-v1 feedback)
+The four hero circles are now the real Almobadir channel logos: main (red) and
+mindset (green) pulled from the channels' YouTube avatars at 900px, فلوسك (blue)
+from its TikTok avatar at 1080px. **MEDIA is a generated stand-in** (white wordmark +
+cyan MEDIA pill on navy — Instagram blocks avatar fetch); swap the real file at
+`public/assets/channels/media.jpg` (square, ≥360px).

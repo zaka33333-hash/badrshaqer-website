@@ -340,10 +340,20 @@ body:has(:focus-visible) .cursor { display: none; }
   will-change: transform;
   box-shadow: 0 18px 44px -16px rgba(0, 0, 0, 0.4), inset 0 2px 6px rgba(255, 255, 255, 0.22);
 }
-.shape--teal { background: var(--shape-teal); }
-.shape--navy { background: var(--shape-navy); }
-.shape--coral { background: var(--shape-coral); }
-.shape--amber { background: var(--shape-amber); }
+/* channel-logo fallback fills (image rides on top) */
+.shape--flousak { background: #1d4ed8; }
+.shape--media { background: #10141d; }
+.shape--main { background: var(--carmine); }
+.shape--mindset { background: #0c2018; }
+.shape img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
 
 /* ── outro / footer ── */
 .outro {

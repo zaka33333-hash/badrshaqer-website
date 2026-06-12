@@ -42,11 +42,13 @@ const sectionLabels = {
     <div class="hero__scrollcue t-mono" aria-hidden="true">{s.a11y.scrollCue}</div>
   </div>
 
+  <!-- the four Almobadir channel logos as draggable toys -->
   <div class="hero__shapes" aria-hidden="true">
-    <div class="shape shape--teal" data-cursor-style="drag" data-cursor="DRAG"></div>
-    <div class="shape shape--navy" data-cursor-style="drag" data-cursor="DRAG"></div>
-    <div class="shape shape--coral" data-cursor-style="drag" data-cursor="DRAG"></div>
-    <div class="shape shape--amber" data-cursor-style="drag" data-cursor="DRAG"></div>
+    {['flousak', 'media', 'main', 'mindset'].map((ch) => (
+      <div class={`shape shape--${ch}`} data-cursor-style="drag" data-cursor="DRAG">
+        <img src={`/assets/channels/${ch}.jpg`} alt="" width="360" height="360" draggable="false" />
+      </div>
+    ))}
   </div>
 
   <h1 class="hero__name">
