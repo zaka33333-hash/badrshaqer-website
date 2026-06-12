@@ -1,0 +1,68 @@
+/* ═══════════════════════════════════════════════════════════════
+   BADR SHAQER · design tokens
+   Spine: ink / cream / carmine (the private room).
+   Counterpoint: warm-cream statement sections (the public energy).
+   ═══════════════════════════════════════════════════════════════ */
+:root {
+  /* pigments — named like paint */
+  --parchment: #efede8;
+  --cream: #f7f3ea;
+  --paper: #fbf7ee;
+  --cloud: #eae8e3;            /* light statement sections */
+  --ink: #0d0b07;
+  --ink-mid: #1c1812;
+  --ink-soft: #3d362b;
+  --brass: #ad7d3a;
+  --brass-deep: #8a5d24;
+  --brass-pale: #d4b483;
+  --carmine: #c8281e;
+  --carmine-deep: #8a1a13;
+
+  /* playful counterpoint pigments (statement sections, draggable shapes) */
+  --shape-teal: #8ec8c2;
+  --shape-navy: #1f3a4d;
+  --shape-coral: #e94f3d;
+  --shape-amber: #f0b429;
+  --shape-blush: #efb4ac;
+
+  /* theme slots — sections override these four together */
+  --theme-bg: var(--parchment);
+  --theme-fg: var(--ink);
+  --theme-acc: var(--carmine);
+  --theme-soft: var(--ink-soft);
+
+  /* type — language-agnostic slots; pages map them per lang */
+  --font-display: var(--display-en);
+  --font-statement: var(--statement-en);
+  --font-body: var(--body-en);
+  --font-quote: var(--quote-en);
+  --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+  --display-en: 'Fraunces', Georgia, serif;
+  --statement-en: 'Bricolage Grotesque', system-ui, sans-serif;
+  --body-en: 'Source Serif 4', Georgia, serif;
+  --quote-en: 'Fraunces', Georgia, serif;
+
+  --display-ar: 'Reem Kufi', 'IBM Plex Sans Arabic', sans-serif;
+  --statement-ar: 'Alexandria', 'IBM Plex Sans Arabic', sans-serif;
+  --body-ar: 'IBM Plex Sans Arabic', system-ui, sans-serif;
+  --quote-ar: 'Amiri', 'IBM Plex Sans Arabic', serif;
+
+  /* scale */
+  --wide: 100rem;
+  --gutter: clamp(1.2rem, 4vw, 3.5rem);
+
+  /* motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-mid: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-osmo: cubic-bezier(0.625, 0.05, 0, 1);
+  --ease-elastic: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* language mapping — one rule, both directions */
+:lang(ar) {
+  --font-display: var(--display-ar);
+  --font-statement: var(--statement-ar);
+  --font-body: var(--body-ar);
+  --font-quote: var(--quote-ar);
+}

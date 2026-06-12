@@ -1,0 +1,53 @@
+---
+/**
+ * Outro footer — giant name slab, illustrated portrait, final CTA.
+ * Shared by every page in both languages.
+ */
+import { SITE } from '../data/site.js';
+import { shared } from '../data/copy/shared.js';
+import Arrow from './Arrow.astro';
+
+const { lang = 'ar', noCtas = false } = Astro.props;
+const t = shared[lang];
+const f = t.footer;
+---
+<footer class="outro" data-theme="dark">
+  <div class="outro__inner">
+    <div class="outro__portrait" data-reveal="scale">
+      <img src="/assets/badr-portrait.webp" alt={t.a11y.portraitAlt} width="128" height="128" loading="lazy" />
+    </div>
+    <span class="outro__tag t-mono" data-reveal="fade">{f.tag}</span>
+    <h2 class="outro__head" data-reveal="rise-slow">
+      {f.head[0]}<br /><em>{f.head[1]}</em>
+    </h2>
+    <p class="outro__sub" data-reveal="rise-slow" style="--delay:150ms">{f.sub}</p>
+    {!noCtas && (
+      <div class="outro__ctas" data-reveal="rise-fast" style="--delay:300ms">
+        <a class="cta cta--primary magnetic" data-cursor-style="button" data-cursor="BOOK" href={SITE.calendly} target="_blank" rel="noopener noreferrer">
+          <span>{f.ctaBook}</span>
+          <span class="cta__arrow"><Arrow /></span>
+        </a>
+        <a class="cta cta--secondary magnetic" data-cursor="BUY" href={SITE.bookBuy} target="_blank" rel="noopener noreferrer">
+          <span>{f.ctaRead}</span>
+        </a>
+      </div>
+    )}
+  </div>
+
+  <div>
+    <p class="outro__name" aria-hidden="true">
+      <span>{t.nameSplit[0]}</span><span>{t.nameSplit[1]}</span>
+    </p>
+    <div class="outro__meta t-mono">
+      <span>{f.role} · {SITE.year}</span>
+      <nav class="outro__socials" aria-label={f.socialsLabel}>
+        <a href={`mailto:${SITE.email}`} data-copy-email={SITE.email} data-copied-label={t.emailCopied} data-cursor="COPY"><span>Email</span></a>
+        <a href={SITE.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href={SITE.tiktok} target="_blank" rel="noopener noreferrer">TikTok</a>
+        <a href={SITE.x} target="_blank" rel="noopener noreferrer">X</a>
+        <a href={SITE.almobadir} target="_blank" rel="noopener noreferrer">Almobadir</a>
+      </nav>
+      <span>{f.rights} · {f.builtWith}</span>
+    </div>
+  </div>
+</footer>

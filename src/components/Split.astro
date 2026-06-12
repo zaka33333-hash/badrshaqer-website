@@ -1,0 +1,30 @@
+---
+/**
+ * Server-side text splitter for staggered reveals.
+ * mode 'words'  — safe for Arabic (never breaks cursive joining).
+ * mode 'chars'  — Latin only; splits every glyph.
+ * `em` words (matching `emText`) get the accent color.
+ * Parent element decides the driver class: .split-mask (CSS) or .split-gsap (GSAP).
+ */
+const { text = '', mode = 'words', step = 55, base = 0, emText = '' } = Astro.props;
+const words = String(text).split(/\s+/).filter(Boolean);
+const emSet = new Set(String(emText).split(/\s+/).filter(Boolean));
+let i = 0;
+const items = words.map((w) => {
+  const isEm = emSet.has(w);
+  if (mode === 'chars') {
+    const chars = [...w].map((c) => ({ c, d: base + i++ * step }));
+    return { w, isEm, chars };
+  }
+  return { w, isEm, d: base + i++ * step };
+});
+---
+{items.map((item, idx) => (
+  <>
+    <span class="line-mask">{
+      item.chars
+        ? item.chars.map(({ c, d }) => <span class:list={['char', { em: item.isEm }]} style={`--d:${d}ms`}>{c}</span>)
+        : <span class:list={['word', { em: item.isEm }]} style={`--d:${item.d}ms`}>{item.w}</span>
+    }</span>{idx < items.length - 1 ? ' ' : ''}
+  </>
+))}

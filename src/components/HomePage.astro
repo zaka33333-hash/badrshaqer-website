@@ -1,0 +1,326 @@
+---
+/**
+ * Home page — all sections, one source of truth for both languages.
+ * Structure follows the owner's 12-frame mock; copy from data/copy/home.js.
+ */
+import { SITE } from '../data/site.js';
+import { shared } from '../data/copy/shared.js';
+import { home } from '../data/copy/home.js';
+import Split from './Split.astro';
+import SegHead from './SegHead.astro';
+import Arrow from './Arrow.astro';
+
+const { lang = 'ar' } = Astro.props;
+const t = home[lang];
+const s = shared[lang];
+const otherLang = lang === 'ar' ? 'en' : 'ar';
+
+// Giant hero name, pre-split at non-joining boundaries (cursive-safe).
+const NAME_GLYPHS = {
+  ar: [['بد', 'ر'], ['شا', 'كر']],
+  en: [['B', 'a', 'd', 'r'], ['S', 'h', 'a', 'q', 'e', 'r']],
+};
+const nameWords = NAME_GLYPHS[lang];
+const sectionLabels = {
+  ar: { proof: 'نتائج · لا نظريات', testimonials: 'شهادات', consulting: 'المنتج الأول · استشارة', book: 'الكتاب', publication: 'ما الذي أبنيه حاليا' },
+  en: { proof: 'Results · Not theory', testimonials: 'Testimonials', consulting: 'Product 01 · Consulting', book: 'The Book', publication: "What I'm building" },
+}[lang];
+---
+
+<!-- ═══════ 01 · HERO ═══════ -->
+<section class="hero" data-theme="dark" aria-label={s.name}>
+  <div class="hero__backdrop" aria-hidden="true">
+    <!-- OWNER ASSET: replace with the real cinematic photo of Badr (hero-photo.webp) -->
+    <img src="/assets/outro-backdrop.webp" alt="" fetchpriority="high" />
+  </div>
+  <div class="hero__atmosphere" aria-hidden="true"><canvas id="atmoCanvas"></canvas></div>
+  <div class="hero__scrim" aria-hidden="true"></div>
+
+  <div class="hero__stagezone">
+    <p class="hero__role hero__role--a">{s.roleA}</p>
+    <p class="hero__role hero__role--b">{s.roleB}</p>
+    <div class="hero__scrollcue t-mono" aria-hidden="true">{s.a11y.scrollCue}</div>
+  </div>
+
+  <div class="hero__shapes" aria-hidden="true">
+    <div class="shape shape--teal" data-cursor-style="drag" data-cursor="DRAG"></div>
+    <div class="shape shape--navy" data-cursor-style="drag" data-cursor="DRAG"></div>
+    <div class="shape shape--coral" data-cursor-style="drag" data-cursor="DRAG"></div>
+    <div class="shape shape--amber" data-cursor-style="drag" data-cursor="DRAG"></div>
+  </div>
+
+  <h1 class="hero__name">
+    <span class="visually-hidden">{s.name} — {s.roleA} · {s.roleB}</span>
+    {nameWords.map((glyphs) => (
+      <span class="w" aria-hidden="true">{glyphs.map((g) => <span class="g">{g}</span>)}</span>
+    ))}
+  </h1>
+</section>
+
+<!-- ═══════ 02 · STATEMENT ═══════ -->
+<section class="statement stage" data-theme="light">
+  <svg class="statement__asterisk" viewBox="0 0 100 100" aria-hidden="true">
+    <g fill="currentColor">
+      <rect x="42" y="2" width="16" height="96" rx="7" />
+      <rect x="42" y="2" width="16" height="96" rx="7" transform="rotate(45 50 50)" />
+      <rect x="42" y="2" width="16" height="96" rx="7" transform="rotate(90 50 50)" />
+      <rect x="42" y="2" width="16" height="96" rx="7" transform="rotate(135 50 50)" />
+    </g>
+  </svg>
+  <div class="statement__rect statement__rect--a" aria-hidden="true"></div>
+  <div class="statement__rect statement__rect--b" aria-hidden="true"></div>
+  <h2 class="t-statement statement__line split-gsap">
+    <Split text={t.statement.line} mode="words" />
+  </h2>
+</section>
+
+<!-- ═══════ 03 · PROMISE ═══════ -->
+<section class="promise stage stage--full" data-theme="dark">
+  <div class="wrap">
+    <div class="promise__ring" aria-hidden="true"></div>
+    <p class="t-mono" data-reveal="fade" style="color: var(--brass-pale)">{t.promise.overline}</p>
+    <h2 class="t-display promise__head split-mask">
+      <SegHead segments={t.promise.head} />
+    </h2>
+    <p class="promise__body" data-reveal="rise-slow" style="--delay:250ms">{t.promise.body}</p>
+    <div class="promise__credentials t-mono" data-reveal="fade" style="--delay:450ms">
+      {t.promise.credentials.map((c) => <span>{c}</span>)}
+    </div>
+    <div class="promise__ctas" data-reveal="rise-fast" style="--delay:600ms">
+      <a class="cta cta--primary magnetic" data-cursor-style="button" data-cursor="BOOK" href={t.promise.ctaBook.href} target="_blank" rel="noopener noreferrer">
+        <span>{t.promise.ctaBook.label}</span>
+        <span class="cta__arrow"><Arrow /></span>
+      </a>
+      <a class="cta cta--secondary magnetic" data-cursor="READ" href={t.promise.ctaRead.href}>
+        <span>{t.promise.ctaRead.label}</span>
+      </a>
+      <a class="promise__story" data-cursor="STORY" href={t.promise.storyLink.href}>{t.promise.storyLink.label}</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ 04 · SERVICES HUB ═══════ -->
+<section class="services stage stage--full" data-theme="dark">
+  <div class="wrap">
+    <div class="services__heads">
+      <h2 class="t-statement services__primary" data-reveal="rise-slow">{t.services.headPrimary}</h2>
+      <p class="services__ghost" lang={otherLang} dir={otherLang === 'ar' ? 'rtl' : 'ltr'} data-reveal="fade" style="--delay:300ms">
+        {t.services.headGhost}
+      </p>
+    </div>
+    <div class="services__cards">
+      {t.services.cards.map((card, i) => (
+        <a class="services__card" href={card.href} data-cursor={card.cursor} data-reveal="rise-fast" style={`--delay:${i * 140}ms`}>
+          <div class="services__card-top t-mono">
+            <span>{card.tag}</span>
+            <span class:list={['services__dot', { 'services__dot--available': card.dot === 'available' }]} aria-hidden="true"></span>
+          </div>
+          <div class="services__card-label">
+            <span>{card.label}</span>
+            <span class="services__card-arrow"><Arrow size={20} /></span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ 05 · PROOF ═══════ -->
+<section class="proof stage stage--full" data-theme="light">
+  <div class="wrap">
+    <div class="proof__rail" aria-hidden="true">
+      {[1, 2, 3, 4, 5, 6].map((n) => <span>{n}</span>)}
+    </div>
+    <div class="section-head" data-reveal="fade">
+      <span class="section-head__num">01</span>
+      <span class="section-head__line"></span>
+      <span class="section-head__label">{sectionLabels.proof}</span>
+    </div>
+    <h2 class="t-display proof__head split-mask">
+      <SegHead segments={t.proof.head} />
+    </h2>
+    <p class="t-deck" data-reveal="rise-slow" style="--delay:200ms">{t.proof.deck}</p>
+    <div class="proof__numbers">
+      {t.proof.numbers.map((n, i) => (
+        <div data-reveal="rise-fast" style={`--delay:${i * 120}ms`}>
+          <strong
+            data-count={n.value}
+            data-abbr={n.value >= 1000 ? '' : undefined}
+            data-prefix={lang === 'ar' ? n.suffix : undefined}
+            data-suffix={lang === 'en' ? n.suffix : undefined}
+          >{lang === 'ar' ? n.suffix : ''}{n.value >= 1000000 ? '3M' : n.value >= 1000 ? '5K' : n.value}{lang === 'en' ? n.suffix : ''}</strong>
+          <span class="t-mono">{n.label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ 06 · TESTIMONIALS ═══════ -->
+<section class="testimonials stage" data-theme="light">
+  <div class="section-head" data-reveal="fade">
+    <span class="section-head__num">02</span>
+    <span class="section-head__line"></span>
+    <span class="section-head__label">{sectionLabels.testimonials}</span>
+  </div>
+  <h2 class="t-statement testimonials__head" data-reveal="rise-slow">{t.testimonials.head}</h2>
+  <div class="testimonials__strip" data-cursor-style="drag" data-cursor="DRAG">
+    {t.testimonials.quotes.map((q, i) => (
+      <article class="testimonials__quote" data-reveal="rise-fast" style={`--delay:${i * 130}ms`}>
+        <span class="testimonials__mark" aria-hidden="true">”</span>
+        <p class="testimonials__text">{q.text}</p>
+        <div class="testimonials__author">
+          <span class="testimonials__name">{q.name}</span>
+          <span class="testimonials__role t-mono">{q.role}</span>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<!-- ═══════ 07 · CONSULTING ═══════ -->
+<section class="consulting stage" data-theme="light">
+  <div class="consulting__ghost" aria-hidden="true">01</div>
+  <div class="wrap">
+    <div class="section-head" data-reveal="fade">
+      <span class="section-head__num">03</span>
+      <span class="section-head__line"></span>
+      <span class="section-head__label">{sectionLabels.consulting}</span>
+    </div>
+    <div class="consulting__grid">
+      <div>
+        <h2 class="t-display consulting__head split-mask">
+          <SegHead segments={t.consulting.head} />
+        </h2>
+        <p class="t-deck" data-reveal="rise-slow" style="--delay:200ms">
+          {t.consulting.deck} <strong>{t.consulting.deckStrong}</strong>
+        </p>
+        <div class="consulting__steps">
+          {t.consulting.steps.map((step, i) => (
+            <div class="consulting__step" data-reveal="rise-fast" style={`--delay:${150 + i * 130}ms`}>
+              <span class="consulting__step-num">0{i + 1}</span>
+              <div>
+                <h3 class="consulting__step-head">{step.head}</h3>
+                <p class="consulting__step-body">{step.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <aside class="consulting__card" data-reveal="scale">
+        <div class="consulting__card-tag t-mono">{t.consulting.card.tag}</div>
+        <h3 class="consulting__card-head">{t.consulting.card.head}</h3>
+        <p class="consulting__card-deck">{t.consulting.card.deck}</p>
+        <div class="consulting__card-meta t-mono">
+          {t.consulting.card.meta.map((m) => (
+            <div><span>{m.k}</span><strong>{m.v}</strong></div>
+          ))}
+        </div>
+        <a class="cta cta--primary magnetic" data-cursor-style="button" data-cursor="BOOK" href={t.consulting.card.cta.href} target="_blank" rel="noopener noreferrer">
+          <span>{t.consulting.card.cta.label}</span>
+          <span class="cta__arrow"><Arrow /></span>
+        </a>
+        <a class="consulting__card-more" href={t.consulting.card.more.href} data-cursor="MORE">{t.consulting.card.more.label}</a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ 08 · BOOK TEASER ═══════ -->
+<section class="bookteaser stage stage--full" data-theme="light">
+  <div class="wrap">
+    <div class="section-head" data-reveal="fade">
+      <span class="section-head__num">04</span>
+      <span class="section-head__line"></span>
+      <span class="section-head__label">{sectionLabels.book}</span>
+    </div>
+    <div class="bookteaser__grid">
+      <div class="bookteaser__stagezone" data-reveal="scale">
+        <div class="bookteaser__book" aria-hidden="true">
+          <div class="bookteaser__spine"></div>
+          <div class="bookteaser__pages"></div>
+          <div class="bookteaser__face">
+            <div class="bookteaser__face-top t-mono">
+              <span>{t.book.coverTop[0]}</span><span>{t.book.coverTop[1]}</span>
+            </div>
+            <div class="bookteaser__face-title">{t.book.coverTitle}</div>
+            <div class="bookteaser__face-bottom t-mono">
+              <span>{t.book.coverBottom[0]}</span><span>{t.book.coverBottom[1]}</span>
+            </div>
+          </div>
+          <div class="bookteaser__shadow"></div>
+        </div>
+      </div>
+      <div>
+        <h2 class="t-display bookteaser__head split-mask">
+          <SegHead segments={t.book.head} />
+        </h2>
+        <p class="bookteaser__subtitle" data-reveal="rise-slow" style="--delay:200ms">{t.book.subtitle}</p>
+        <div class="bookteaser__reasons">
+          {t.book.reasons.map((r, i) => (
+            <p class="bookteaser__reason" data-reveal="rise-fast" style={`--delay:${250 + i * 140}ms`}>{r}</p>
+          ))}
+        </div>
+        <a class="cta cta--primary magnetic" data-cursor-style="button" data-cursor="BOOK" href={t.book.cta.href} data-reveal="rise-fast" style="--delay:600ms">
+          <span>{t.book.cta.label}</span>
+          <span class="cta__arrow"><Arrow /></span>
+        </a>
+        {t.book.note && <p class="bookteaser__note t-mono" data-reveal="fade" style="--delay:700ms">{t.book.note}</p>}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ 09 · WHY ME ═══════ -->
+<section class="whyme stage stage--full" data-theme="dark">
+  <div class="wrap">
+    <p class="whyme__intro" data-reveal="fade">{t.whyMe.intro}</p>
+    <h2 class="t-statement whyme__head split-mask">
+      <Split text={t.whyMe.head.join(' ')} mode="words" step={80} />
+    </h2>
+    <div class="whyme__rule" aria-hidden="true"></div>
+    <div class="whyme__bullets">
+      {t.whyMe.bullets.map((b, i) => (
+        <p class="whyme__bullet" data-reveal="from-side" style={`--delay:${i * 160}ms`}>{b}</p>
+      ))}
+    </div>
+    <a class="cta cta--secondary magnetic" data-cursor="STORY" href={t.whyMe.cta.href} data-reveal="rise-fast" style="--delay:500ms">
+      <span>{t.whyMe.cta.label}</span>
+      <span class="cta__arrow"><Arrow /></span>
+    </a>
+  </div>
+</section>
+
+<!-- ═══════ 10 · PUBLICATION ═══════ -->
+<section class="publication stage" data-theme="light">
+  <div class="wrap">
+    <div class="section-head" data-reveal="fade">
+      <span class="section-head__num">05</span>
+      <span class="section-head__line"></span>
+      <span class="section-head__label">{sectionLabels.publication}</span>
+    </div>
+    <div class="publication__grid">
+      <div>
+        <h2 class="t-display publication__head split-mask">
+          <SegHead segments={t.publication.head} />
+        </h2>
+        <p class="t-deck" data-reveal="rise-slow" style="--delay:200ms">
+          {t.publication.body} <strong>{t.publication.bodyStrong}</strong>
+        </p>
+        <p data-reveal="rise-fast" style="margin-top: 1.6rem; --delay:350ms">
+          <a class="cta cta--ghost" data-cursor="VISIT" href={t.publication.cta.href} target="_blank" rel="noopener noreferrer">
+            <span>{t.publication.cta.label}</span>
+            <span class="cta__arrow"><Arrow /></span>
+          </a>
+        </p>
+      </div>
+      <div class="publication__visual" data-reveal="scale" style="--delay:250ms">
+        <div class="publication__visual-tag t-mono">{t.publication.label}</div>
+        <img class="publication__visual-mark" src="/assets/almobadir-mark-white.png" alt="Almobadir" width="706" height="294" loading="lazy" />
+        <div class="publication__visual-foot t-mono">
+          {t.publication.stats.map((stat) => <span>{stat}</span>)}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

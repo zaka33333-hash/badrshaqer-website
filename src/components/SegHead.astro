@@ -1,0 +1,27 @@
+---
+/**
+ * Segmented heading with word-mask reveal.
+ * segments: [{ text, em, br? }] — em segments render as <em> (accent color),
+ * br inserts a line break after the segment. Delays accumulate across segments.
+ */
+const { segments = [], step = 70, base = 0 } = Astro.props;
+let i = 0;
+const built = segments.map((seg) => {
+  const words = String(seg.text).split(/\s+/).filter(Boolean);
+  return { ...seg, words: words.map((w) => ({ w, d: base + i++ * step })) };
+});
+---
+{built.map((seg) => (
+  <>
+    {seg.words.map(({ w, d }, wi) => (
+      <>
+        <span class="line-mask">{
+          seg.em
+            ? <em class="word" style={`--d:${d}ms`}>{w}</em>
+            : <span class="word" style={`--d:${d}ms`}>{w}</span>
+        }</span>{wi < seg.words.length - 1 ? ' ' : ''}
+      </>
+    ))}
+    {seg.br ? <br /> : ' '}
+  </>
+))}

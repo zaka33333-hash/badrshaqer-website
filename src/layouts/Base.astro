@@ -1,0 +1,177 @@
+---
+/**
+ * Base layout — shared shell for every page, both languages.
+ * Handles: SEO (canonical, hreflang, OG/Twitter, JSON-LD), fonts,
+ * loader, pill nav, full-screen menu, cursor, outro footer.
+ */
+import { SITE, PATHS } from '../data/site.js';
+import { shared } from '../data/copy/shared.js';
+import Footer from '../components/Footer.astro';
+import Arrow from '../components/Arrow.astro';
+
+import '../styles/tokens.css';
+import '../styles/fonts/shared.css';
+import '../styles/fonts/ar.css';
+import '../styles/fonts/en.css';
+import '../styles/base.css';
+import '../styles/shell.css';
+
+const {
+  lang = 'ar',
+  title,
+  description,
+  alt, // { ar: '/path/', en: '/en/path/' }
+  ogImage,
+  jsonLd = [],
+  firstTheme = 'dark',
+  noFooterCtas = false,
+} = Astro.props;
+
+const t = shared[lang];
+const dir = lang === 'ar' ? 'rtl' : 'ltr';
+const canonical = `${SITE.domain}${alt[lang]}`;
+const og = ogImage || `${SITE.domain}/assets/og-${lang}.jpg`;
+
+const personLd = {
+  '@type': 'Person',
+  '@id': `${SITE.domain}/#badr`,
+  name: lang === 'ar' ? 'بدر شاكر' : 'Badr Shaqer',
+  alternateName: lang === 'ar' ? 'Badr Shaqer' : 'بدر شاكر',
+  jobTitle: lang === 'ar' ? 'مستشار المؤسسين' : 'Founder Advisor',
+  url: SITE.domain + PATHS.home[lang],
+  image: `${SITE.domain}/assets/badr-portrait.webp`,
+  sameAs: [SITE.instagram, SITE.x, SITE.tiktok, SITE.almobadir],
+  knowsAbout:
+    lang === 'ar'
+      ? ['ريادة الأعمال', 'المبيعات', 'التسويق', 'نمو الإيرادات']
+      : ['Entrepreneurship', 'Sales', 'Marketing', 'Revenue growth'],
+};
+const websiteLd = {
+  '@type': 'WebSite',
+  url: SITE.domain + '/',
+  name: lang === 'ar' ? 'بدر شاكر · مستشار المؤسسين' : 'Badr Shaqer · Founder Advisor',
+  inLanguage: lang,
+};
+const ldGraph = { '@context': 'https://schema.org', '@graph': [personLd, websiteLd, ...jsonLd] };
+---
+<!doctype html>
+<html lang={lang} dir={dir}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0d0b07" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <script>document.documentElement.classList.add('js');</script>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href={`/manifest-${lang}.webmanifest`} />
+
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="ar" href={`${SITE.domain}${alt.ar}`} />
+    <link rel="alternate" hreflang="en" href={`${SITE.domain}${alt.en}`} />
+    <link rel="alternate" hreflang="x-default" href={`${SITE.domain}${alt.ar}`} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={og} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content={lang === 'ar' ? 'ar_AE' : 'en_US'} />
+    <meta property="og:locale:alternate" content={lang === 'ar' ? 'en_US' : 'ar_AE'} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={og} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(ldGraph)} />
+  </head>
+
+  <body data-bg={firstTheme}>
+    <a class="skip-link" href="#main">{t.skipToContent}</a>
+
+    <div class="loader" id="loader" aria-hidden="true">
+      <p class="loader__name" aria-hidden="true">
+        <span style="--d:80ms">{t.nameSplit[0]}</span>{' '}
+        <span style="--d:200ms"><em>{t.nameSplit[1]}.</em></span>
+      </p>
+      <span class="loader__pct">0%</span>
+      <div class="loader__line"></div>
+    </div>
+
+    <div class="scroll-progress" aria-hidden="true"></div>
+
+    <button
+      class="menu-toggle"
+      id="menuToggle"
+      aria-expanded="false"
+      aria-controls="menuPanel"
+      aria-label={t.nav.menuOpen}
+    >
+      <span class="menu-toggle__bars" aria-hidden="true"><span></span><span></span></span>
+      <span class="menu-toggle__text">{t.nav.menuLabel}</span>
+    </button>
+
+    <nav class="menu-panel" id="menuPanel" aria-label={t.a11y.mainMenu}>
+      <div class="menu-panel__links">
+        {t.menu.map((item) => (
+          <a
+            href={item.href}
+            aria-current={item.href === alt[lang] ? 'page' : undefined}
+            target={item.external ? '_blank' : undefined}
+            rel={item.external ? 'noopener noreferrer' : undefined}
+          ><span>{item.label}</span></a>
+        ))}
+      </div>
+      <div class="menu-panel__foot">
+        <a class="cta cta--primary" href={t.menuCta.href} target="_blank" rel="noopener noreferrer" data-cursor-style="button" data-cursor="BOOK">
+          <span>{t.menuCta.label}</span>
+          <span class="cta__arrow"><Arrow /></span>
+        </a>
+        <span class="t-mono">
+          <a href={alt[t.langSwitch.lang]} lang={t.langSwitch.lang} hreflang={t.langSwitch.lang}>{t.langSwitch.label}</a>
+          <a href={`mailto:${SITE.email}`} data-copy-email={SITE.email} data-copied-label={t.emailCopied} data-cursor="COPY"><span>{SITE.email}</span></a>
+        </span>
+      </div>
+    </nav>
+
+    <nav class="pillnav" aria-label={lang === 'ar' ? 'تنقل' : 'Navigation'}>
+      <a class="pillnav__link" href={t.nav.story.href}>{t.nav.story.label}</a>
+      <a class="pillnav__logo" href={PATHS.home[lang]} aria-label={t.nav.home}>
+        <img src="/assets/badr-portrait.webp" alt="" width="46" height="46" loading="eager" />
+      </a>
+      <a class="pillnav__link" href={t.nav.programs.href}>{t.nav.programs.label}</a>
+    </nav>
+
+    <nav class="contact-pills" aria-label={t.a11y.contact}>
+      {t.pills.map((p) => (
+        <a
+          href={p.href}
+          target={p.external ? '_blank' : undefined}
+          rel={p.external ? 'noopener noreferrer' : undefined}
+          data-cursor={p.cursor}
+          data-copy-email={p.copyEmail ? SITE.email : undefined}
+          data-copied-label={p.copyEmail ? t.emailCopied : undefined}
+        ><span>{p.label}</span></a>
+      ))}
+    </nav>
+
+    <div class="cursor" id="cursor" aria-hidden="true">
+      <div class="cursor__ring"></div>
+      <div class="cursor__dot"></div>
+      <div class="cursor__label" id="cursorLabel"></div>
+    </div>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <Footer lang={lang} noCtas={noFooterCtas} />
+
+    <script src="../scripts/core.js"></script>
+  </body>
+</html>

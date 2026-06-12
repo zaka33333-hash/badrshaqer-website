@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+import HomePage from '../components/HomePage.astro';
+import { home } from '../data/copy/home.js';
+import { PATHS } from '../data/site.js';
+import '../styles/home.css';
+
+const lang = 'ar';
+const t = home[lang];
+const bookLd = {
+  '@type': 'Book',
+  name: 'كيف تبيع كتاجر المخدرات',
+  author: { '@id': 'https://badrshaqer.com/#badr' },
+  inLanguage: 'ar',
+};
+---
+<Base lang={lang} title={t.meta.title} description={t.meta.description} alt={PATHS.home} jsonLd={[bookLd]} firstTheme="dark">
+  <HomePage lang={lang} />
+  <script src="../scripts/home.js"></script>
+</Base>
