@@ -37,6 +37,34 @@ art direction, not coincidence (it's half of juanmora's trick).
 
 Variant worth trying: same but **over-ear headphones on** (closest to the mock).
 
+## 1b · HERO v2 — golden hour (PREFERRED) → `public/assets/hero-photo.webp`
+**AR 16:9 set in the tool's UI (>=1920 wide). What separates this from v1: bright,
+hazy, monochromatically warm — lifted shadows, subject LARGE.**
+
+> Cinematic candid photograph, wide 16:9 landscape, of a young entrepreneur
+> (exact face from the reference photo — short dark hair, light stubble),
+> sitting at his desk working on a laptop, chest up at a relaxed 3/4 angle,
+> eyes on the screen just off-frame, wearing silver AirPods Max over-ear
+> headphones with the mesh canopy headband and a dark charcoal crewneck. The
+> entire room is bathed in one warm golden-amber light — late-afternoon sun
+> mixed with tungsten — washing over his face, walls and ceiling so everything
+> lives in a single warm monochrome palette. Lifted soft shadows, no crushed
+> blacks, gentle atmospheric haze, soft bloom and halation around lights.
+> Composition: subject just right of center filling about half the frame
+> height; the left third is calm open room with soft haze (text sits there); a
+> desk lamp glows heavily out of focus in the right foreground; the lower
+> third stays an even calm mid-tone band (giant name typeset across it).
+> Softly blurred warm wall with framed pictures and ceiling lines behind him.
+> Documentary realism, 35mm full-frame, f/2, subtle film grain, authentic skin
+> texture, no retouching. Golden hour at the desk, warm and alive.
+
+Negative: portrait orientation, dark moody low-key, black void, harsh red
+light, crushed shadows, oversaturated, HDR, plastic skin, posed corporate
+portrait, watermark, text.
+
+Optional mobile companion: outpaint/regenerate the keeper at 4:5 — wired as an
+art-directed `<picture>` source for phones.
+
 ## 2 · WHY-ME full-bleed → replaces `book-interior.webp` in `.whyme` (home.css)
 **AR 16:9. Subject right HALF, left half = copy space:**
 
