@@ -346,12 +346,12 @@ export const inner = {
           description: 'حول خبرتك إلى مشروع استشاري يدفع له السوق. برنامج من بدر شاكر، مستشار في بناء المشاريع الاستشارية والتدريبية.',
         },
         hero: {
-          overline: 'برنامج · 01',
+          overline: 'بيلد · مسار المستشار المدفوع',
           head: [
             { text: 'كن ', em: false },
             { text: 'مستشارا.', em: true },
           ],
-          deck: 'عندك خبرة يدفع الناس ثمنها كل يوم — لكنهم يدفعونه لغيرك. هذا البرنامج يحول ما تعرفه إلى مشروع استشاري له عرض، وسعر، وعملاء.',
+          deck: 'بيلد مسار مكثّف من 6 أسابيع بالقبول فقط، يحوّل خبرتك إلى جلسات تشخيص مدفوعة وعملاء استشارة بأسعار مرتفعة. ليس دورة سلبية — بل تنفيذ حقيقي في السوق.',
         },
         pillarsLabel: 'الأسئلة التي يجيب عنها البرنامج',
         pillars: [
@@ -359,14 +359,40 @@ export const inner = {
           { head: 'كيف تسعر بلا خجل؟', body: 'بناء عرض وسعر يعكسان قيمة النتيجة، لا عدد الساعات.' },
           { head: 'من أين يأتي العملاء؟', body: 'نظام واضح لجذب طلبات الاستشارة بدل انتظارها.' },
         ],
-        pending: {
-          label: 'تفاصيل البرنامج',
-          note: 'المنهج الكامل، المدة، والاستثمار — تصلك التفاصيل عند التواصل. المقاعد محدودة في كل دفعة.',
+        tracks: {
+          label: 'مساران للانضمام',
+          intro: 'بيلد بالقبول فقط. اختر المسار الأقرب إلى وضعك — والتقديم يستغرق دقائق.',
+          items: [
+            {
+              name: 'Core',
+              price: '$2,497',
+              tagline: 'نظام بيلد الكامل.',
+              points: [
+                'مسار تنفيذي من 6 أسابيع',
+                'حزم خبرتك في عرض تشخيص مدفوع',
+                'بناء عرض استشاري مميز، ونظام تواصل ونصوص',
+                'مكالمات بيع، وعروض مكتوبة، وبنية تسليم',
+                'إرشاد جماعي ومجتمع',
+              ],
+            },
+            {
+              name: 'Boardroom',
+              price: '$4,997',
+              tagline: 'كل ما في Core، مع مراجعة استراتيجية خاصة.',
+              points: [
+                'كل ما في Core',
+                'مراجعة خاصة للتموضع والعروض والمقترحات',
+                'ملاحظات مباشرة على مكالمات البيع وتسليم الاستشارة',
+                'دعم بأولوية',
+              ],
+              featured: true,
+            },
+          ],
         },
         cta: {
           head: 'خبرتك تستحق أن تباع كما تباع الخبرات.',
-          sub: 'اسأل عن الدفعة القادمة.',
-          primary: { label: 'اسأل عن البرنامج', href: `mailto:${SITE.email}?subject=${encodeURIComponent('برنامج: كن مستشارا')}` },
+          sub: 'التقديم مفتوح للدفعة القادمة. المقاعد محدودة.',
+          primary: { label: 'قدّم على بيلد', href: PATHS.apply.ar },
           secondary: { label: 'أو احجز جلسة أولا', href: SITE.calendly },
         },
         crossLink: { label: 'البرنامج الثاني: نظم شركتك', href: PATHS.programSystemize.ar },
@@ -377,12 +403,12 @@ export const inner = {
           description: 'Turn your expertise into a consulting business the market pays for. A program by Badr Shaqer, consultant in building consulting and training businesses.',
         },
         hero: {
-          overline: 'Program · 01',
+          overline: 'Build · The Paid Advisor Sprint',
           head: [
             { text: 'Become a ', em: false },
             { text: 'consultant.', em: true },
           ],
-          deck: 'You hold expertise people pay for every day — they just pay someone else. This program turns what you know into a consulting business with an offer, a price, and clients.',
+          deck: 'Build is a 6-week, application-only sprint that turns your expertise into paid diagnosis calls and premium advisory clients. Not a passive course — real execution in the market.',
         },
         pillarsLabel: 'The questions this program answers',
         pillars: [
@@ -390,14 +416,40 @@ export const inner = {
           { head: 'How do you price without flinching?', body: 'Building an offer and a price that reflect the value of the outcome, not the hours.' },
           { head: 'Where do clients come from?', body: 'A clear system for attracting consulting requests instead of waiting for them.' },
         ],
-        pending: {
-          label: 'Program details',
-          note: 'Full curriculum, duration, and investment — details on request. Seats are limited per cohort.',
+        tracks: {
+          label: 'Two ways in',
+          intro: 'Build is application-only. Pick the track closest to where you are — applying takes a few minutes.',
+          items: [
+            {
+              name: 'Core',
+              price: '$2,497',
+              tagline: 'The full Build system.',
+              points: [
+                '6-week execution sprint',
+                'Package your expertise into a paid diagnosis offer',
+                'Build a premium advisory offer, outreach system & scripts',
+                'Sales calls, proposals & delivery structure',
+                'Group coaching + community',
+              ],
+            },
+            {
+              name: 'Boardroom',
+              price: '$4,997',
+              tagline: 'Core + private strategic review.',
+              points: [
+                'Everything in Core',
+                'Private review on positioning, offers & proposals',
+                'Direct feedback on your sales calls & advisory delivery',
+                'Priority support',
+              ],
+              featured: true,
+            },
+          ],
         },
         cta: {
           head: 'Your expertise deserves to sell the way expertise sells.',
-          sub: 'Ask about the next cohort.',
-          primary: { label: 'Ask about the program', href: `mailto:${SITE.email}?subject=${encodeURIComponent('Program: Become a Consultant')}` },
+          sub: 'Applications are open for the next cohort. Seats are limited.',
+          primary: { label: 'Apply for Build', href: PATHS.apply.en },
           secondary: { label: 'Or book a session first', href: SITE.calendly },
         },
         crossLink: { label: 'Program 02: Systemize Your Business', href: PATHS.programSystemize.en },

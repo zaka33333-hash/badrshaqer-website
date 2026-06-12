@@ -33,17 +33,40 @@ const ghost = program === 'consultant' ? '01' : '02';
       ))}
     </div>
 
-    <!-- OWNER-TODO: curriculum, duration, pricing, enroll flow -->
-    <div class="pending-card" data-reveal="rise-slow">
-      <div>
-        <p class="t-mono" style="margin-bottom: 0.6rem">{t.pending.label}</p>
-        <p>{t.pending.note}</p>
+    {t.tracks ? (
+      <div class="tracks" data-reveal="rise-slow">
+        <p class="tracks__intro">{t.tracks.intro}</p>
+        <div class="tracks__grid">
+          {t.tracks.items.map((track) => (
+            <div class:list={['track', { 'track--featured': track.featured }]}>
+              <div class="track__top">
+                <h3 class="track__name">{track.name}</h3>
+                <p class="track__price">{track.price}</p>
+              </div>
+              <p class="track__tagline">{track.tagline}</p>
+              <ul class="track__points">
+                {track.points.map((pt) => <li>{pt}</li>)}
+              </ul>
+              <a class="cta cta--primary magnetic track__cta" data-cursor-style="button" data-cursor="SEND" href={t.cta.primary.href}>
+                <span>{t.cta.primary.label}</span>
+                <span class="cta__arrow"><Arrow /></span>
+              </a>
+            </div>
+          ))}
+        </div>
       </div>
-      <a class="cta cta--primary magnetic" data-cursor-style="button" data-cursor="ASK" href={t.cta.primary.href}>
-        <span>{t.cta.primary.label}</span>
-        <span class="cta__arrow"><Arrow /></span>
-      </a>
-    </div>
+    ) : (
+      <div class="pending-card" data-reveal="rise-slow">
+        <div>
+          <p class="t-mono" style="margin-bottom: 0.6rem">{t.pending.label}</p>
+          <p>{t.pending.note}</p>
+        </div>
+        <a class="cta cta--primary magnetic" data-cursor-style="button" data-cursor="ASK" href={t.cta.primary.href}>
+          <span>{t.cta.primary.label}</span>
+          <span class="cta__arrow"><Arrow /></span>
+        </a>
+      </div>
+    )}
 
     <a class="program-crosslink" href={t.crossLink.href} data-cursor="NEXT">
       <span>{t.crossLink.label}</span>

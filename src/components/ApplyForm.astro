@@ -1,0 +1,134 @@
+---
+import { apply, FORM_ENDPOINT } from '../data/copy/apply.js';
+import { PATHS } from '../data/site.js';
+import Arrow from './Arrow.astro';
+
+const { lang = 'ar' } = Astro.props;
+const t = apply[lang];
+const backHref = PATHS[t.back.href][lang];
+let n = 0; // running question number across sections
+---
+<section class="apply" data-theme="light">
+  <div class="apply__wrap">
+    <a class="apply__back" href={backHref} data-cursor="BACK">
+      <span class="apply__back-arrow"><Arrow /></span>
+      <span>{t.back.label}</span>
+    </a>
+
+    <header class="apply__head" data-reveal="rise-slow">
+      <p class="apply__lede t-mono">{t.lede}</p>
+      <h1 class="apply__title">{t.title}</h1>
+      <p class="apply__subtitle">{t.subtitle}</p>
+      <p class="apply__note">{t.note}</p>
+    </header>
+
+    <form class="apply__form" id="applyForm" action={FORM_ENDPOINT} method="POST" novalidate>
+      <input type="hidden" name="_subject" value="New Build application" />
+
+      {t.sections.map((section, si) => (
+        <fieldset class="apply__section" data-reveal="fade">
+          <legend class="apply__section-head">
+            <span class="apply__section-num t-mono">{String(si + 1).padStart(2, '0')}</span>
+            <span class="apply__section-line"></span>
+            <span class="apply__section-title">{section.title}</span>
+          </legend>
+
+          {section.fields.map((f) => {
+            n += 1;
+            const fieldId = `f-${f.id}`;
+            return (
+              <div class="apply__field">
+                {['text', 'email', 'tel'].includes(f.type) && (
+                  <div class="apply__row">
+                    <label class="apply__label" for={fieldId}>
+                      <span class="apply__qnum">{n}</span>{f.label}{f.required && <span class="apply__req">*</span>}
+                    </label>
+                    {f.help && <p class="apply__help">{f.help}</p>}
+                    <input
+                      class="apply__input"
+                      id={fieldId}
+                      name={f.id}
+                      type={f.type}
+                      required={f.required}
+                      autocomplete={f.autocomplete}
+                    />
+                  </div>
+                )}
+
+                {f.type === 'textarea' && (
+                  <div class="apply__row">
+                    <label class="apply__label" for={fieldId}>
+                      <span class="apply__qnum">{n}</span>{f.label}{f.required && <span class="apply__req">*</span>}
+                    </label>
+                    {f.help && <p class="apply__help">{f.help}</p>}
+                    <textarea class="apply__input apply__textarea" id={fieldId} name={f.id} rows="4" required={f.required}></textarea>
+                  </div>
+                )}
+
+                {f.type === 'radio' && (
+                  <fieldset class="apply__choice">
+                    <legend class="apply__label">
+                      <span class="apply__qnum">{n}</span>{f.label}{f.required && <span class="apply__req">*</span>}
+                    </legend>
+                    {f.help && <p class="apply__help">{f.help}</p>}
+                    <div class="apply__options">
+                      {f.options.map((opt, oi) => (
+                        <label class="apply__option">
+                          <input type="radio" name={f.id} value={opt} required={f.required} />
+                          <span class="apply__option-mark" aria-hidden="true"></span>
+                          <span>{opt}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </fieldset>
+                )}
+
+                {f.type === 'checkbox' && (
+                  <fieldset class="apply__choice">
+                    <legend class="apply__label">
+                      <span class="apply__qnum">{n}</span>{f.label}
+                    </legend>
+                    {f.help && <p class="apply__help">{f.help}</p>}
+                    <div class="apply__options">
+                      {f.options.map((opt) => (
+                        <label class="apply__option apply__option--check">
+                          <input type="checkbox" name={`${f.id}[]`} value={opt} />
+                          <span class="apply__option-mark apply__option-mark--check" aria-hidden="true"></span>
+                          <span>{opt}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </fieldset>
+                )}
+              </div>
+            );
+          })}
+        </fieldset>
+      ))}
+
+      <label class="apply__confirm" data-reveal="fade">
+        <input type="checkbox" name="confirm" value="agreed" required />
+        <span class="apply__option-mark apply__option-mark--check" aria-hidden="true"></span>
+        <span>{t.confirm}</span>
+      </label>
+
+      <div class="apply__actions">
+        <button class="cta cta--primary apply__submit" type="submit" data-cursor-style="button" data-cursor="SEND">
+          <span class="apply__submit-label" data-sending={t.submitting}>{t.submit}</span>
+          <span class="cta__arrow"><Arrow /></span>
+        </button>
+        <p class="apply__error" id="applyError" hidden>{t.error}</p>
+      </div>
+    </form>
+
+    <div class="apply__success" id="applySuccess" hidden>
+      <h2 class="apply__success-head">{t.success.head}</h2>
+      <p class="apply__success-body">{t.success.body}</p>
+      <a class="cta cta--secondary" href={backHref}><span>{t.back.label}</span></a>
+    </div>
+  </div>
+</section>
+
+<script>
+  import '../scripts/apply.js';
+</script>

@@ -26,6 +26,7 @@ export const PATHS = {
   consultation: { ar: `${B}consultation/`, en: `${B}en/consultation/` },
   programConsultant: { ar: `${B}programs/become-a-consultant/`, en: `${B}en/programs/become-a-consultant/` },
   programSystemize: { ar: `${B}programs/systemize-your-business/`, en: `${B}en/programs/systemize-your-business/` },
+  apply: { ar: `${B}apply/`, en: `${B}en/apply/` },
 };
 
 export const other = (lang) => (lang === 'ar' ? 'en' : 'ar');

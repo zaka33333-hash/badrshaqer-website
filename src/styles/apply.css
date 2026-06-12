@@ -1,0 +1,229 @@
+/* ═══════════════ APPLICATION FORM — "Build" ═══════════════ */
+.apply {
+  background: var(--parchment);
+  color: var(--ink);
+  min-height: 100svh;
+  padding: clamp(6rem, 14vh, 9rem) var(--gutter) clamp(4rem, 10vh, 7rem);
+}
+.apply__wrap {
+  max-width: 44rem;
+  margin-inline: auto;
+}
+
+/* back link */
+.apply__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: clamp(2rem, 5vh, 3.4rem);
+  transition: color 220ms var(--ease-out);
+}
+.apply__back:hover { color: var(--carmine); }
+.apply__back-arrow { display: inline-flex; transform: rotate(180deg); width: 1rem; }
+
+/* header */
+.apply__head { margin-bottom: clamp(2.6rem, 6vh, 4rem); }
+.apply__lede {
+  color: var(--carmine);
+  letter-spacing: 0.3em;
+  margin-bottom: 0.9rem;
+}
+.apply__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 7vw, 4.6rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin-bottom: clamp(1.2rem, 3vh, 1.8rem);
+}
+.apply__subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  line-height: 1.7;
+  max-width: 38rem;
+  margin-bottom: 1.2rem;
+}
+.apply__note {
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  max-width: 38rem;
+  padding-inline-start: 1rem;
+  border-inline-start: 2px solid rgba(200, 40, 30, 0.4);
+}
+
+/* form layout */
+.apply__form { display: grid; gap: clamp(2.8rem, 7vh, 4.4rem); }
+.apply__section { border: 0; padding: 0; margin: 0; display: grid; gap: clamp(1.6rem, 4vh, 2.4rem); }
+.apply__section-head {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 0.4rem;
+}
+.apply__section-num { color: var(--carmine); font-size: 0.78rem; letter-spacing: 0.1em; }
+.apply__section-line { flex: 1; height: 1px; background: rgba(13, 11, 7, 0.16); }
+.apply__section-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+}
+
+/* fields */
+.apply__field { display: grid; }
+.apply__row { display: grid; gap: 0.6rem; }
+.apply__label {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1rem, 1.3vw, 1.12rem);
+  line-height: 1.45;
+  padding: 0;
+}
+.apply__choice { border: 0; padding: 0; margin: 0; display: grid; gap: 0.85rem; }
+.apply__qnum {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--brass);
+  margin-inline-end: 0.6rem;
+  vertical-align: 0.15em;
+}
+.apply__req { color: var(--carmine); margin-inline-start: 0.2rem; }
+.apply__help {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin: 0.1rem 0 0.2rem;
+  max-width: 40rem;
+}
+
+/* text inputs */
+.apply__input {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 1.02rem;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid rgba(13, 11, 7, 0.18);
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  transition: border-color 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
+}
+.apply__input::placeholder { color: rgba(13, 11, 7, 0.35); }
+.apply__input:focus {
+  outline: none;
+  border-color: var(--carmine);
+  box-shadow: 0 0 0 3px rgba(200, 40, 30, 0.12);
+}
+.apply__textarea { resize: vertical; min-height: 6.5rem; line-height: 1.6; }
+
+/* radio / checkbox options */
+.apply__options { display: grid; gap: 0.55rem; }
+.apply__option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.5;
+  padding: 0.7rem 0.95rem;
+  border: 1px solid rgba(13, 11, 7, 0.14);
+  border-radius: 11px;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 180ms var(--ease-out), background 180ms var(--ease-out);
+}
+.apply__option:hover { border-color: rgba(200, 40, 30, 0.5); }
+.apply__option input { position: absolute; opacity: 0; width: 0; height: 0; }
+.apply__option-mark {
+  flex: none;
+  width: 19px;
+  height: 19px;
+  margin-top: 0.15em;
+  border: 1.5px solid rgba(13, 11, 7, 0.35);
+  border-radius: 50%;
+  position: relative;
+  transition: border-color 160ms var(--ease-out), background 160ms var(--ease-out);
+}
+.apply__option-mark--check { border-radius: 6px; }
+.apply__option-mark::after {
+  content: '';
+  position: absolute;
+  inset: 50%;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--cream);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 160ms var(--ease-elastic);
+}
+.apply__option-mark--check::after { border-radius: 2px; width: 8px; height: 8px; }
+.apply__option input:checked ~ .apply__option-mark {
+  border-color: var(--carmine);
+  background: var(--carmine);
+}
+.apply__option input:checked ~ .apply__option-mark::after { transform: translate(-50%, -50%) scale(1); }
+.apply__option:has(input:checked) { border-color: var(--carmine); background: rgba(200, 40, 30, 0.04); }
+.apply__option input:focus-visible ~ .apply__option-mark { box-shadow: 0 0 0 3px rgba(200, 40, 30, 0.18); }
+
+/* final confirmation */
+.apply__confirm {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  padding: 1.1rem 1.2rem;
+  border: 1px solid rgba(13, 11, 7, 0.2);
+  border-radius: 14px;
+  background: var(--cloud);
+  cursor: pointer;
+}
+.apply__confirm input { position: absolute; opacity: 0; width: 0; height: 0; }
+.apply__confirm:has(input:checked) { border-color: var(--carmine); background: rgba(200, 40, 30, 0.05); }
+
+/* actions */
+.apply__actions { display: grid; gap: 1rem; justify-items: start; }
+.apply__submit { font-size: 1rem; }
+.apply__submit:disabled { opacity: 0.6; pointer-events: none; }
+.apply__error {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--carmine);
+}
+
+/* success */
+.apply__success {
+  max-width: 40rem;
+  margin-inline: auto;
+  text-align: center;
+  padding: clamp(2rem, 6vh, 4rem) 0;
+}
+.apply__success-head {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  margin-bottom: 1rem;
+}
+.apply__success-body {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 600px) {
+  .apply__qnum { display: block; margin-bottom: 0.2rem; }
+}

@@ -270,6 +270,46 @@
 .pending-card .t-mono { color: var(--brass-pale); }
 .pending-card p { max-width: 52ch; color: rgba(247, 243, 234, 0.82); line-height: 1.75; }
 
+/* ── program pricing tracks (Core / Boardroom) ── */
+.tracks { margin-top: clamp(2.5rem, 6vh, 4rem); }
+.tracks__intro {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  line-height: 1.7;
+  color: var(--ink-soft);
+  max-width: 42rem;
+  margin-bottom: clamp(1.6rem, 4vh, 2.4rem);
+}
+.tracks__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(1rem, 2.5vw, 1.6rem); }
+@media (max-width: 760px) { .tracks__grid { grid-template-columns: 1fr; } }
+.track {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.6rem, 3vw, 2.4rem);
+  border: 1px solid rgba(13, 11, 7, 0.16);
+  border-radius: 18px;
+  background: #fff;
+}
+.track--featured { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+.track__top { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 0.4rem; }
+.track__name { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.4rem, 2.2vw, 1.9rem); }
+.track__price { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.3rem, 2vw, 1.7rem); color: var(--carmine); }
+.track--featured .track__price { color: var(--brass-pale); }
+.track__tagline { font-family: var(--font-body); font-size: 1rem; color: var(--ink-soft); margin-bottom: 1.4rem; }
+.track--featured .track__tagline { color: rgba(247, 243, 234, 0.72); }
+.track__points { list-style: none; padding: 0; margin: 0 0 1.8rem; display: grid; gap: 0.7rem; flex: 1; }
+.track__points li {
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  line-height: 1.5;
+  padding-inline-start: 1.5rem;
+  position: relative;
+}
+.track__points li::before { content: '→'; position: absolute; inset-inline-start: 0; color: var(--carmine); }
+.track--featured .track__points li::before { color: var(--brass-pale); }
+[dir='rtl'] .track__points li::before { content: '←'; }
+.track__cta { align-self: flex-start; }
+
 .program-crosslink {
   display: inline-flex;
   align-items: center;

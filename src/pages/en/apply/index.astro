@@ -1,0 +1,13 @@
+---
+import Base from '../../../layouts/Base.astro';
+import ApplyForm from '../../../components/ApplyForm.astro';
+import { apply } from '../../../data/copy/apply.js';
+import { PATHS } from '../../../data/site.js';
+import '../../../styles/inner.css';
+import '../../../styles/apply.css';
+const lang = 'en';
+const t = apply[lang];
+---
+<Base lang={lang} title={t.meta.title} description={t.meta.description} alt={PATHS.apply} firstTheme="light" noFooterCtas>
+  <ApplyForm lang={lang} />
+</Base>
