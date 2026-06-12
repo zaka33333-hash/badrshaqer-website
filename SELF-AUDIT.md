@@ -59,12 +59,12 @@ Book/Course/Service/ProfilePage/CollectionPage per page; full OG/Twitter.
 
 | Item | State |
 |---|---|
-| **Real cinematic photo of Badr** | Missing — hero/why-me use brand-texture photos (`outro-backdrop`, `book-interior`). Drop-in slot documented in README. This is the single biggest gap to the mock. |
+| **Photography** | Now in place: AI-generated set (hero at-desk, why-me profile, story silhouette, 3D footer render) produced from the owner's reference portrait via PHOTO-PROMPTS.md. Likeness approved by owner in-session; a real shoot can swap in at the same paths anytime. Contrast re-measured over the real images — all pass (scroll cue moved + backed after the new photo exposed it). |
 | **Articles archive** | No source provided. Index ships 6 unlinked "coming soon" topic cards (placeholder titles flagged OWNER-TODO) + honest "archive in transit" note routing to Almobadir. No article bodies were invented; the article template is the card/prose system ready for real content. |
 | **Program 1/2 curriculum + pricing** | Not provided. Pages frame the promise + 3 pillar questions, with "details on request" → email CTA. Course JSON-LD has no invented price. |
 | **Story facts** | Written ONLY from approved facts (degrees, 10 yrs, 200+ sessions, book, Almobadir). No employers/dates/cities invented — owner should fact-check tone and add specifics. |
 | **Per-page OG cards** | All pages use the existing site-wide og-ar/og-en JPGs; per-page 1200×630 cards are an owner-asset task. |
-| **3D/illustrated footer portrait + animated book illustration** | Footer uses the illustrated avatar; book is a CSS-3D object with the cherry cover texture. Lottie/Spline upgrades await owner assets. |
+| **Animated book illustration** | The book is a CSS-3D object with the cherry cover texture; a Lottie/Spline upgrade remains optional. Footer now uses the 3D portrait card. |
 | **Needs manual check on real devices** | Safari `backdrop-filter` on pills/menu, `mix-blend-mode: difference` cursor, WebGL hero on low-power devices (it is reduced-motion-gated but not battery-gated), real-device FPS/LCP. |
 | **Statement section pin** | Uses ScrollTrigger pin — verified in Chromium; check iOS Safari rubber-banding manually. |
 | **Bilingual ghost headline** | The EN line on the AR services hub (and inverse) is **intentional** per mock frame 4 — flagged by one auditor as "untranslated copy"; keeping per art direction. |
@@ -74,9 +74,9 @@ Book/Course/Service/ProfilePage/CollectionPage per page; full OG/Twitter.
 Side-by-side with juanmora.co: matching interaction density (cursor labels, magnetic, draggable
 physics shapes, pin, letter/word reveals, loader, hide-on-scroll pill nav), a stronger
 typographic system (Reem Kufi/Fraunces editorial spine + Alexandria/Bricolage statement
-counterpoint vs. one geometric sans), and the same full-bleed giant-name composition. The gap
-that remains is photographic: juanmora's hero is a real cinematic photo of its subject; ours
-stands on brand textures until the owner supplies the shot.
+counterpoint vs. one geometric sans), and the same full-bleed giant-name composition. The photographic gap is closed: the hero, why-me, story, and footer
+now carry cinematic imagery of Badr (AI-generated from his reference portrait, swappable
+for a real shoot at the same file paths).
 
 ### Addendum — channel-logo draggables (post-v1 feedback)
 The four hero circles are the real Almobadir channel logos (main, فلوسك, MEDIA,

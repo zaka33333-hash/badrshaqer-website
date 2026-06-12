@@ -61,12 +61,13 @@ No-JS: reveal-hiding is scoped under `html.js`, so content is fully visible with
 
 | Asset | Drop at | Currently |
 |---|---|---|
-| Real cinematic photo of Badr (hero) | `public/assets/` + swap `<img>` in `components/HomePage.astro` hero (marked `OWNER ASSET`) | `outro-backdrop.webp` texture stands in |
-| Why-me full-bleed photo | `styles/home.css` → `.whyme` background | `book-interior.webp` |
+| Hero photo of Badr | `public/assets/hero-photo.webp` | AI-generated from owner's reference portrait (swap with a real shoot anytime) |
+| Why-me full-bleed photo | `public/assets/whyme-photo.webp` (mirrored automatically in RTL) | AI-generated profile shot |
+| Story hero photo | `public/assets/story-hero.webp` | AI-generated silhouette |
 | Articles archive (titles/slugs/bodies/source) | `src/data/copy/inner.js` → `articleTeasers` (marked `OWNER-TODO`) | 6 unlinked "coming soon" topic cards |
 | Program 1/2 curriculum + pricing + enroll flow | `src/data/copy/inner.js` → `programs` (marked `OWNER-TODO`) | "details on request" → email CTA |
 | Per-page OG cards (1200×630) | `public/assets/og-*.jpg`, wire in each page's `ogImage` prop | site-wide `og-ar.jpg` / `og-en.jpg` |
-| 3D/illustrated footer portrait | `components/Footer.astro` | illustrated avatar |
+| 3D/illustrated footer portrait | `public/assets/portrait-3d.webp` | AI-generated Pixar-style render |
 
 ## Structure
 

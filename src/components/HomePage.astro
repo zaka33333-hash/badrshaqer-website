@@ -30,8 +30,7 @@ const sectionLabels = {
 <!-- ═══════ 01 · HERO ═══════ -->
 <section class="hero" data-theme="dark" aria-label={s.name}>
   <div class="hero__backdrop" aria-hidden="true">
-    <!-- OWNER ASSET: replace with the real cinematic photo of Badr (hero-photo.webp) -->
-    <img src="/assets/outro-backdrop.webp" alt="" fetchpriority="high" />
+    <img src="/assets/hero-photo.webp" alt="" fetchpriority="high" />
   </div>
   <div class="hero__atmosphere" aria-hidden="true"><canvas id="atmoCanvas"></canvas></div>
   <div class="hero__scrim" aria-hidden="true"></div>
@@ -275,6 +274,9 @@ const sectionLabels = {
 
 <!-- ═══════ 09 · WHY ME ═══════ -->
 <section class="whyme stage stage--full" data-theme="dark">
+  <div class="whyme__backdrop" aria-hidden="true">
+    <img src="/assets/whyme-photo.webp" alt="" loading="lazy" width="1536" height="2048" />
+  </div>
   <div class="wrap">
     <p class="whyme__intro" data-reveal="fade">{t.whyMe.intro}</p>
     <h2 class="t-statement whyme__head split-mask">

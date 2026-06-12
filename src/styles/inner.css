@@ -20,6 +20,28 @@
   .pagehero, .pagehero--tall { min-height: 0; padding-block: 6rem 2.6rem; }
   .pagehero__head { font-size: clamp(2.1rem, 10vw, 2.8rem); }
 }
+.pagehero__backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.pagehero__backdrop img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+.pagehero--photo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(to top, rgba(13, 11, 7, 0.92) 0%, rgba(13, 11, 7, 0.45) 45%, rgba(13, 11, 7, 0.25) 100%),
+    radial-gradient(ellipse 70% 60% at 85% 0%, rgba(200, 40, 30, 0.18), transparent 60%);
+}
+.pagehero .wrap, .pagehero__ghost { position: relative; z-index: 2; }
 .pagehero__overline { color: var(--brass-pale); margin-bottom: clamp(1rem, 2.5vh, 1.6rem); display: inline-flex; align-items: center; gap: 0.8rem; }
 .pagehero__overline::before { content: ''; width: 34px; height: 1px; background: currentColor; }
 .pagehero__head {

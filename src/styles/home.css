@@ -20,6 +20,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 22%;
   transform: scale(1.06);
 }
 .hero__atmosphere {
@@ -28,7 +29,7 @@
   z-index: 1;
   pointer-events: none;
   mix-blend-mode: screen;
-  opacity: 0.85;
+  opacity: 0.4; /* breathing warm light over the real photo, not a wash */
   -webkit-mask-image: linear-gradient(to bottom, black 0%, black 55%, transparent 95%);
   mask-image: linear-gradient(to bottom, black 0%, black 55%, transparent 95%);
 }
@@ -88,15 +89,19 @@
 
 .hero__scrollcue {
   position: absolute;
-  bottom: clamp(9rem, 26vh, 16rem);
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 1.2rem;
+  inset-inline-start: var(--gutter);
   z-index: 4;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.6rem;
-  color: rgba(247, 243, 234, 0.75);
+  color: var(--cream);
+  padding: 0.55em 1em;
+  border-radius: 999px;
+  background: rgba(13, 11, 7, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 .hero__scrollcue::after {
   content: '';
@@ -623,30 +628,43 @@
 /* ── 09 · WHY ME — full-bleed photo statement ── */
 .whyme {
   position: relative;
-  background:
-    linear-gradient(to top, rgba(13, 11, 7, 0.92) 0%, rgba(13, 11, 7, 0.55) 45%, rgba(13, 11, 7, 0.35) 100%),
-    url('/assets/book-interior.webp') center 30% / cover no-repeat,
-    var(--ink);
+  background: var(--ink);
   color: var(--cream);
   min-height: 100svh;
+  overflow: clip;
 }
-/* AA scrim: the copy column needs ~0.88 ink over the bright photo pages */
+.whyme__backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.whyme__backdrop img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+/* the subject stands opposite the copy column in both directions */
+[dir='rtl'] .whyme__backdrop img { transform: scaleX(-1); }
+/* AA scrim over the copy column */
 .whyme::before {
   content: '';
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: 1;
   pointer-events: none;
-  background: linear-gradient(
-    var(--side-grad, 90deg),
-    rgba(13, 11, 7, 0.9) 0%,
-    rgba(13, 11, 7, 0.85) 52%,
-    rgba(13, 11, 7, 0.55) 78%,
-    rgba(13, 11, 7, 0.22) 100%
-  );
+  background:
+    linear-gradient(to top, rgba(13, 11, 7, 0.85) 0%, rgba(13, 11, 7, 0.3) 40%, rgba(13, 11, 7, 0.15) 100%),
+    linear-gradient(
+      var(--side-grad, 90deg),
+      rgba(13, 11, 7, 0.88) 0%,
+      rgba(13, 11, 7, 0.78) 52%,
+      rgba(13, 11, 7, 0.4) 78%,
+      rgba(13, 11, 7, 0.12) 100%
+    );
 }
 [dir='rtl'] .whyme::before { --side-grad: 270deg; }
-.whyme .wrap { position: relative; z-index: 1; }
+.whyme .wrap { position: relative; z-index: 2; }
 .whyme__intro {
   font-family: var(--font-statement);
   font-weight: 500;

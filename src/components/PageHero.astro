@@ -1,8 +1,13 @@
 ---
 import SegHead from './SegHead.astro';
-const { overline, head, deck, deckStrong, ghost, tall = false } = Astro.props;
+const { overline, head, deck, deckStrong, ghost, tall = false, photo } = Astro.props;
 ---
-<section class:list={['pagehero', 'stage', { 'pagehero--tall': tall }]} data-theme="dark">
+<section class:list={['pagehero', 'stage', { 'pagehero--tall': tall, 'pagehero--photo': !!photo }]} data-theme="dark">
+  {photo && (
+    <div class="pagehero__backdrop" aria-hidden="true">
+      <img src={photo} alt="" fetchpriority="high" />
+    </div>
+  )}
   {ghost && <span class="pagehero__ghost" aria-hidden="true">{ghost}</span>}
   <div class="wrap">
     <p class="pagehero__overline t-mono" data-reveal="fade">{overline}</p>
