@@ -47,55 +47,7 @@ addEventListener('scroll', () => {
   updatePillNav();
 }, { passive: true });
 
-/* ── Custom Cursor Coordinates Loop (Registered ONCE) ── */
-let mX = innerWidth / 2, mY = innerHeight / 2, cX = mX, cY = mY;
-let cursorShown = false;
-let cursorEl = null;
-let cursorLabelEl = null;
 
-if (finePointer && !reduceMotion) {
-  document.body.classList.add('has-cursor');
-  addEventListener('mousemove', (e) => {
-    if (!cursorShown) {
-      cursorShown = true;
-      if (cursorEl) cursorEl.style.opacity = '1';
-    }
-    mX = e.clientX; mY = e.clientY;
-  });
-
-  let lastT = performance.now();
-  const draw = (t) => {
-    const dt = Math.min((t - lastT) / 16.667, 4);
-    lastT = t;
-    const k = 1 - Math.pow(1 - 0.24, dt);
-    cX += (mX - cX) * k;
-    cY += (mY - cY) * k;
-    if (cursorEl) {
-      cursorEl.style.transform = `translate3d(${cX}px, ${cY}px, 0)`;
-    }
-    requestAnimationFrame(draw);
-  };
-  requestAnimationFrame(draw);
-}
-
-// Bind custom cursor targets
-const bindCursorTargets = (root = document) => {
-  if (reduceMotion || !finePointer) return;
-  root.querySelectorAll('a, button, [data-cursor]').forEach((el) => {
-    if (el.__cursorBound) return;
-    el.__cursorBound = true;
-    const style = el.getAttribute('data-cursor-style') || 'link';
-    el.addEventListener('mouseenter', () => {
-      document.body.classList.remove('cursor-link', 'cursor-button', 'cursor-drag');
-      document.body.classList.add(`cursor-${style}`);
-      if (cursorLabelEl) cursorLabelEl.textContent = el.getAttribute('data-cursor') || '';
-    });
-    el.addEventListener('mouseleave', () => {
-      document.body.classList.remove('cursor-link', 'cursor-button', 'cursor-drag');
-    });
-  });
-};
-window.__bindCursorTargets = bindCursorTargets;
 
 // Helper to format statistics numbers
 const fmt = (n, abbr) => {
@@ -110,13 +62,7 @@ document.addEventListener('astro:page-load', () => {
   scrollProgressEl = document.querySelector('.scroll-progress');
   pillnavEl = document.querySelector('.pillnav');
   contactPillsEl = document.querySelector('.contact-pills');
-  cursorEl = document.getElementById('cursor');
-  cursorLabelEl = document.getElementById('cursorLabel');
-  lastY = scrollY;
 
-  if (cursorEl && cursorShown) {
-    cursorEl.style.opacity = '1';
-  }
 
   updateScrollProgress();
 
@@ -235,8 +181,7 @@ document.addEventListener('astro:page-load', () => {
     });
   }
 
-  // 5. Custom cursor hover targets
-  bindCursorTargets();
+
 
   // 6. Magnetic Elements
   if (finePointer && !reduceMotion) {

@@ -309,10 +309,23 @@ body:has(:focus-visible) { cursor: auto; }
 
 .cta:active { transform: translateY(0) scale(0.985); transition-duration: 110ms; }
 
-.cta__arrow { display: inline-flex; transition: transform 360ms var(--ease-out); }
-.cta:hover .cta__arrow { transform: translateX(var(--arrow-dir, 4px)); }
+.cta__arrow { display: inline-flex; transition: transform 380ms var(--ease-osmo), opacity 240ms; }
+.cta:hover .cta__arrow { animation: cta-arrow-slide 480ms var(--ease-osmo) forwards; }
 [dir='rtl'] .cta__arrow svg { transform: scaleX(-1); }
-[dir='rtl'] .cta:hover .cta__arrow { --arrow-dir: -4px; }
+[dir='rtl'] .cta:hover .cta__arrow { animation: cta-arrow-slide-rtl 480ms var(--ease-osmo) forwards; }
+
+@keyframes cta-arrow-slide {
+  0% { transform: translateX(0); opacity: 1; }
+  49% { transform: translateX(180%); opacity: 0; }
+  50% { transform: translateX(-180%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+@keyframes cta-arrow-slide-rtl {
+  0% { transform: translateX(0); opacity: 1; }
+  49% { transform: translateX(-180%); opacity: 0; }
+  50% { transform: translateX(180%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
 
 /* ═══════════════ REDUCED MOTION — kill everything ═══════════════ */
 @media (prefers-reduced-motion: reduce) {
