@@ -1,0 +1,37 @@
+---
+import { inner } from '../data/copy/inner.js';
+import PageHero from './PageHero.astro';
+import CtaBand from './CtaBand.astro';
+
+const { lang = 'ar' } = Astro.props;
+const t = inner.story[lang];
+---
+<PageHero overline={t.hero.overline} head={t.hero.head} deck={t.hero.deck} ghost="01" tall />
+
+<section class="inner-section stage" data-theme="light">
+  <div class="wrap">
+    {t.chapters.map((ch) => (
+      <article class="chapter">
+        <span class="chapter__num" data-reveal="fade">{ch.num}</span>
+        <div>
+          <h2 class="chapter__title" data-reveal="rise-fast">{ch.title}</h2>
+          <p class="chapter__body" data-reveal="rise-slow" style="--delay:120ms">{ch.body}</p>
+          {ch.pull && <p class="chapter__pull" data-reveal="from-side" style="--delay:240ms">{ch.pull}</p>}
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<section class="credband" data-theme="dark">
+  <dl class="credband__grid">
+    {t.credBand.items.map((item, i) => (
+      <div class="credband__item" data-reveal="rise-fast" style={`--delay:${i * 110}ms`}>
+        <dt class="t-mono">{item.k}</dt>
+        <dd>{item.v}</dd>
+      </div>
+    ))}
+  </dl>
+</section>
+
+<CtaBand head={t.cta.head} sub={t.cta.sub} primary={t.cta.primary} secondary={t.cta.secondary} />

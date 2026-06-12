@@ -1,0 +1,14 @@
+---
+import Base from '../../../layouts/Base.astro';
+import BookPage from '../../../components/BookPage.astro';
+import { inner } from '../../../data/copy/inner.js';
+import { PATHS } from '../../../data/site.js';
+import '../../../styles/inner.css';
+import '../../../styles/home.css';
+const lang = 'en';
+const t = inner.book[lang];
+---
+<Base lang={lang} title={t.meta.title} description={t.meta.description} alt={PATHS.book} firstTheme="dark">
+  <BookPage lang={lang}  />
+  <script src="../../../scripts/inner.js"></script>
+</Base>

@@ -1,0 +1,55 @@
+---
+import { inner } from '../data/copy/inner.js';
+import PageHero from './PageHero.astro';
+import CtaBand from './CtaBand.astro';
+import Arrow from './Arrow.astro';
+
+const { lang = 'ar', program = 'consultant' } = Astro.props;
+const t = inner.programs[program][lang];
+const ghost = program === 'consultant' ? '01' : '02';
+---
+<PageHero overline={t.hero.overline} head={t.hero.head} deck={t.hero.deck} ghost={ghost} tall>
+  <div class="pagehero__ctas" data-reveal="rise-fast" style="--delay:450ms">
+    <a class="cta cta--primary magnetic" data-cursor-style="button" data-cursor="ASK" href={t.cta.primary.href}>
+      <span>{t.cta.primary.label}</span>
+      <span class="cta__arrow"><Arrow /></span>
+    </a>
+  </div>
+</PageHero>
+
+<section class="inner-section stage" data-theme="light">
+  <div class="wrap">
+    <div class="section-head" data-reveal="fade">
+      <span class="section-head__num">{ghost}</span>
+      <span class="section-head__line"></span>
+      <span class="section-head__label">{t.pillarsLabel}</span>
+    </div>
+    <div class="pillars">
+      {t.pillars.map((p, i) => (
+        <div class="pillar" data-reveal="rise-fast" style={`--delay:${i * 130}ms`}>
+          <h3>{p.head}</h3>
+          <p>{p.body}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- OWNER-TODO: curriculum, duration, pricing, enroll flow -->
+    <div class="pending-card" data-reveal="rise-slow">
+      <div>
+        <p class="t-mono" style="margin-bottom: 0.6rem">{t.pending.label}</p>
+        <p>{t.pending.note}</p>
+      </div>
+      <a class="cta cta--primary magnetic" data-cursor-style="button" data-cursor="ASK" href={t.cta.primary.href}>
+        <span>{t.cta.primary.label}</span>
+        <span class="cta__arrow"><Arrow /></span>
+      </a>
+    </div>
+
+    <a class="program-crosslink" href={t.crossLink.href} data-cursor="NEXT">
+      <span>{t.crossLink.label}</span>
+      <span class="cta__arrow"><Arrow /></span>
+    </a>
+  </div>
+</section>
+
+<CtaBand head={t.cta.head} sub={t.cta.sub} primary={t.cta.primary} secondary={t.cta.secondary} primaryExternal={false} secondaryExternal />

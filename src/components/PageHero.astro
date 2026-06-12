@@ -1,0 +1,19 @@
+---
+import SegHead from './SegHead.astro';
+const { overline, head, deck, deckStrong, ghost, tall = false } = Astro.props;
+---
+<section class:list={['pagehero', 'stage', { 'pagehero--tall': tall }]} data-theme="dark">
+  {ghost && <span class="pagehero__ghost" aria-hidden="true">{ghost}</span>}
+  <div class="wrap">
+    <p class="pagehero__overline t-mono" data-reveal="fade">{overline}</p>
+    <h1 class="t-display pagehero__head split-mask">
+      <SegHead segments={head} />
+    </h1>
+    {deck && (
+      <p class="pagehero__deck" data-reveal="rise-slow" style="--delay:250ms">
+        {deck} {deckStrong && <strong>{deckStrong}</strong>}
+      </p>
+    )}
+    <slot />
+  </div>
+</section>

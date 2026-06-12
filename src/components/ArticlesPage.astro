@@ -1,0 +1,37 @@
+---
+import { inner, articleTeasers } from '../data/copy/inner.js';
+import PageHero from './PageHero.astro';
+import CtaBand from './CtaBand.astro';
+import Arrow from './Arrow.astro';
+
+const { lang = 'ar' } = Astro.props;
+const t = inner.articles[lang];
+const teasers = articleTeasers[lang];
+---
+<PageHero overline={t.hero.overline} head={t.hero.head} deck={t.hero.deck} ghost="150" />
+
+<section class="inner-section inner-section--cloud stage" data-theme="light">
+  <div class="wrap">
+    <!-- OWNER-TODO: replace teasers with the real article archive (titles, slugs, dates, source). -->
+    <div class="articles-grid">
+      {teasers.map((a, i) => (
+        <article class="article-card" data-reveal="rise-fast" style={`--delay:${i * 90}ms`}>
+          <div class="article-card__top t-mono">
+            <span class="article-card__tag">{a.tag}</span>
+            <span>{t.comingTag}</span>
+          </div>
+          <h2 class="article-card__title">{a.title}</h2>
+        </article>
+      ))}
+    </div>
+    <div class="articles-note" data-reveal="rise-slow">
+      <p>{t.note}</p>
+      <a class="cta cta--secondary magnetic" data-cursor="READ" href={t.readOnAlmobadir.href} target="_blank" rel="noopener noreferrer">
+        <span>{t.readOnAlmobadir.label}</span>
+        <span class="cta__arrow"><Arrow /></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<CtaBand head={t.cta.head} sub={t.cta.sub} primary={t.cta.primary} secondary={t.cta.secondary} secondaryExternal />

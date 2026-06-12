@@ -1,0 +1,14 @@
+---
+import Base from '../../layouts/Base.astro';
+import ArticlesPage from '../../components/ArticlesPage.astro';
+import { inner } from '../../data/copy/inner.js';
+import { PATHS } from '../../data/site.js';
+import '../../styles/inner.css';
+
+const lang = 'ar';
+const t = inner.articles[lang];
+---
+<Base lang={lang} title={t.meta.title} description={t.meta.description} alt={PATHS.articles} firstTheme="dark">
+  <ArticlesPage lang={lang}  />
+  <script src="../../scripts/inner.js"></script>
+</Base>

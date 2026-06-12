@@ -1,0 +1,92 @@
+---
+import { inner } from '../data/copy/inner.js';
+import { home } from '../data/copy/home.js';
+import PageHero from './PageHero.astro';
+import CtaBand from './CtaBand.astro';
+import Arrow from './Arrow.astro';
+
+const { lang = 'ar' } = Astro.props;
+const t = inner.consultation[lang];
+const c = home[lang].consulting; // approved steps + card
+const stepsLabel = lang === 'ar' ? 'كيف تمشي الجلسة' : 'How the session runs';
+---
+<PageHero overline={t.hero.overline} head={t.hero.head} deck={t.hero.deck} deckStrong={t.hero.deckStrong} ghost="90" tall>
+  <div class="pagehero__ctas" data-reveal="rise-fast" style="--delay:450ms">
+    <a class="cta cta--primary magnetic" data-cursor-style="button" data-cursor="BOOK" href={c.card.cta.href} target="_blank" rel="noopener noreferrer">
+      <span>{c.card.cta.label}</span>
+      <span class="cta__arrow"><Arrow /></span>
+    </a>
+  </div>
+</PageHero>
+
+<!-- the 4 steps + booking card (approved copy, same system as home) -->
+<section class="consulting stage" data-theme="light">
+  <div class="consulting__ghost" aria-hidden="true">90</div>
+  <div class="wrap">
+    <div class="section-head" data-reveal="fade">
+      <span class="section-head__num">01</span>
+      <span class="section-head__line"></span>
+      <span class="section-head__label">{stepsLabel}</span>
+    </div>
+    <div class="consulting__grid">
+      <div>
+        <div class="consulting__steps" style="margin-top: 0">
+          {c.steps.map((step, i) => (
+            <div class="consulting__step" data-reveal="rise-fast" style={`--delay:${i * 130}ms`}>
+              <span class="consulting__step-num">0{i + 1}</span>
+              <div>
+                <h3 class="consulting__step-head">{step.head}</h3>
+                <p class="consulting__step-body">{step.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <aside class="consulting__card" data-reveal="scale">
+        <div class="consulting__card-tag t-mono">{c.card.tag}</div>
+        <h2 class="consulting__card-head">{c.card.head}</h2>
+        <p class="consulting__card-deck">{c.card.deck}</p>
+        <div class="consulting__card-meta t-mono">
+          {c.card.meta.map((m) => (
+            <div><span>{m.k}</span><strong>{m.v}</strong></div>
+          ))}
+        </div>
+        <a class="cta cta--primary magnetic" data-cursor-style="button" data-cursor="BOOK" href={c.card.cta.href} target="_blank" rel="noopener noreferrer">
+          <span>{c.card.cta.label}</span>
+          <span class="cta__arrow"><Arrow /></span>
+        </a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- fit / no-fit -->
+<section class="inner-section inner-section--cloud stage" data-theme="light">
+  <div class="wrap">
+    <div class="section-head" data-reveal="fade">
+      <span class="section-head__num">02</span>
+      <span class="section-head__line"></span>
+      <span class="section-head__label">{t.forLabel}</span>
+    </div>
+    <div class="fitlist">
+      <div class="fitlist__col fitlist__col--yes" data-reveal="rise-fast">
+        <h3>{t.forLabel}</h3>
+        <ul>
+          {t.forItems.map((item, i) => (
+            <li data-reveal="from-side" style={`--delay:${i * 120}ms`}>{item}</li>
+          ))}
+        </ul>
+      </div>
+      <div class="fitlist__col fitlist__col--no" data-reveal="rise-fast" style="--delay:150ms">
+        <h3>{t.notForLabel}</h3>
+        <ul>
+          {t.notForItems.map((item, i) => (
+            <li data-reveal="from-side" style={`--delay:${150 + i * 120}ms`}>{item}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<CtaBand head={t.cta.head} sub={t.cta.sub} primary={t.cta.primary} secondary={t.cta.secondary} />

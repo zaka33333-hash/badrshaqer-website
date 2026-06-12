@@ -1,0 +1,91 @@
+---
+import { inner } from '../data/copy/inner.js';
+import { home } from '../data/copy/home.js';
+import SegHead from './SegHead.astro';
+import CtaBand from './CtaBand.astro';
+import Arrow from './Arrow.astro';
+
+const { lang = 'ar' } = Astro.props;
+const t = inner.book[lang];
+const bk = home[lang].book; // cover labels (approved)
+---
+<!-- hero: dark, the floating book + title -->
+<section class="pagehero pagehero--tall stage" data-theme="dark">
+  <div class="wrap">
+    <div class="bookhero__grid">
+      <div>
+        <p class="pagehero__overline t-mono" data-reveal="fade">{t.hero.overline}</p>
+        <h1 class="t-display pagehero__head split-mask">
+          <SegHead segments={t.hero.head} />
+        </h1>
+        <p class="pagehero__deck" data-reveal="rise-slow" style="--delay:250ms">{t.hero.deck}</p>
+        <div class="pagehero__ctas" data-reveal="rise-fast" style="--delay:450ms">
+          <a class="cta cta--primary magnetic" data-cursor-style="button" data-cursor="BUY" href={t.hero.cta.href} target="_blank" rel="noopener noreferrer">
+            <span>{t.hero.cta.label}</span>
+            <span class="cta__arrow"><Arrow /></span>
+          </a>
+          <a class="cta cta--secondary magnetic" data-cursor="READ" href={t.hero.sample.href} target="_blank" rel="noopener noreferrer">
+            <span>{t.hero.sample.label}</span>
+          </a>
+        </div>
+        <p class="t-mono" data-reveal="fade" style="--delay:600ms; margin-top: 1.4rem; color: rgba(247,243,234,0.55)">{t.noteLang}</p>
+      </div>
+      <div class="bookteaser__stagezone" data-reveal="scale">
+        <div class="bookteaser__book" aria-hidden="true">
+          <div class="bookteaser__spine"></div>
+          <div class="bookteaser__pages"></div>
+          <div class="bookteaser__face">
+            <div class="bookteaser__face-top t-mono"><span>{bk.coverTop[0]}</span><span>{bk.coverTop[1]}</span></div>
+            <div class="bookteaser__face-title">{bk.coverTitle}</div>
+            <div class="bookteaser__face-bottom t-mono"><span>{bk.coverBottom[0]}</span><span>{bk.coverBottom[1]}</span></div>
+          </div>
+          <div class="bookteaser__shadow"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- why this book -->
+<section class="inner-section stage" data-theme="light">
+  <div class="wrap">
+    <div class="section-head" data-reveal="fade">
+      <span class="section-head__num">01</span>
+      <span class="section-head__line"></span>
+      <span class="section-head__label">{t.whyLabel}</span>
+    </div>
+    <h2 class="t-display section-title split-mask">
+      <SegHead segments={t.whyHead} />
+    </h2>
+    <div class="reasons-grid" style="margin-top: clamp(2rem, 5vh, 3rem)">
+      {t.reasons.map((r, i) => (
+        <div class="reason-card" data-reveal="rise-fast" style={`--delay:${i * 130}ms`}>
+          <h3>{r.head}</h3>
+          <p>{r.body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- who it's for -->
+<section class="inner-section inner-section--cloud stage" data-theme="light">
+  <div class="wrap">
+    <div class="section-head" data-reveal="fade">
+      <span class="section-head__num">02</span>
+      <span class="section-head__line"></span>
+      <span class="section-head__label">{t.forLabel}</span>
+    </div>
+    <div class="fitlist">
+      <div class="fitlist__col fitlist__col--yes">
+        <ul>
+          {t.forItems.map((item, i) => (
+            <li data-reveal="from-side" style={`--delay:${i * 130}ms`}>{item}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<CtaBand head={t.sampleBand.head} sub={t.sampleBand.sub} primary={t.sampleBand.cta} />

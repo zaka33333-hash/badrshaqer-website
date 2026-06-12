@@ -1,0 +1,32 @@
+---
+import Arrow from './Arrow.astro';
+const { head, sub, primary, secondary, primaryExternal = true, secondaryExternal = false } = Astro.props;
+---
+<section class="ctaband" data-theme="dark">
+  <h2 class="ctaband__head" data-reveal="rise-slow">{head}</h2>
+  {sub && <p class="ctaband__sub" data-reveal="rise-slow" style="--delay:150ms">{sub}</p>}
+  <div class="ctaband__ctas" data-reveal="rise-fast" style="--delay:300ms">
+    <a
+      class="cta cta--primary magnetic"
+      data-cursor-style="button"
+      data-cursor="BOOK"
+      href={primary.href}
+      target={primaryExternal ? '_blank' : undefined}
+      rel={primaryExternal ? 'noopener noreferrer' : undefined}
+    >
+      <span>{primary.label}</span>
+      <span class="cta__arrow"><Arrow /></span>
+    </a>
+    {secondary && (
+      <a
+        class="cta cta--secondary magnetic"
+        data-cursor="READ"
+        href={secondary.href}
+        target={secondaryExternal ? '_blank' : undefined}
+        rel={secondaryExternal ? 'noopener noreferrer' : undefined}
+      >
+        <span>{secondary.label}</span>
+      </a>
+    )}
+  </div>
+</section>
