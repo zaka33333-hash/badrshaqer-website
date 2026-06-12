@@ -118,11 +118,16 @@ if (menuToggle && menuPanel) {
   const links = menuPanel.querySelectorAll('a');
   links.forEach((a, i) => a.style.setProperty('--d', `${80 + i * 45}ms`));
   menuPanel.inert = true;
+  // while the menu is open, everything else leaves the tab order entirely
+  const background = ['main', 'footer', '.pillnav', '.contact-pills', '.skip-link']
+    .map((s) => document.querySelector(s))
+    .filter(Boolean);
   const close = (refocus = true) => {
     menuToggle.setAttribute('aria-expanded', 'false');
     menuToggle.classList.remove('is-open');
     menuPanel.classList.remove('is-open');
     menuPanel.inert = true;
+    background.forEach((el) => { el.inert = false; });
     lenis?.start();
     if (refocus) menuToggle.focus();
   };
@@ -131,6 +136,7 @@ if (menuToggle && menuPanel) {
     menuToggle.classList.add('is-open');
     menuPanel.classList.add('is-open');
     menuPanel.inert = false;
+    background.forEach((el) => { el.inert = true; });
     lenis?.stop();
     links[0]?.focus();
   };
@@ -142,7 +148,8 @@ if (menuToggle && menuPanel) {
     if (!menuPanel.classList.contains('is-open')) return;
     if (e.key === 'Escape') return close();
     if (e.key === 'Tab') {
-      const focusables = [...menuPanel.querySelectorAll('a, button'), menuToggle];
+      // cycle: toggle (DOM-first) → panel links/buttons → back to toggle
+      const focusables = [menuToggle, ...menuPanel.querySelectorAll('a, button')];
       const first = focusables[0];
       const last = focusables[focusables.length - 1];
       if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }

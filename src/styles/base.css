@@ -104,6 +104,18 @@ body:has(:focus-visible) { cursor: auto; }
   background: var(--theme-bg);
   color: var(--theme-fg);
 }
+/* the data-theme attribute (used by the HUD observer) must also map the
+   theme slots — otherwise dark sections inherit ink fg for ghost CTAs */
+[data-theme='dark'] {
+  --theme-fg: var(--cream);
+  --theme-soft: rgba(247, 243, 234, 0.68);
+  color: var(--theme-fg);
+}
+[data-theme='light'] {
+  --theme-fg: var(--ink);
+  --theme-soft: var(--ink-soft);
+  color: var(--theme-fg);
+}
 
 /* ── type voices ── */
 .t-display {
@@ -131,6 +143,16 @@ body:has(:focus-visible) { cursor: auto; }
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+}
+/* Arabic is a connected script — Latin tracking severs the joins.
+   :lang(ar) keeps the tracked-mono voice for embedded Latin only. */
+:lang(ar) :is(.t-mono, .section-head__label, .menu-toggle, .loader__pct),
+:lang(ar).t-mono, :lang(ar).section-head__label {
+  letter-spacing: 0.02em;
+  font-size: 12px;
+}
+@media (max-width: 480px) {
+  .t-mono, .section-head__label { font-size: 12px; }
 }
 
 .t-deck {
@@ -201,6 +223,12 @@ body:has(:focus-visible) { cursor: auto; }
   transition-delay: var(--d, 0ms);
 }
 .js .split-mask.is-in .word, .js .split-mask.is-in .char { transform: none; opacity: 1; }
+/* keyboard focus must never land on an invisible target */
+.js [data-reveal]:focus-visible, .js [data-reveal]:focus-within {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0ms;
+}
 /* gsap-driven splits start hidden too (gsap.set runs on module load) */
 .js .split-gsap .word { transform: translateY(140%); }
 @media (prefers-reduced-motion: reduce) {

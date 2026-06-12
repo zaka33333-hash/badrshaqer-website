@@ -45,7 +45,7 @@ export const shared = {
       ctaRead: 'احصل على الكتاب',
       role: 'مستشار مؤسسين · مستشار أعمال',
       rights: `© ${SITE.year} بدر شاكر · جميع الحقوق محفوظة`,
-      builtWith: 'بُني بـ Astro · GSAP · Lenis',
+      builtWith: 'مبني بـ Astro · GSAP · Lenis',
       socialsLabel: 'حسابات التواصل',
       contactLabel: 'تواصل',
     },

@@ -15,6 +15,11 @@
   overflow: clip;
 }
 .pagehero--tall { min-height: 92svh; }
+/* small phones: content-sized hero so the primary CTA lands in view */
+@media (max-width: 480px) {
+  .pagehero, .pagehero--tall { min-height: 0; padding-block: 6rem 2.6rem; }
+  .pagehero__head { font-size: clamp(2.1rem, 10vw, 2.8rem); }
+}
 .pagehero__overline { color: var(--brass-pale); margin-bottom: clamp(1rem, 2.5vh, 1.6rem); display: inline-flex; align-items: center; gap: 0.8rem; }
 .pagehero__overline::before { content: ''; width: 34px; height: 1px; background: currentColor; }
 .pagehero__head {

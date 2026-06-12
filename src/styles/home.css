@@ -136,7 +136,7 @@
 
 @media (max-width: 720px) {
   .hero__role--a { top: 22%; }
-  .hero__role--b { bottom: 26%; }
+  .hero__role--b { bottom: 34%; }
   .hero__name {
     flex-direction: column;
     align-items: stretch;
@@ -320,7 +320,7 @@
   line-height: 1.4;
   color: var(--cream);
 }
-.services__card-arrow { color: var(--brass-pale); opacity: 0; transform: translateX(calc(var(--arrow-dir, 1) * -10px)); transition: opacity 300ms, transform 420ms var(--ease-osmo); flex-shrink: 0; }
+.services__card-arrow { color: var(--brass-pale); opacity: 0.4; transform: translateX(calc(var(--arrow-dir, 1) * -10px)); transition: opacity 300ms, transform 420ms var(--ease-osmo); flex-shrink: 0; }
 [dir='rtl'] .services__card-arrow { --arrow-dir: -1; }
 [dir='rtl'] .services__card-arrow svg { transform: scaleX(-1); }
 .services__card:hover .services__card-arrow { opacity: 1; transform: none; }
@@ -341,7 +341,7 @@
   color: rgba(13, 11, 7, 0.35);
 }
 .proof__rail span.is-hot { color: var(--carmine); }
-.proof__head { font-size: clamp(2.4rem, 6vw, 5.2rem); max-width: 20ch; }
+.proof__head { font-size: clamp(2.4rem, 6vw, 5.2rem); max-width: 20ch; margin-block-end: clamp(1.2rem, 2.4vw, 1.8rem); }
 .proof__numbers {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -440,7 +440,7 @@
   gap: clamp(2.5rem, 6vw, 5.5rem);
   align-items: start;
 }
-.consulting__head { font-size: clamp(2.4rem, 5.6vw, 5rem); }
+.consulting__head { font-size: clamp(2.4rem, 5.6vw, 5rem); margin-block-end: clamp(1.2rem, 2.4vw, 1.8rem); }
 .consulting__steps { display: flex; flex-direction: column; margin-top: clamp(1.8rem, 4vh, 3rem); }
 .consulting__step {
   display: grid;
@@ -584,7 +584,7 @@
   filter: blur(6px);
   will-change: transform, opacity;
 }
-.bookteaser__head { font-size: clamp(2.4rem, 5.6vw, 5rem); }
+.bookteaser__head { font-size: clamp(2.4rem, 5.6vw, 5rem); margin-block-end: clamp(1rem, 2vw, 1.5rem); }
 .bookteaser__subtitle {
   font-family: var(--font-quote);
   font-size: clamp(1.15rem, 1.7vw, 1.45rem);
@@ -616,7 +616,8 @@
 .bookteaser__note { margin-top: 0.9rem; color: var(--ink-soft); opacity: 0.75; }
 @media (max-width: 900px) {
   .bookteaser__grid { grid-template-columns: 1fr; }
-  .bookteaser__stagezone { order: -1; min-height: clamp(17rem, 42vh, 24rem); }
+  .bookteaser__grid .bookteaser__stagezone { order: -1; }
+  .bookteaser__stagezone { min-height: clamp(17rem, 42vh, 24rem); }
 }
 
 /* ── 09 · WHY ME — full-bleed photo statement ── */
@@ -689,7 +690,7 @@
   gap: clamp(2.5rem, 6vw, 5rem);
   align-items: center;
 }
-.publication__head { font-size: clamp(2rem, 4.6vw, 3.9rem); }
+.publication__head { font-size: clamp(2rem, 4.6vw, 3.9rem); margin-block-end: clamp(1.2rem, 2.4vw, 1.8rem); }
 .publication__visual {
   aspect-ratio: 4 / 5;
   width: 100%;
