@@ -41,7 +41,7 @@
     linear-gradient(to top, rgba(13, 11, 7, 0.92) 0%, rgba(13, 11, 7, 0.45) 45%, rgba(13, 11, 7, 0.25) 100%),
     radial-gradient(ellipse 70% 60% at 85% 0%, rgba(200, 40, 30, 0.18), transparent 60%);
 }
-.pagehero .wrap, .pagehero__ghost { position: relative; z-index: 2; }
+.pagehero .wrap { position: relative; z-index: 2; }
 .pagehero__overline { color: var(--brass-pale); margin-bottom: clamp(1rem, 2.5vh, 1.6rem); display: inline-flex; align-items: center; gap: 0.8rem; }
 .pagehero__overline::before { content: ''; width: 34px; height: 1px; background: currentColor; }
 .pagehero__head {
@@ -58,19 +58,6 @@
 }
 .pagehero__deck strong { color: var(--cream); }
 .pagehero__ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: clamp(1.6rem, 4vh, 2.6rem); }
-.pagehero__ghost {
-  position: absolute;
-  inset-inline-end: -2%;
-  top: 8%;
-  font-family: var(--display-en);
-  font-style: normal;
-  font-weight: 500;
-  font-size: clamp(8rem, 22vw, 22rem);
-  line-height: 1;
-  color: rgba(247, 243, 234, 0.05);
-  pointer-events: none;
-  user-select: none;
-}
 
 /* ── story chapters ── */
 .chapter {

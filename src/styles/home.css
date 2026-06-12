@@ -1,5 +1,75 @@
 /* ═══════════════ HOME · 11 sections ═══════════════ */
 
+/* ── section-nav rail (fixed, left) — faithful port of the old "scenes" nav.
+   Italic serif numerals, mix-blend-difference so it reads over any section,
+   line + label reveal on hover. The red ring (originally the custom cursor
+   hovering an item) is baked into the hover state. ── */
+.scenes {
+  position: fixed;
+  top: 50%;
+  inset-inline-start: clamp(1rem, 2.5vw, 2.4rem);
+  transform: translateY(-50%);
+  z-index: 45;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  mix-blend-mode: difference;
+  color: var(--parchment);
+}
+.scenes__item {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  opacity: 0.32;
+  transition: opacity 380ms var(--ease-out);
+  cursor: pointer;
+}
+.scenes__item:hover { opacity: 0.65; }
+.scenes__item.is-active { opacity: 1; }
+.scenes__num {
+  position: relative;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1;
+  min-width: 14px;
+  text-align: center;
+}
+.scenes__num::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  inset-inline-start: 50%;
+  width: 34px;
+  height: 34px;
+  translate: -50% -50%;
+  border: 1.5px solid var(--carmine);
+  border-radius: 50%;
+  opacity: 0;
+  scale: 0.5;
+  transition: opacity 360ms var(--ease-out), scale 420ms var(--ease-elastic);
+  pointer-events: none;
+}
+.scenes__line {
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 460ms var(--ease-out);
+}
+.scenes__label {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 460ms var(--ease-out), transform 460ms var(--ease-out);
+}
+.scenes__item:hover .scenes__num::after { opacity: 1; scale: 1; }
+.scenes__item:hover .scenes__line { width: 32px; }
+.scenes__item:hover .scenes__label { opacity: 1; transform: translateX(0); }
+@media (max-width: 720px) { .scenes { display: none; } }
+
 /* ── 01 · HERO — full-bleed cinematic, giant split name ── */
 .hero {
   position: relative;
@@ -192,6 +262,18 @@
   align-content: center;
   overflow: clip;
 }
+.statement__content {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  justify-items: center;
+  gap: clamp(1.1rem, 3vh, 2rem);
+  padding-inline: var(--gutter);
+}
+.statement__eyebrow {
+  color: var(--carmine);
+  letter-spacing: 0.32em;
+}
 .statement__line {
   font-size: clamp(2.6rem, 7vw, 6.4rem);
   max-width: 16ch;
@@ -199,25 +281,17 @@
   text-align: center;
   text-wrap: balance;
 }
-.statement__asterisk {
-  position: absolute;
-  top: clamp(2rem, 12vh, 6rem);
-  inset-inline-end: clamp(2rem, 10vw, 9rem);
-  width: clamp(70px, 9vw, 150px);
-  color: var(--shape-coral);
-  will-change: transform;
+.statement__deck {
+  font-family: var(--font-body);
+  font-size: clamp(1.02rem, 1.5vw, 1.25rem);
+  line-height: 1.7;
+  max-width: 38ch;
+  margin-inline: auto;
+  text-align: center;
+  color: var(--ink-soft);
+  text-wrap: balance;
 }
-.statement__rect {
-  position: absolute;
-  width: clamp(160px, 24vw, 380px);
-  height: clamp(110px, 16vw, 250px);
-  border-radius: clamp(18px, 3vw, 40px);
-  background: var(--shape-blush);
-  opacity: 0.85;
-  will-change: transform;
-}
-.statement__rect--a { bottom: -6%; inset-inline-start: 4%; transform: rotate(-9deg); }
-.statement__rect--b { bottom: -12%; inset-inline-start: 36%; transform: rotate(3deg); }
+/* extra counterpoint shapes — a hollow ring + a solid dot to fill the canvas */
 
 /* ── 03 · PROMISE — dark serif chapter ── */
 .promise {
@@ -236,18 +310,6 @@
   font-size: clamp(3rem, 8.5vw, 7.6rem);
   line-height: 1.04;
 }
-.promise__ring {
-  position: absolute;
-  top: -8%;
-  inset-inline-start: -10%;
-  width: clamp(60px, 7vw, 90px);
-  aspect-ratio: 1;
-  border: 1px solid rgba(212, 180, 131, 0.35);
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-}
-.promise__ring::after { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--brass-pale); }
 .promise__body {
   font-family: var(--font-quote);
   font-size: clamp(1.25rem, 2vw, 1.75rem);
@@ -351,21 +413,8 @@
 .services__card:hover .services__card-arrow { opacity: 1; transform: none; }
 @media (max-width: 900px) { .services__cards { grid-template-columns: 1fr; } }
 
-/* ── 05 · PROOF — light, numbered rail + stats ── */
+/* ── 05 · PROOF — light, stats ── */
 .proof { background: var(--parchment); color: var(--ink); min-height: 100svh; }
-.proof__rail {
-  position: absolute;
-  top: 4%;
-  inset-inline-start: calc(var(--gutter) * -0.7);
-  display: flex;
-  flex-direction: column;
-  gap: 1.1rem;
-  font-family: var(--display-en);
-  font-style: normal;
-  font-size: clamp(0.9rem, 1.1vw, 1.1rem);
-  color: rgba(13, 11, 7, 0.35);
-}
-.proof__rail span.is-hot { color: var(--carmine); }
 .proof__head { font-size: clamp(2.4rem, 6vw, 5.2rem); max-width: 20ch; margin-block-end: clamp(1.2rem, 2.4vw, 1.8rem); }
 .proof__numbers {
   display: grid;
@@ -391,7 +440,7 @@
   font-variant-numeric: tabular-nums;
 }
 .proof__numbers span { color: var(--ink-soft); text-align: center; }
-@media (max-width: 720px) { .proof__numbers { grid-template-columns: repeat(2, 1fr); } .proof__rail { display: none; } }
+@media (max-width: 720px) { .proof__numbers { grid-template-columns: repeat(2, 1fr); } }
 
 /* ── 06 · TESTIMONIALS — draggable strip ── */
 .testimonials { background: var(--cloud); color: var(--ink); overflow: clip; padding-inline: 0; }
@@ -443,20 +492,6 @@
 
 /* ── 07 · CONSULTING — light, 4 steps + dark booking card ── */
 .consulting { background: var(--cream); color: var(--ink); overflow: clip; }
-.consulting__ghost {
-  position: absolute;
-  inset-inline-end: -4%;
-  bottom: -6%;
-  font-family: var(--display-en);
-  font-style: normal;
-  font-weight: 500;
-  font-size: clamp(18rem, 42vw, 44rem);
-  line-height: 0.7;
-  color: rgba(200, 40, 30, 0.07);
-  pointer-events: none;
-  user-select: none;
-  z-index: 0;
-}
 .consulting__grid {
   position: relative;
   z-index: 1;

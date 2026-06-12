@@ -26,10 +26,26 @@ const sectionLabels = {
   ar: { proof: 'نتائج · لا نظريات', testimonials: 'شهادات', consulting: 'المنتج الأول · استشارة', book: 'الكتاب', publication: 'ما الذي أبنيه حاليا' },
   en: { proof: 'Results · Not theory', testimonials: 'Testimonials', consulting: 'Product 01 · Consulting', book: 'The Book', publication: "What I'm building" },
 }[lang];
+
+// section-nav rail (fixed left) — tracks scroll position across the page
+const scenes = {
+  ar: [['sc-intro', 'من أنا'], ['sc-results', 'نتائج'], ['sc-consulting', 'الاستشارة'], ['sc-book', 'الكتاب'], ['sc-almobadir', 'المبادر'], ['sc-start', 'لنبدأ']],
+  en: [['sc-intro', 'Intro'], ['sc-results', 'Results'], ['sc-consulting', 'Consulting'], ['sc-book', 'The Book'], ['sc-almobadir', 'Almobadir'], ['sc-start', 'Start']],
+}[lang];
 ---
 
+<nav class="scenes" id="scenesNav" aria-label={s.a11y.mainMenu}>
+  {scenes.map(([id, label], i) => (
+    <a href={`#${id}`} class:list={['scenes__item', { 'is-active': i === 0 }]} data-target={id}>
+      <span class="scenes__num">{i + 1}</span>
+      <span class="scenes__line"></span>
+      <span class="scenes__label">{label}</span>
+    </a>
+  ))}
+</nav>
+
 <!-- ═══════ 01 · HERO ═══════ -->
-<section class="hero" data-theme="dark" aria-label={s.name}>
+<section class="hero" id="sc-intro" data-theme="dark" aria-label={s.name}>
   <div class="hero__backdrop" aria-hidden="true">
     <img src={`${base}assets/hero-photo.webp`} alt="" fetchpriority="high" />
   </div>
@@ -61,25 +77,18 @@ const sectionLabels = {
 
 <!-- ═══════ 02 · STATEMENT ═══════ -->
 <section class="statement stage" data-theme="light">
-  <svg class="statement__asterisk" viewBox="0 0 100 100" aria-hidden="true">
-    <g fill="currentColor">
-      <rect x="42" y="2" width="16" height="96" rx="7" />
-      <rect x="42" y="2" width="16" height="96" rx="7" transform="rotate(45 50 50)" />
-      <rect x="42" y="2" width="16" height="96" rx="7" transform="rotate(90 50 50)" />
-      <rect x="42" y="2" width="16" height="96" rx="7" transform="rotate(135 50 50)" />
-    </g>
-  </svg>
-  <div class="statement__rect statement__rect--a" aria-hidden="true"></div>
-  <div class="statement__rect statement__rect--b" aria-hidden="true"></div>
-  <h2 class="t-statement statement__line split-gsap">
-    <Split text={t.statement.line} mode="words" />
-  </h2>
+  <div class="statement__content">
+    <span class="statement__eyebrow t-mono" data-reveal="fade">{t.statement.eyebrow}</span>
+    <h2 class="t-statement statement__line split-gsap">
+      <Split text={t.statement.line} mode="words" />
+    </h2>
+    <p class="statement__deck" data-reveal="rise-slow" style="--delay:200ms">{t.statement.deck}</p>
+  </div>
 </section>
 
 <!-- ═══════ 03 · PROMISE ═══════ -->
 <section class="promise stage stage--full" data-theme="dark">
   <div class="wrap">
-    <div class="promise__ring" aria-hidden="true"></div>
     <p class="t-mono" data-reveal="fade" style="color: var(--brass-pale)">{t.promise.overline}</p>
     <h2 class="t-display promise__head split-mask">
       <SegHead segments={t.promise.head} />
@@ -126,11 +135,8 @@ const sectionLabels = {
 </section>
 
 <!-- ═══════ 05 · PROOF ═══════ -->
-<section class="proof stage stage--full" data-theme="light">
+<section class="proof stage stage--full" id="sc-results" data-theme="light">
   <div class="wrap">
-    <div class="proof__rail" aria-hidden="true">
-      {[1, 2, 3, 4, 5, 6].map((n) => <span>{n}</span>)}
-    </div>
     <div class="section-head" data-reveal="fade">
       <span class="section-head__num">01</span>
       <span class="section-head__line"></span>
@@ -179,8 +185,7 @@ const sectionLabels = {
 </section>
 
 <!-- ═══════ 07 · CONSULTING ═══════ -->
-<section class="consulting stage" data-theme="light">
-  <div class="consulting__ghost" aria-hidden="true">01</div>
+<section class="consulting stage" id="sc-consulting" data-theme="light">
   <div class="wrap">
     <div class="section-head" data-reveal="fade">
       <span class="section-head__num">03</span>
@@ -227,7 +232,7 @@ const sectionLabels = {
 </section>
 
 <!-- ═══════ 08 · BOOK TEASER ═══════ -->
-<section class="bookteaser stage stage--full" data-theme="light">
+<section class="bookteaser stage stage--full" id="sc-book" data-theme="light">
   <div class="wrap">
     <div class="section-head" data-reveal="fade">
       <span class="section-head__num">04</span>
@@ -295,7 +300,7 @@ const sectionLabels = {
 </section>
 
 <!-- ═══════ 10 · PUBLICATION ═══════ -->
-<section class="publication stage" data-theme="light">
+<section class="publication stage" id="sc-almobadir" data-theme="light">
   <div class="wrap">
     <div class="section-head" data-reveal="fade">
       <span class="section-head__num">05</span>

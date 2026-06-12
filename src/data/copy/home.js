@@ -12,7 +12,9 @@ export const home = {
 
     // 02 — statement (light)
     statement: {
+      eyebrow: 'عشر سنوات · حقيقة واحدة',
       line: '10 سنوات وأنا أجعل المؤسسين الأثرياء أكثر ثراء.',
+      deck: 'ليس تسويقا أعلى صوتا، بل أولويات أوضح. الجزء الممل هو حيث يختبئ المال.',
     },
 
     // 03 — promise (dark) · APPROVED
@@ -180,7 +182,9 @@ export const home = {
     },
 
     statement: {
+      eyebrow: 'Ten years · one truth',
       line: '10 years making rich founders richer.',
+      deck: 'Not louder marketing — sharper priorities. The boring part is where the money hides.',
     },
 
     promise: {

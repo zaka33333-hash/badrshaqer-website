@@ -10,15 +10,6 @@ if (!reduceMotion) {
     gsap.ticker.lagSmoothing(0);
   }
 
-  // ghost numerals drift
-  document.querySelectorAll('.pagehero__ghost, .consulting__ghost').forEach((ghost) => {
-    gsap.fromTo(ghost, { yPercent: 14 }, {
-      yPercent: -10,
-      ease: 'none',
-      scrollTrigger: { trigger: ghost.parentElement, start: 'top bottom', end: 'bottom top', scrub: true },
-    });
-  });
-
   // floating book (book page)
   const book = document.querySelector('.bookteaser__book');
   if (book) {

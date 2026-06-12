@@ -8,7 +8,6 @@ const { overline, head, deck, deckStrong, ghost, tall = false, photo } = Astro.p
       <img src={photo} alt="" fetchpriority="high" />
     </div>
   )}
-  {ghost && <span class="pagehero__ghost" aria-hidden="true">{ghost}</span>}
   <div class="wrap">
     <p class="pagehero__overline t-mono" data-reveal="fade">{overline}</p>
     <h1 class="t-display pagehero__head split-mask">

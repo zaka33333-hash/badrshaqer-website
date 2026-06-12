@@ -7,6 +7,30 @@ import { Draggable } from 'gsap/Draggable';
 import { InertiaPlugin } from 'gsap/InertiaPlugin';
 import { lenis, reduceMotion, finePointer } from './core.js';
 
+/* ── section-nav rail: highlight the item for the section in view.
+   Runs regardless of reduced motion (it's navigation, not animation).
+   Click smooth-scroll is handled by the global anchor handler in core.js. ── */
+(function initScenesRail() {
+  const items = [...document.querySelectorAll('.scenes__item')];
+  if (!items.length) return;
+  const sections = items
+    .map((it) => document.getElementById(it.dataset.target))
+    .filter(Boolean);
+  if (!sections.length) return;
+  const setActive = (id) =>
+    items.forEach((it) => it.classList.toggle('is-active', it.dataset.target === id));
+  const io = new IntersectionObserver(
+    (entries) => {
+      const visible = entries
+        .filter((e) => e.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible) setActive(visible.target.id);
+    },
+    { rootMargin: '-45% 0px -45% 0px', threshold: [0, 0.25, 0.5, 1] }
+  );
+  sections.forEach((s) => io.observe(s));
+})();
+
 if (!reduceMotion) {
   gsap.registerPlugin(ScrollTrigger, Draggable, InertiaPlugin);
 
@@ -83,34 +107,7 @@ if (!reduceMotion) {
         anticipatePin: 1,
       },
     })
-      .to(words, { yPercent: 0, stagger: 0.06, ease: 'power3.out', duration: 0.55 }, 0)
-      .fromTo('.statement__asterisk', { rotate: -40, scale: 0.7 }, { rotate: 50, scale: 1, ease: 'none', duration: 1 }, 0)
-      .fromTo('.statement__rect--a', { yPercent: 60 }, { yPercent: -6, ease: 'none', duration: 1 }, 0)
-      .fromTo('.statement__rect--b', { yPercent: 90 }, { yPercent: 0, ease: 'none', duration: 1 }, 0);
-  }
-
-  /* ── promise ring slow spin ── */
-  gsap.to('.promise__ring', {
-    rotate: 360,
-    duration: 50,
-    ease: 'none',
-    repeat: -1,
-    transformOrigin: '50% 50%',
-  });
-
-  /* ── proof rail: hot index follows scroll ── */
-  const rail = document.querySelectorAll('.proof__rail span');
-  const proof = document.querySelector('.proof');
-  if (rail.length && proof) {
-    ScrollTrigger.create({
-      trigger: proof,
-      start: 'top 70%',
-      end: 'bottom 30%',
-      onUpdate(self) {
-        const hot = Math.min(rail.length - 1, Math.floor(self.progress * rail.length));
-        rail.forEach((r, i) => r.classList.toggle('is-hot', i === hot));
-      },
-    });
+      .to(words, { yPercent: 0, stagger: 0.06, ease: 'power3.out', duration: 0.55 }, 0);
   }
 
   /* ── testimonials: draggable strip on fine pointers ── */
@@ -126,16 +123,6 @@ if (!reduceMotion) {
       cursor: 'grab',
       onPress() { strip.classList.add('is-dragging'); },
       onRelease() { strip.classList.remove('is-dragging'); },
-    });
-  }
-
-  /* ── consulting ghost numeral drifts ── */
-  const ghost = document.querySelector('.consulting__ghost');
-  if (ghost) {
-    gsap.fromTo(ghost, { yPercent: 18 }, {
-      yPercent: -8,
-      ease: 'none',
-      scrollTrigger: { trigger: '.consulting', start: 'top bottom', end: 'bottom top', scrub: true },
     });
   }
 
@@ -159,8 +146,6 @@ if (!reduceMotion) {
     });
   }
 
-  /* ── statement rects + asterisk get a gentle idle wobble too ── */
-  gsap.to('.statement__asterisk', { y: 14, duration: 3.4, ease: 'sine.inOut', yoyo: true, repeat: -1 });
 }
 
 /* ── WebGL atmosphere (hero) — brand-tuned warm blobs ── */
