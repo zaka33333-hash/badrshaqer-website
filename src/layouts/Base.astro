@@ -29,6 +29,7 @@ const {
 
 const t = shared[lang];
 const dir = lang === 'ar' ? 'rtl' : 'ltr';
+const base = import.meta.env.BASE_URL; // deploy base, ends with '/'
 const canonical = `${SITE.domain}${alt[lang]}`;
 // language toggle — links to the same page in the other language
 const altLang = other(lang);
@@ -37,7 +38,7 @@ const langSwitch = {
   label: altLang.toUpperCase(),
   aria: altLang === 'ar' ? 'العربية' : 'English',
 };
-const og = ogImage || `${SITE.domain}/assets/og-${lang}.jpg`;
+const og = ogImage || `${SITE.domain}${base}assets/og-${lang}.jpg`;
 
 const personLd = {
   '@type': 'Person',
@@ -74,19 +75,19 @@ const ldGraph = { '@context': 'https://schema.org', '@graph': [personLd, website
     {/* critical display-font subsets — keep in sync with src/styles/fonts/*.css */}
     {lang === 'ar' ? (
       <>
-        <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/reemkufi_v28_2sDcZGJLip7W2J7v7wQzbWW5Kb8VZBHR.woff2" />
-        <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/alexandria_v6_UMBXrPdDqW66y0Y2usFeaijdA5E64BdCIg.woff2" />
+        <link rel="preload" as="font" type="font/woff2" crossorigin href={`${base}fonts/reemkufi_v28_2sDcZGJLip7W2J7v7wQzbWW5Kb8VZBHR.woff2`} />
+        <link rel="preload" as="font" type="font/woff2" crossorigin href={`${base}fonts/alexandria_v6_UMBXrPdDqW66y0Y2usFeaijdA5E64BdCIg.woff2`} />
       </>
     ) : (
       <>
-        <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/bricolagegrotesque_v9_3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGIInHWVyNJ.woff2" />
+        <link rel="preload" as="font" type="font/woff2" crossorigin href={`${base}fonts/bricolagegrotesque_v9_3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGIInHWVyNJ.woff2`} />
       </>
     )}
 
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />
-    <link rel="manifest" href={`/manifest-${lang}.webmanifest`} />
+    <link rel="icon" type="image/png" sizes="32x32" href={`${base}assets/favicon/favicon-32.png`} />
+    <link rel="icon" type="image/png" sizes="16x16" href={`${base}assets/favicon/favicon-16.png`} />
+    <link rel="apple-touch-icon" sizes="180x180" href={`${base}assets/favicon/apple-touch-icon.png`} />
+    <link rel="manifest" href={`${base}manifest-${lang}.webmanifest`} />
 
     <link rel="canonical" href={canonical} />
     <link rel="alternate" hreflang="ar" href={`${SITE.domain}${alt.ar}`} />
@@ -161,7 +162,7 @@ const ldGraph = { '@context': 'https://schema.org', '@graph': [personLd, website
     <nav class="pillnav" aria-label={lang === 'ar' ? 'تنقل' : 'Navigation'}>
       <a class="pillnav__link" href={t.nav.story.href}>{t.nav.story.label}</a>
       <a class="pillnav__logo" href={PATHS.home[lang]} aria-label={t.nav.home}>
-        <img src="/assets/badr-portrait.webp" alt="" width="46" height="46" loading="eager" />
+        <img src={`${base}assets/badr-portrait.webp`} alt="" width="46" height="46" loading="eager" />
       </a>
       <a class="pillnav__link" href={t.nav.programs.href}>{t.nav.programs.label}</a>
     </nav>

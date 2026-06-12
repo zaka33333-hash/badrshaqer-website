@@ -1,7 +1,8 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://badrshaqer.com',
+  site: 'https://zaka33333-hash.github.io',
+  base: '/badrshaqer-website/',
   trailingSlash: 'ignore',
   output: 'static',
   build: {

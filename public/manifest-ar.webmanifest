@@ -3,12 +3,12 @@
   "short_name": "بدر شاكر",
   "lang": "ar",
   "dir": "rtl",
-  "start_url": "/",
+  "start_url": "/badrshaqer-website/",
   "display": "browser",
   "background_color": "#0d0b07",
   "theme_color": "#0d0b07",
   "icons": [
-    { "src": "/assets/favicon/favicon-64.png", "sizes": "64x64", "type": "image/png" },
-    { "src": "/assets/favicon/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+    { "src": "/badrshaqer-website/assets/favicon/favicon-64.png", "sizes": "64x64", "type": "image/png" },
+    { "src": "/badrshaqer-website/assets/favicon/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
   ]
 }

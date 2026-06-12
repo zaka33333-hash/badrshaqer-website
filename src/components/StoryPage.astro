@@ -5,8 +5,9 @@ import CtaBand from './CtaBand.astro';
 
 const { lang = 'ar' } = Astro.props;
 const t = inner.story[lang];
+const base = import.meta.env.BASE_URL;
 ---
-<PageHero overline={t.hero.overline} head={t.hero.head} deck={t.hero.deck} ghost="01" tall photo="/assets/story-hero.webp" />
+<PageHero overline={t.hero.overline} head={t.hero.head} deck={t.hero.deck} ghost="01" tall photo={`${base}assets/story-hero.webp`} />
 
 <section class="inner-section stage" data-theme="light">
   <div class="wrap">

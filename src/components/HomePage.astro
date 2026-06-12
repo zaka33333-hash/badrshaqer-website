@@ -14,6 +14,7 @@ const { lang = 'ar' } = Astro.props;
 const t = home[lang];
 const s = shared[lang];
 const otherLang = lang === 'ar' ? 'en' : 'ar';
+const base = import.meta.env.BASE_URL; // deploy base, ends with '/'
 
 // Giant hero name, pre-split at non-joining boundaries (cursive-safe).
 const NAME_GLYPHS = {
@@ -30,7 +31,7 @@ const sectionLabels = {
 <!-- ═══════ 01 · HERO ═══════ -->
 <section class="hero" data-theme="dark" aria-label={s.name}>
   <div class="hero__backdrop" aria-hidden="true">
-    <img src="/assets/hero-photo.webp" alt="" fetchpriority="high" />
+    <img src={`${base}assets/hero-photo.webp`} alt="" fetchpriority="high" />
   </div>
   <div class="hero__atmosphere" aria-hidden="true"><canvas id="atmoCanvas"></canvas></div>
   <div class="hero__scrim" aria-hidden="true"></div>
@@ -45,7 +46,7 @@ const sectionLabels = {
   <div class="hero__shapes" aria-hidden="true">
     {['flousak', 'media', 'main', 'mindset'].map((ch) => (
       <div class={`shape shape--${ch}`} data-cursor-style="drag" data-cursor="DRAG">
-        <img src={`/assets/channels/${ch}.png`} alt="" width="360" height="360" draggable="false" />
+        <img src={`${base}assets/channels/${ch}.png`} alt="" width="360" height="360" draggable="false" />
       </div>
     ))}
   </div>
@@ -273,7 +274,7 @@ const sectionLabels = {
 <!-- ═══════ 09 · WHY ME ═══════ -->
 <section class="whyme stage stage--full" data-theme="dark">
   <div class="whyme__backdrop" aria-hidden="true">
-    <img src="/assets/whyme-photo.webp" alt="" loading="lazy" width="1536" height="1024" />
+    <img src={`${base}assets/whyme-photo.webp`} alt="" loading="lazy" width="1536" height="1024" />
   </div>
   <div class="wrap">
     <p class="whyme__intro" data-reveal="fade">{t.whyMe.intro}</p>
@@ -318,7 +319,7 @@ const sectionLabels = {
       </div>
       <div class="publication__visual" data-reveal="scale" style="--delay:250ms">
         <div class="publication__visual-tag t-mono">{t.publication.label}</div>
-        <img class="publication__visual-mark" src="/assets/almobadir-mark-white.png" alt="Almobadir" width="706" height="294" loading="lazy" />
+        <img class="publication__visual-mark" src={`${base}assets/almobadir-mark-white.png`} alt="Almobadir" width="706" height="294" loading="lazy" />
         <div class="publication__visual-foot t-mono">
           {t.publication.stats.map((stat) => <span>{stat}</span>)}
         </div>
