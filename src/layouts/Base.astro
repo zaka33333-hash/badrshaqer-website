@@ -14,6 +14,7 @@ import '../styles/tokens.css';
 import '../styles/fonts/shared.css';
 import '../styles/fonts/ar.css';
 import '../styles/fonts/en.css';
+import '../styles/fonts/general-sans.css';
 import '../styles/base.css';
 import '../styles/shell.css';
 import '../styles/elevate.css';
@@ -83,7 +84,8 @@ const ldGraph = { '@context': 'https://schema.org', '@graph': [personLd, website
       </>
     ) : (
       <>
-        <link rel="preload" as="font" type="font/woff2" crossorigin href={`${base}fonts/bricolagegrotesque_v9_3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGIInHWVyNJ.woff2`} />
+        <link rel="preload" as="font" type="font/woff2" crossorigin href={`${base}fonts/generalsans-600.woff2`} />
+        <link rel="preload" as="font" type="font/woff2" crossorigin href={`${base}fonts/generalsans-400.woff2`} />
       </>
     )}
 

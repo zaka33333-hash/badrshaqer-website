@@ -43,10 +43,12 @@
   --font-quote: var(--quote-en);
   --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
 
-  --display-en: 'Bricolage Grotesque', system-ui, sans-serif;
-  --statement-en: 'Bricolage Grotesque', system-ui, sans-serif;
-  --body-en: 'Source Serif 4', Georgia, serif;
-  --quote-en: 'Bricolage Grotesque', system-ui, sans-serif;
+  /* one English family everywhere (like Goga on the reference) — contrast
+     comes from weight + size, which keeps the whole site cohesive. */
+  --display-en: 'General Sans', system-ui, sans-serif;
+  --statement-en: 'General Sans', system-ui, sans-serif;
+  --body-en: 'General Sans', system-ui, sans-serif;
+  --quote-en: 'General Sans', system-ui, sans-serif;
 
   --display-ar: 'Reem Kufi', 'IBM Plex Sans Arabic', sans-serif;
   --statement-ar: 'Alexandria', 'IBM Plex Sans Arabic', sans-serif;

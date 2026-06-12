@@ -1,0 +1,31 @@
+/* General Sans (Indian Type Foundry, via Fontshare) — free for commercial use
+   under the ITF Free Font License. Self-hosted. The English face for the whole
+   site, used like Goga on the reference: one family, contrast via weight. */
+@font-face {
+  font-family: 'General Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/generalsans-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'General Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/generalsans-500.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'General Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/generalsans-600.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'General Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/generalsans-700.woff2') format('woff2');
+}
