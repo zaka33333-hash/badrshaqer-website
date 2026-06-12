@@ -94,7 +94,7 @@ document.addEventListener('astro:page-load', () => {
           loader.classList.add('is-gone');
           document.documentElement.style.overflow = '';
           document.dispatchEvent(new CustomEvent('loader:done'));
-          setTimeout(() => loader.remove(), 1100);
+          setTimeout(() => loader.remove(), 1300);
         }, dwell + 250);
       };
       window.addEventListener('load', () => { target = 0.92; finish(); });
@@ -182,6 +182,64 @@ document.addEventListener('astro:page-load', () => {
   }
 
 
+
+  // 5. Custom Cursor
+  const cursor = document.getElementById('cursor');
+  const cursorLabel = document.getElementById('cursorLabel');
+  const cursorImg = document.getElementById('cursorImg');
+  if (cursor && finePointer && !reduceMotion) {
+    document.body.classList.add('has-cursor');
+    let mX = innerWidth / 2, mY = innerHeight / 2, cX = mX, cY = mY;
+    let shown = false;
+    cursor.style.opacity = '0';
+    
+    // Cleanup previous listener on navigation
+    if (window.__cursorMoveHandler) removeEventListener('mousemove', window.__cursorMoveHandler);
+    window.__cursorMoveHandler = (e) => {
+      if (!shown) { shown = true; cursor.style.opacity = '1'; }
+      mX = e.clientX; mY = e.clientY;
+    };
+    addEventListener('mousemove', window.__cursorMoveHandler);
+    
+    if (!window.__cursorRafStarted) {
+      window.__cursorRafStarted = true;
+      let lastT = performance.now();
+      const draw = (t) => {
+        const dt = Math.min((t - lastT) / 16.667, 4);
+        lastT = t;
+        const k = 1 - Math.pow(1 - 0.24, dt);
+        cX += (mX - cX) * k;
+        cY += (mY - cY) * k;
+        cursor.style.transform = `translate3d(calc(${cX}px - 50%), calc(${cY}px - 50%), 0)`;
+        requestAnimationFrame(draw);
+      };
+      requestAnimationFrame(draw);
+    }
+
+    const bindCursorTargets = (root = document) => {
+      root.querySelectorAll('a, button, [data-cursor]').forEach((el) => {
+        if (el.__cursorBound) return;
+        el.__cursorBound = true;
+        const style = el.getAttribute('data-cursor-style') || 'link';
+        el.addEventListener('mouseenter', () => {
+          document.body.classList.remove('cursor-link', 'cursor-button', 'cursor-drag', 'cursor-reveal');
+          const revealSrc = el.getAttribute('data-hover-reveal');
+          if (revealSrc && cursorImg) {
+            cursorImg.src = revealSrc;
+            document.body.classList.add('cursor-reveal');
+          } else {
+            document.body.classList.add(`cursor-${style}`);
+          }
+          if (cursorLabel) cursorLabel.textContent = el.getAttribute('data-cursor') || '';
+        });
+        el.addEventListener('mouseleave', () => {
+          document.body.classList.remove('cursor-link', 'cursor-button', 'cursor-drag', 'cursor-reveal');
+        });
+      });
+    };
+    bindCursorTargets();
+    window.__bindCursorTargets = bindCursorTargets;
+  }
 
   // 6. Magnetic Elements
   if (finePointer && !reduceMotion) {

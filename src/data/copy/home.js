@@ -13,7 +13,11 @@ export const home = {
     // 02 — statement (light)
     statement: {
       eyebrow: 'عشر سنوات · حقيقة واحدة',
-      line: '10 سنوات وأنا أجعل المؤسسين الأثرياء أكثر ثراء.',
+      head: [
+        { text: '10 سنوات وأنا أجعل ', em: false },
+        { text: 'المؤسسين الأثرياء', em: true, cursor: 'VIEW', hoverReveal: '/assets/portrait-1.webp' },
+        { text: ' أكثر ثراء.', em: false },
+      ],
       deck: 'ليس تسويقا أعلى صوتا، بل أولويات أوضح. الجزء الممل هو حيث يختبئ المال.',
     },
 
@@ -183,7 +187,11 @@ export const home = {
 
     statement: {
       eyebrow: 'Ten years · one truth',
-      line: '10 years making rich founders richer.',
+      head: [
+        { text: '10 years making ', em: false },
+        { text: 'rich founders', em: true, cursor: 'VIEW', hoverReveal: '/assets/portrait-1.webp' },
+        { text: ' richer.', em: false },
+      ],
       deck: 'Not louder marketing — sharper priorities. The boring part is where the money hides.',
     },
 

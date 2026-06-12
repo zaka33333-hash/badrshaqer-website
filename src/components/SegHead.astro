@@ -13,15 +13,29 @@ const built = segments.map((seg) => {
 ---
 {built.map((seg) => (
   <>
-    {seg.words.map(({ w, d }, wi) => (
-      <>
-        <span class="line-mask">{
-          seg.em
-            ? <em class="word" style={`--d:${d}ms`}>{w}</em>
-            : <span class="word" style={`--d:${d}ms`}>{w}</span>
-        }</span>{wi < seg.words.length - 1 ? ' ' : ''}
-      </>
-    ))}
+    {seg.cursor ? (
+      <span class="magnetic" data-cursor={seg.cursor} data-hover-reveal={seg.hoverReveal || ''} style="display: inline-block;">
+        {seg.words.map(({ w, d }, wi) => (
+          <>
+            <span class="line-mask">{
+              seg.em
+                ? <em class="word" style={`--d:${d}ms`}>{w}</em>
+                : <span class="word" style={`--d:${d}ms`}>{w}</span>
+            }</span>{wi < seg.words.length - 1 ? ' ' : ''}
+          </>
+        ))}
+      </span>
+    ) : (
+      seg.words.map(({ w, d }, wi) => (
+        <>
+          <span class="line-mask">{
+            seg.em
+              ? <em class="word" style={`--d:${d}ms`}>{w}</em>
+              : <span class="word" style={`--d:${d}ms`}>{w}</span>
+          }</span>{wi < seg.words.length - 1 ? ' ' : ''}
+        </>
+      ))
+    )}
     {seg.br ? <br /> : ' '}
   </>
 ))}

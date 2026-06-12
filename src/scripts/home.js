@@ -130,14 +130,33 @@ document.addEventListener('astro:page-load', () => {
     if (hero) {
       const words = hero.querySelectorAll('.hero__name .w');
       const dir = document.documentElement.dir === 'rtl' ? -1 : 1;
+      const heroBg = hero.querySelector('.hero__backdrop img');
       const tl = gsap.timeline({
         scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true },
       })
         .to(words[0], { xPercent: -18 * dir, ease: 'none' }, 0)
         .to(words[1], { xPercent: 18 * dir, ease: 'none' }, 0)
-        .to(hero.querySelector('.hero__backdrop img'), { yPercent: 12, scale: 1.12, ease: 'none' }, 0)
+        .to(heroBg, { yPercent: 12, scale: 1.12, ease: 'none' }, 0)
         .to(hero.querySelector('.hero__scrollcue'), { opacity: 0, ease: 'none' }, 0);
       activeTweens.push(tl);
+
+      if (heroBg && finePointer) {
+        const onHeroMove = (e) => {
+          const rect = hero.getBoundingClientRect();
+          const bX = ((e.clientX - rect.left) / rect.width - 0.5) * -18;
+          const bY = ((e.clientY - rect.top) / rect.height - 0.5) * -18;
+          const t = gsap.to(heroBg, { x: bX, y: bY, duration: 1.5, ease: 'power2.out', overwrite: 'auto' });
+          activeTweens.push(t);
+        };
+        const onHeroLeave = () => {
+          const t = gsap.to(heroBg, { x: 0, y: 0, duration: 1.5, ease: 'power2.out', overwrite: 'auto' });
+          activeTweens.push(t);
+        };
+        hero.addEventListener('mousemove', onHeroMove);
+        hero.addEventListener('mouseleave', onHeroLeave);
+        // We don't formally clean up these native listeners because the DOM node is destroyed on navigate anyway,
+        // but we push the tweens to activeTweens so they get killed properly.
+      }
     }
 
     /* ── draggable hero shapes: idle float + grab physics ── */
@@ -168,6 +187,23 @@ document.addEventListener('astro:page-load', () => {
         onRelease() { const t = gsap.to(shape, { scale: over ? 1.22 : 1, duration: 0.4, ease: 'elastic.out(1, 0.5)', overwrite: 'auto' }); activeTweens.push(t); },
       });
       activeDraggables.push(...drag);
+    });
+
+    /* ── oversized floating geometry parallax ── */
+    document.querySelectorAll('.parallax-shape').forEach(shape => {
+      const speed = parseFloat(shape.getAttribute('data-speed')) || 0.5;
+      const t = gsap.to(shape, {
+        yPercent: -30 * speed,
+        rotation: "+=15",
+        ease: 'none',
+        scrollTrigger: {
+          trigger: shape.closest('section'),
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true
+        }
+      });
+      activeTweens.push(t);
     });
 
     /* statement headline reveals via the shared .split-mask IntersectionObserver

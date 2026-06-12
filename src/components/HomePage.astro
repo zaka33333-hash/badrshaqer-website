@@ -9,6 +9,7 @@ import { home } from '../data/copy/home.js';
 import Split from './Split.astro';
 import SegHead from './SegHead.astro';
 import Arrow from './Arrow.astro';
+import Marquee from './Marquee.astro';
 
 const { lang = 'ar' } = Astro.props;
 const t = home[lang];
@@ -31,6 +32,12 @@ const sectionLabels = {
 const scenes = {
   ar: [['sc-intro', 'من أنا'], ['sc-results', 'نتائج'], ['sc-consulting', 'الاستشارة'], ['sc-book', 'الكتاب'], ['sc-almobadir', 'المبادر'], ['sc-start', 'لنبدأ']],
   en: [['sc-intro', 'Intro'], ['sc-results', 'Results'], ['sc-consulting', 'Consulting'], ['sc-book', 'The Book'], ['sc-almobadir', 'Almobadir'], ['sc-start', 'Start']],
+}[lang];
+
+// marquee — the founder problems Badr works inside (focus areas)
+const marquee = {
+  ar: ['المبيعات', 'التسويق', 'الإيرادات', 'التموضع', 'الأولويات', 'التسعير', 'التشخيص', 'الأنظمة'],
+  en: ['Sales', 'Marketing', 'Revenue', 'Positioning', 'Priorities', 'Pricing', 'Diagnosis', 'Systems'],
 }[lang];
 ---
 
@@ -80,7 +87,7 @@ const scenes = {
   <div class="statement__content">
     <span class="statement__eyebrow t-mono" data-reveal="fade">{t.statement.eyebrow}</span>
     <h2 class="t-statement statement__line split-mask">
-      <Split text={t.statement.line} mode="words" />
+      <SegHead segments={t.statement.head} />
     </h2>
     <p class="statement__deck" data-reveal="rise-slow" style="--delay:200ms">{t.statement.deck}</p>
   </div>
@@ -113,7 +120,9 @@ const scenes = {
 </section>
 
 <!-- ═══════ 04 · SERVICES HUB ═══════ -->
-<section class="services stage stage--full" data-theme="dark">
+<section class="services stage stage--full" data-theme="dark" style="position: relative; overflow: hidden;">
+  <div class="parallax-shape parallax-shape--pill" data-speed="1.2" style="top: 10%; right: -5%;" aria-hidden="true"></div>
+  <div class="parallax-shape parallax-shape--circle" data-speed="0.8" style="bottom: -10%; left: -10%;" aria-hidden="true"></div>
   <div class="ambient-glow" style="--glow-color:rgba(212,180,131,0.09); top: 15%; left: 10%; animation: ambient-float-2 24s ease-in-out infinite;" aria-hidden="true"></div>
   <div class="ambient-glow" style="--glow-color:rgba(200,40,30,0.07); bottom: 15%; right: 10%; animation: ambient-float-1 20s ease-in-out infinite;" aria-hidden="true"></div>
   <div class="wrap">
@@ -166,6 +175,8 @@ const scenes = {
   </div>
 </section>
 
+<Marquee items={marquee} />
+
 <!-- ═══════ 06 · TESTIMONIALS ═══════ -->
 <section class="testimonials stage" data-theme="light">
   <div class="section-head" data-reveal="fade">
@@ -189,7 +200,9 @@ const scenes = {
 </section>
 
 <!-- ═══════ 07 · CONSULTING ═══════ -->
-<section class="consulting stage" id="sc-consulting" data-theme="light">
+<section class="consulting stage stage--full" id="sc-consulting" data-theme="light" style="position: relative; overflow: hidden;">
+  <div class="parallax-shape parallax-shape--pill" data-speed="1.5" style="top: 20%; left: -10%; border-color: rgba(13, 11, 7, 0.05); background: linear-gradient(135deg, rgba(13, 11, 7, 0.02) 0%, transparent 100%);" aria-hidden="true"></div>
+  <div class="parallax-shape parallax-shape--circle" data-speed="0.6" style="bottom: 5%; right: -15%; border-color: rgba(200, 40, 30, 0.04); background: radial-gradient(circle, rgba(200, 40, 30, 0.02) 0%, transparent 60%);" aria-hidden="true"></div>
   <div class="wrap">
     <div class="section-head" data-reveal="fade">
       <span class="section-head__num">03</span>

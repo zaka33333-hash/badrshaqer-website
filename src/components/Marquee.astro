@@ -1,0 +1,10 @@
+---
+// Seamless CSS marquee. items rendered twice in one track; CSS scrolls -50%.
+const { items = [] } = Astro.props;
+const set = [...items, ...items];
+---
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    {set.map((it) => <span class="marquee__item">{it}</span>)}
+  </div>
+</div>

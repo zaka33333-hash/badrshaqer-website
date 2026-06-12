@@ -126,8 +126,9 @@
   z-index: 2;
   pointer-events: none;
   background:
-    linear-gradient(to bottom, rgba(13, 11, 7, 0.55) 0%, transparent 22%),
-    linear-gradient(to top, rgba(13, 11, 7, 0.92) 0%, rgba(13, 11, 7, 0.58) 30%, transparent 56%);
+    radial-gradient(ellipse at center, transparent 30%, rgba(13, 11, 7, 0.6) 80%, rgba(13, 11, 7, 0.95) 100%),
+    linear-gradient(to bottom, rgba(13, 11, 7, 0.75) 0%, transparent 25%),
+    linear-gradient(to top, rgba(13, 11, 7, 0.98) 0%, rgba(13, 11, 7, 0.7) 30%, transparent 60%);
 }
 
 .hero__stagezone {
@@ -264,6 +265,30 @@
   .hero__shapes .shape--mindset { inset-inline-end: 5%;  inset-inline-start: auto; bottom: 24%; }
 }
 
+/* ── oversized floating geometry (parallax) ── */
+.parallax-shape {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 999px;
+  will-change: transform;
+}
+.parallax-shape--pill {
+  width: clamp(20rem, 45vw, 40rem);
+  height: clamp(8rem, 18vw, 16rem);
+  border: 1px solid rgba(212, 180, 131, 0.08);
+  background: linear-gradient(135deg, rgba(212, 180, 131, 0.03) 0%, transparent 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transform: rotate(-15deg);
+}
+.parallax-shape--circle {
+  width: clamp(25rem, 50vw, 45rem);
+  height: clamp(25rem, 50vw, 45rem);
+  border: 1px solid rgba(200, 40, 30, 0.06);
+  background: radial-gradient(circle at top left, rgba(200, 40, 30, 0.04) 0%, transparent 70%);
+}
+
 /* ── 02 · STATEMENT — light counterpoint ── */
 .statement {
   background: var(--cloud);
@@ -381,14 +406,19 @@
   min-height: 11rem;
   padding: clamp(1.3rem, 2vw, 1.8rem);
   border-radius: 18px;
-  background: linear-gradient(180deg, #16120c 0%, #100d09 100%);
-  border: 1px solid rgba(212, 180, 131, 0.1);
-  transition: transform 420ms var(--ease-osmo), border-color 320ms, background 320ms;
+  position: relative;
+  background: linear-gradient(180deg, rgba(22, 18, 12, 0.6) 0%, rgba(16, 13, 9, 0.8) 100%);
+  backdrop-filter: blur(24px) saturate(120%);
+  -webkit-backdrop-filter: blur(24px) saturate(120%);
+  border: 1px solid rgba(212, 180, 131, 0.15);
+  box-shadow: 0 32px 64px -24px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: transform 420ms var(--ease-osmo), border-color 320ms, background 320ms, box-shadow 320ms;
 }
 .services__card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(212, 180, 131, 0.4);
-  background: linear-gradient(180deg, #1a150e 0%, #120e0a 100%);
+  transform: translateY(-8px);
+  border-color: rgba(212, 180, 131, 0.5);
+  background: linear-gradient(180deg, rgba(26, 21, 14, 0.7) 0%, rgba(18, 14, 10, 0.9) 100%);
+  box-shadow: 0 42px 74px -24px rgba(0, 0, 0, 0.8), 0 0 40px rgba(212, 180, 131, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 .services__card-top {
   display: flex;
@@ -537,11 +567,14 @@
   top: 5rem;
   background:
     radial-gradient(ellipse at top right, rgba(200, 40, 30, 0.4) 0%, transparent 60%),
-    linear-gradient(180deg, #14100b 0%, var(--ink) 100%);
+    linear-gradient(180deg, rgba(20, 16, 11, 0.85) 0%, rgba(13, 11, 7, 0.95) 100%);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border: 1px solid rgba(212, 180, 131, 0.15);
+  box-shadow: 0 40px 90px -40px rgba(13, 11, 7, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   color: var(--cream);
   padding: clamp(1.8rem, 3vw, 2.6rem);
-  border-radius: 6px;
-  box-shadow: 0 40px 90px -40px rgba(13, 11, 7, 0.55);
+  border-radius: 12px;
 }
 .consulting__card-tag { color: var(--brass-pale); margin-bottom: 0.9rem; }
 .consulting__card-head {
@@ -604,7 +637,7 @@
     linear-gradient(to right, rgba(20, 8, 6, 0.5) 0%, transparent 12%),
     url('/assets/book-cover-cherry.webp') center / cover no-repeat,
     var(--carmine);
-  box-shadow: 0 40px 90px -25px rgba(138, 26, 19, 0.55);
+  box-shadow: 0 50px 100px -20px rgba(138, 26, 19, 0.65), inset 0 1px 2px rgba(255,255,255,0.3);
   padding: clamp(1.2rem, 2vw, 1.8rem);
   display: flex;
   flex-direction: column;

@@ -16,6 +16,7 @@ import '../styles/fonts/ar.css';
 import '../styles/fonts/en.css';
 import '../styles/base.css';
 import '../styles/shell.css';
+import '../styles/elevate.css';
 
 const {
   lang = 'ar',
@@ -115,6 +116,7 @@ const ldGraph = { '@context': 'https://schema.org', '@graph': [personLd, website
 
   <body data-bg={firstTheme}>
     <a class="skip-link" href="#main">{t.skipToContent}</a>
+    <div class="page-wipe" transition:persist="page-wipe" aria-hidden="true"></div>
 
     <div class="loader" id="loader" aria-hidden="true">
       <p class="loader__name" aria-hidden="true">
@@ -193,6 +195,11 @@ const ldGraph = { '@context': 'https://schema.org', '@graph': [personLd, website
       ))}
     </nav>
 
+    <div class="cursor" id="cursor" aria-hidden="true" transition:persist transition:name="cursor">
+      <span class="cursor__label" id="cursorLabel"></span>
+      <img src="" alt="" class="cursor__img" id="cursorImg" />
+    </div>
+
     <main id="main" tabindex="-1">
       <slot />
     </main>
@@ -200,5 +207,6 @@ const ldGraph = { '@context': 'https://schema.org', '@graph': [personLd, website
     <Footer lang={lang} noCtas={noFooterCtas} />
 
     <script src="../scripts/core.js"></script>
+    <script>import '../scripts/transitions.js';</script>
   </body>
 </html>
