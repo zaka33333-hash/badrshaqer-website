@@ -5,12 +5,13 @@ import { PATHS, SITE } from '../data/site.js';
 import '../styles/inner.css';
 
 const lang = 'ar';
+const base = import.meta.env.BASE_URL;
 ---
 <Base
   lang={lang}
   title="404 · بدر شاكر"
   description="الصفحة غير موجودة."
-  alt={{ ar: '/404', en: '/404' }}
+  alt={{ ar: `${base}404`, en: `${base}404` }}
   firstTheme="dark"
   noFooterCtas
 >

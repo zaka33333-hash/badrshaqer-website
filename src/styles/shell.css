@@ -242,7 +242,7 @@ body[data-bg='light'] .menu-toggle:not(.is-open) {
 
 /* ── custom cursor ── */
 .cursor {
-  display: none; /* custom cursor removed — native pointer is used */
+  display: block;
   position: fixed;
   top: 0; left: 0;
   width: 1px; height: 1px;
@@ -251,6 +251,18 @@ body[data-bg='light'] .menu-toggle:not(.is-open) {
   mix-blend-mode: difference;
   transform: translate3d(-100px, -100px, 0);
   transition: opacity 240ms;
+}
+@media (pointer: fine) {
+  body.has-cursor,
+  body.has-cursor a,
+  body.has-cursor button,
+  body.has-cursor [data-cursor] {
+    cursor: none;
+  }
+  body.has-cursor input,
+  body.has-cursor textarea {
+    cursor: text;
+  }
 }
 .cursor__ring {
   position: absolute;

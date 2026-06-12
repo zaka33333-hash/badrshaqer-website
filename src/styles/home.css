@@ -146,6 +146,7 @@
   max-width: 14ch;
   color: var(--cream);
   z-index: 0;
+  text-shadow: 0 2px 12px rgba(13, 11, 7, 0.92), 0 1px 4px rgba(13, 11, 7, 0.5);
 }
 .hero__role--a {
   inset-inline-start: var(--gutter);
@@ -188,7 +189,8 @@
   color: var(--brass-pale);
   font-size: 0.62rem;
   letter-spacing: 0.34em;
-  opacity: 0.8;
+  opacity: 1;
+  text-shadow: 0 1px 4px rgba(13, 11, 7, 0.85);
 }
 .hero__scrollcue::after {
   content: '';
