@@ -155,7 +155,7 @@
   gap: 3rem;
   min-height: 14rem;
   padding: clamp(1.3rem, 2vw, 1.8rem);
-  background: var(--paper);
+  background: var(--surface-card);
   border: 1px solid rgba(13, 11, 7, 0.08);
   border-radius: 16px;
   transition: transform 380ms var(--ease-osmo), box-shadow 380ms var(--ease-osmo);
@@ -200,7 +200,7 @@
 }
 .reason-card {
   padding: clamp(1.4rem, 2.2vw, 2rem);
-  background: var(--paper);
+  background: var(--surface-card);
   border: 1px solid rgba(13, 11, 7, 0.08);
   border-radius: 16px;
 }
@@ -324,6 +324,6 @@
 .program-crosslink:hover { color: var(--theme-acc); }
 
 /* generic light section wrapper for inner pages */
-.inner-section { background: var(--cream); color: var(--ink); }
-.inner-section--cloud { background: var(--cloud); }
-.inner-section--parchment { background: var(--parchment); }
+.inner-section { background: var(--surface); color: var(--ink); }
+.inner-section--cloud { background: var(--surface); }
+.inner-section--parchment { background: var(--surface); }

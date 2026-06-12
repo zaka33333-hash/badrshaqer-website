@@ -1,6 +1,6 @@
 /* ═══════════════ APPLICATION FORM — "Build" ═══════════════ */
 .apply {
-  background: var(--parchment);
+  background: var(--surface);
   color: var(--ink);
   min-height: 100svh;
   padding: clamp(6rem, 14vh, 9rem) var(--gutter) clamp(4rem, 10vh, 7rem);
@@ -187,7 +187,7 @@
   padding: 1.1rem 1.2rem;
   border: 1px solid rgba(13, 11, 7, 0.2);
   border-radius: 14px;
-  background: var(--cloud);
+  background: var(--surface-card);
   cursor: pointer;
 }
 .apply__confirm input { position: absolute; opacity: 0; width: 0; height: 0; }

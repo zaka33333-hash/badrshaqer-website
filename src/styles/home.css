@@ -291,7 +291,7 @@
 
 /* ── 02 · STATEMENT — light counterpoint ── */
 .statement {
-  background: var(--cloud);
+  background: var(--surface);
   color: var(--ink);
   min-height: 100svh;
   display: grid;
@@ -374,7 +374,7 @@
 .promise__story:hover { color: var(--cream); border-color: var(--cream); }
 
 /* ── 04 · SERVICES HUB — dark, bilingual headline + 3 cards ── */
-.services { background: #0a0806; min-height: 100svh; }
+.services { background: var(--ink); min-height: 100svh; }
 .services__heads {
   display: grid;
   gap: clamp(1rem, 3vh, 2rem);
@@ -455,7 +455,7 @@
 @media (max-width: 900px) { .services__cards { grid-template-columns: 1fr; } }
 
 /* ── 05 · PROOF — light, stats ── */
-.proof { background: var(--parchment); color: var(--ink); min-height: 100svh; }
+.proof { background: var(--surface); color: var(--ink); min-height: 100svh; }
 .proof__head { font-size: clamp(2.4rem, 6vw, 5.2rem); max-width: 20ch; margin-block-end: clamp(1.2rem, 2.4vw, 1.8rem); }
 .proof__numbers {
   display: grid;
@@ -484,7 +484,7 @@
 @media (max-width: 720px) { .proof__numbers { grid-template-columns: repeat(2, 1fr); } }
 
 /* ── 06 · TESTIMONIALS — draggable strip ── */
-.testimonials { background: var(--cloud); color: var(--ink); overflow: clip; padding-inline: 0; }
+.testimonials { background: var(--surface); color: var(--ink); overflow: clip; padding-inline: 0; }
 .testimonials .section-head, .testimonials__head { padding-inline: var(--gutter); max-width: var(--wide); margin-inline: auto; }
 .testimonials__head {
   font-size: clamp(2rem, 4.6vw, 3.8rem);
@@ -504,7 +504,7 @@
   flex-direction: column;
   gap: 1.4rem;
   padding: clamp(1.6rem, 2.4vw, 2.4rem);
-  background: var(--paper);
+  background: var(--surface-card);
   border: 1px solid rgba(13, 11, 7, 0.08);
   border-radius: 20px;
   box-shadow: 0 24px 50px -30px rgba(13, 11, 7, 0.25);
@@ -532,7 +532,7 @@
 }
 
 /* ── 07 · CONSULTING — light, 4 steps + dark booking card ── */
-.consulting { background: var(--cream); color: var(--ink); overflow: clip; }
+.consulting { background: var(--surface); color: var(--ink); overflow: clip; }
 .consulting__grid {
   position: relative;
   z-index: 1;
@@ -613,7 +613,7 @@
 }
 
 /* ── 08 · BOOK TEASER — light, floating 3D book ── */
-.bookteaser { background: var(--cloud); color: var(--ink); min-height: 100svh; overflow: clip; }
+.bookteaser { background: var(--surface); color: var(--ink); min-height: 100svh; overflow: clip; }
 .bookteaser__grid {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
@@ -802,7 +802,7 @@
 }
 
 /* ── 10 · PUBLICATION — almobadir cross-link ── */
-.publication { background: var(--paper); color: var(--ink); }
+.publication { background: var(--surface); color: var(--ink); }
 .publication__grid {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;

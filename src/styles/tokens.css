@@ -9,6 +9,11 @@
   --cream: #f7f3ea;
   --paper: #fbf7ee;
   --cloud: #eae8e3;            /* light statement sections */
+  /* ONE warm light surface for EVERY light section, site-wide — the whole
+     site lives between exactly two tones (--surface and --ink) so sections
+     flow as one continuous page instead of reading as separate sites. */
+  --surface: #f5f0e6;
+  --surface-card: #fffdf8;    /* slightly elevated card on --surface */
   --ink: #0d0b07;
   --ink-mid: #1c1812;
   --ink-soft: #3d362b;
