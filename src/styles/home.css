@@ -20,7 +20,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 22%;
+  object-position: center 28%;
   transform: scale(1.06);
 }
 .hero__atmosphere {
@@ -42,7 +42,7 @@
   pointer-events: none;
   background:
     linear-gradient(to bottom, rgba(13, 11, 7, 0.55) 0%, transparent 22%),
-    linear-gradient(to top, rgba(13, 11, 7, 0.88) 0%, rgba(13, 11, 7, 0.45) 26%, transparent 52%);
+    linear-gradient(to top, rgba(13, 11, 7, 0.92) 0%, rgba(13, 11, 7, 0.58) 30%, transparent 56%);
 }
 
 .hero__stagezone {
@@ -61,6 +61,18 @@
   max-width: 14ch;
   color: var(--cream);
   text-shadow: 0 1px 14px rgba(13, 11, 7, 0.8), 0 1px 3px rgba(13, 11, 7, 0.9);
+  z-index: 0;
+}
+/* soft local backing — keeps labels AA over the bright golden wall */
+.hero__role::before {
+  content: '';
+  position: absolute;
+  inset: -0.5em -0.8em;
+  z-index: -1;
+  background: rgba(13, 11, 7, 0.62);
+  border-radius: 1em;
+  filter: blur(14px);
+  pointer-events: none;
 }
 .hero__role--a {
   inset-inline-start: var(--gutter);
@@ -99,7 +111,7 @@
   color: var(--cream);
   padding: 0.55em 1em;
   border-radius: 999px;
-  background: rgba(13, 11, 7, 0.55);
+  background: rgba(13, 11, 7, 0.82);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
 }
@@ -642,7 +654,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 20%;
+  /* bias toward the subject (right of the master) so phone crops keep him;
+     the RTL mirror flips the rendered result, crop included */
+  object-position: 72% center;
 }
 /* the subject stands opposite the copy column in both directions */
 [dir='rtl'] .whyme__backdrop img { transform: scaleX(-1); }

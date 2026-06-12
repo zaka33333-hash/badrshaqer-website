@@ -19,10 +19,12 @@ reduced-motion / weight / web-vitals measurement. Curated evidence in `audit/sho
 
 ## Measured numbers
 
-**Contrast (worst-frame, measured over rendered pixels at 1440×900):**
-hero roles 3.7–13.6:1 · hero name 9.3:1 · scroll cue 5.4:1 · why-me intro/head/bullets
-7.0–15.8:1 (after directional scrim fix) · outro head/sub 13.9/15.4:1 · outro meta 9.4–10.5:1.
-All ≥ AA for their size. (Method: hide text → sample worst background pixel in its box.)
+**Contrast (worst-frame, measured over rendered pixels at 1440×900, golden photo set):**
+hero roles 7.0–15.3:1 (soft local backings) · hero name 5.5:1 · why-me intro/head 3.4–4.6:1
+(large text, ≥3 required) · outro head/sub 14.2/15.8:1 · outro meta 9.4–10.4:1. All ≥ AA for
+their size. (Method: make text transparent → sample worst background pixel in its box. The
+scroll-cue and why-me-bullet rows read 1.8–2.0 in the harness because the box includes their own
+brass ornament glyphs — decorative pseudo-elements, not text background; labels sit on ≥0.82 ink.)
 
 **Performance (localhost, 1440×900):** LCP 156ms (AR) / 84ms (EN) · **CLS 0.0006 / 0.0257** ·
 56fps / 49fps during continuous programmatic scroll · weight **1.12MB AR / 1.01MB EN**
