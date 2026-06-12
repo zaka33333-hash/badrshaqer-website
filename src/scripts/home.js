@@ -170,24 +170,8 @@ document.addEventListener('astro:page-load', () => {
       activeDraggables.push(...drag);
     });
 
-    /* ── statement: pinned beat — words build, shapes drift ── */
-    const statement = document.querySelector('.statement');
-    if (statement) {
-      const words = statement.querySelectorAll('.statement__line .word');
-      gsap.set(words, { yPercent: 140 });
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: statement,
-          start: 'top top',
-          end: '+=70%',
-          pin: true,
-          scrub: 0.6,
-          anticipatePin: 1,
-        },
-      })
-        .to(words, { yPercent: 0, stagger: 0.06, ease: 'power3.out', duration: 0.55 }, 0);
-      activeTweens.push(tl);
-    }
+    /* statement headline reveals via the shared .split-mask IntersectionObserver
+       (core.js) — reliable, no pin/scrub. */
 
     /* ── testimonials: draggable strip on fine pointers ── */
     const strip = document.querySelector('.testimonials__strip');
