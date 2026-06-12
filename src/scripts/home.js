@@ -11,24 +11,33 @@ import { lenis, reduceMotion, finePointer } from './core.js';
    Runs regardless of reduced motion (it's navigation, not animation).
    Click smooth-scroll is handled by the global anchor handler in core.js. ── */
 (function initScenesRail() {
+  const rail = document.querySelector('.scenes');
   const items = [...document.querySelectorAll('.scenes__item')];
-  if (!items.length) return;
+  if (!rail || !items.length) return;
   const sections = items
     .map((it) => document.getElementById(it.dataset.target))
     .filter(Boolean);
   if (!sections.length) return;
   const setActive = (id) =>
     items.forEach((it) => it.classList.toggle('is-active', it.dataset.target === id));
-  const io = new IntersectionObserver(
-    (entries) => {
-      const visible = entries
-        .filter((e) => e.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if (visible) setActive(visible.target.id);
-    },
-    { rootMargin: '-45% 0px -45% 0px', threshold: [0, 0.25, 0.5, 1] }
-  );
-  sections.forEach((s) => io.observe(s));
+
+  // a thin detection line at the viewport's vertical centre — fires for
+  // whichever element crosses it, so both observers report "what's behind the rail".
+  const centreLine = { rootMargin: '-50% 0px -50% 0px', threshold: 0 };
+
+  // 1) active rail item = the mapped section currently at centre
+  const activeIO = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) setActive(e.target.id); });
+  }, centreLine);
+  sections.forEach((s) => activeIO.observe(s));
+
+  // 2) rail colour = data-theme of ANY section at centre (mapped or not),
+  //    so the rail stays legible flipping ink/cream as themes pass behind it.
+  const themed = [...document.querySelectorAll('section[data-theme], footer[data-theme]')];
+  const themeIO = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) rail.dataset.on = e.target.dataset.theme || 'dark'; });
+  }, centreLine);
+  themed.forEach((s) => themeIO.observe(s));
 })();
 
 if (!reduceMotion) {
