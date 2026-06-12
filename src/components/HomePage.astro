@@ -88,6 +88,8 @@ const scenes = {
 
 <!-- ═══════ 03 · PROMISE ═══════ -->
 <section class="promise stage stage--full" data-theme="dark">
+  <div class="ambient-glow" style="--glow-color:rgba(200,40,30,0.12); top: 10%; right: 10%; animation: ambient-float-1 22s ease-in-out infinite;" aria-hidden="true"></div>
+  <div class="ambient-glow" style="--glow-color:rgba(212,180,131,0.08); bottom: 10%; left: 5%; animation: ambient-float-2 26s ease-in-out infinite;" aria-hidden="true"></div>
   <div class="wrap">
     <p class="t-mono" data-reveal="fade" style="color: var(--brass-pale)">{t.promise.overline}</p>
     <h2 class="t-display promise__head split-mask">
@@ -112,6 +114,8 @@ const scenes = {
 
 <!-- ═══════ 04 · SERVICES HUB ═══════ -->
 <section class="services stage stage--full" data-theme="dark">
+  <div class="ambient-glow" style="--glow-color:rgba(212,180,131,0.09); top: 15%; left: 10%; animation: ambient-float-2 24s ease-in-out infinite;" aria-hidden="true"></div>
+  <div class="ambient-glow" style="--glow-color:rgba(200,40,30,0.07); bottom: 15%; right: 10%; animation: ambient-float-1 20s ease-in-out infinite;" aria-hidden="true"></div>
   <div class="wrap">
     <div class="services__heads">
       <h2 class="t-statement services__primary" data-reveal="rise-slow">{t.services.headPrimary}</h2>
@@ -119,7 +123,7 @@ const scenes = {
     </div>
     <div class="services__cards">
       {t.services.cards.map((card, i) => (
-        <a class="services__card magnetic" href={card.href} data-cursor={card.cursor} data-reveal="rise-fast" style={`--delay:${i * 140}ms`}>
+        <a class="services__card" data-tilt href={card.href} data-cursor={card.cursor} data-reveal="rise-fast" style={`--delay:${i * 140}ms`}>
           <div class="services__card-top t-mono">
             <span>{card.tag}</span>
             <span class:list={['services__dot', { 'services__dot--available': card.dot === 'available' }]} aria-hidden="true"></span>
@@ -212,7 +216,7 @@ const scenes = {
           ))}
         </div>
       </div>
-      <aside class="consulting__card" data-reveal="scale">
+      <aside class="consulting__card" data-tilt data-reveal="scale">
         <div class="consulting__card-tag t-mono">{t.consulting.card.tag}</div>
         <h3 class="consulting__card-head">{t.consulting.card.head}</h3>
         <p class="consulting__card-deck">{t.consulting.card.deck}</p>

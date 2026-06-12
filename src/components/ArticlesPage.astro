@@ -15,7 +15,7 @@ const teasers = articleTeasers[lang];
     <!-- OWNER-TODO: replace teasers with the real article archive (titles, slugs, dates, source). -->
     <div class="articles-grid">
       {teasers.map((a, i) => (
-        <article class="article-card magnetic" data-cursor="COMING" data-reveal="rise-fast" style={`--delay:${i * 90}ms`}>
+        <article class="article-card" data-tilt data-cursor="COMING" data-reveal="rise-fast" style={`--delay:${i * 90}ms`}>
           <div class="article-card__top t-mono">
             <span class="article-card__tag">{a.tag}</span>
             <span>{t.comingTag}</span>

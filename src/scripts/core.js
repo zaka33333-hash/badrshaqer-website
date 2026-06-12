@@ -22,9 +22,12 @@ let scrollProgressEl = null;
 let scrollRaf = 0;
 const updateScrollProgress = () => {
   scrollRaf = 0;
-  if (!scrollProgressEl) return;
   const max = document.documentElement.scrollHeight - innerHeight;
-  scrollProgressEl.style.setProperty('--p', max > 0 ? (scrollY / max).toFixed(4) : 0);
+  const pct = max > 0 ? (scrollY / max) : 0;
+  if (scrollProgressEl) {
+    scrollProgressEl.style.setProperty('--p', pct.toFixed(4));
+  }
+  document.documentElement.style.setProperty('--scroll-percent', `${(pct * 100).toFixed(2)}%`);
 };
 
 let pillnavEl = null;
@@ -246,6 +249,23 @@ document.addEventListener('astro:page-load', () => {
         const x = e.clientX - rect.left - rect.width / 2;
         const y = e.clientY - rect.top - rect.height / 2;
         el.style.transform = `translate(${x * 0.22}px, ${y * 0.32}px)`;
+      });
+    });
+  }
+
+  // 6b. 3D Tilt Elements
+  if (finePointer && !reduceMotion) {
+    document.querySelectorAll('[data-tilt]').forEach((el) => {
+      let rect = null;
+      el.addEventListener('mouseenter', () => { rect = el.getBoundingClientRect(); });
+      el.addEventListener('mouseleave', () => { el.style.transform = ''; rect = null; });
+      el.addEventListener('mousemove', (e) => {
+        if (!rect) return;
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        const rx = -(y / (rect.height / 2)) * 8; // max 8 degrees tilt
+        const ry = (x / (rect.width / 2)) * 8;
+        el.style.transform = `perspective(1200px) rotateX(${rx}deg) rotateY(${ry}deg) scale(1.025)`;
       });
     });
   }

@@ -70,6 +70,7 @@ body:has(:focus-visible) { cursor: auto; }
   position: relative;
   padding: clamp(4rem, 10vh, 8rem) var(--gutter);
   isolation: isolate;
+  overflow: clip;
 }
 .stage--full { min-height: 100svh; display: grid; align-content: center; }
 .wrap { max-width: var(--wide); width: 100%; margin-inline: auto; position: relative; }
@@ -326,4 +327,32 @@ body:has(:focus-visible) { cursor: auto; }
     clip-path: none !important;
   }
   body.has-cursor, body.has-cursor a, body.has-cursor button { cursor: auto; }
+}
+
+/* ── ambient floating glow blurs (billion dollar feel) ── */
+.ambient-glow {
+  position: absolute;
+  width: clamp(280px, 45vw, 680px);
+  height: clamp(280px, 45vw, 680px);
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--glow-color, rgba(200, 40, 30, 0.14)) 0%, transparent 70%);
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.85;
+  mix-blend-mode: plus-lighter;
+  will-change: transform;
+}
+@keyframes ambient-float-1 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(6vw, -4vh) scale(1.08); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+@keyframes ambient-float-2 {
+  0% { transform: translate(0, 0) scale(1.05); }
+  50% { transform: translate(-5vw, 6vh) scale(0.92); }
+  100% { transform: translate(0, 0) scale(1.05); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ambient-glow { display: none; }
 }
