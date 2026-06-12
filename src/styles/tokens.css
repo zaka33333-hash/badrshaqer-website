@@ -38,10 +38,10 @@
   --font-quote: var(--quote-en);
   --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
 
-  --display-en: 'Fraunces', Georgia, serif;
+  --display-en: 'Bricolage Grotesque', system-ui, sans-serif;
   --statement-en: 'Bricolage Grotesque', system-ui, sans-serif;
   --body-en: 'Source Serif 4', Georgia, serif;
-  --quote-en: 'Fraunces', Georgia, serif;
+  --quote-en: 'Bricolage Grotesque', system-ui, sans-serif;
 
   --display-ar: 'Reem Kufi', 'IBM Plex Sans Arabic', sans-serif;
   --statement-ar: 'Alexandria', 'IBM Plex Sans Arabic', sans-serif;

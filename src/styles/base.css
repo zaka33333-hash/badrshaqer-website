@@ -33,11 +33,6 @@ button { background: none; border: 0; color: inherit; font: inherit; cursor: poi
 img { display: block; max-width: 100%; }
 ::selection { background: var(--carmine); color: var(--cream); }
 
-/* fine-pointer pages hide the native cursor (custom cursor takes over) */
-@media (pointer: fine) {
-  body.has-cursor { cursor: none; }
-  body.has-cursor a, body.has-cursor button { cursor: none; }
-}
 body:has(:focus-visible) { cursor: auto; }
 
 :focus-visible {
@@ -126,7 +121,7 @@ body:has(:focus-visible) { cursor: auto; }
 }
 :lang(en) .t-display { font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0; font-weight: 560; }
 .t-display em { font-style: normal; color: var(--theme-acc); }
-:lang(en) .t-display em { font-style: italic; font-variation-settings: 'opsz' 144, 'SOFT' 60, 'WONK' 1; }
+:lang(en) .t-display em { font-style: normal; font-variation-settings: 'opsz' 144, 'SOFT' 60, 'WONK' 1; }
 
 .t-statement {
   font-family: var(--font-statement);
@@ -175,7 +170,7 @@ body:has(:focus-visible) { cursor: auto; }
 .section-head__num {
   color: var(--theme-acc);
   font-family: var(--display-en);
-  font-style: italic;
+  font-style: normal;
   font-size: clamp(1.2rem, 1.8vw, 1.5rem);
   line-height: 1;
 }
@@ -193,7 +188,7 @@ body:has(:focus-visible) { cursor: auto; }
 }
 :lang(en) .section-title { font-variation-settings: 'opsz' 144, 'SOFT' 30; }
 .section-title em { font-style: normal; color: var(--theme-acc); }
-:lang(en) .section-title em { font-style: italic; }
+:lang(en) .section-title em { font-style: normal; }
 
 /* ═══════════════ REVEAL PATTERN LIBRARY ═══════════════ */
 /* hidden states apply only when JS is running (html.js set inline in <head>) */

@@ -105,9 +105,7 @@ const sectionLabels = {
   <div class="wrap">
     <div class="services__heads">
       <h2 class="t-statement services__primary" data-reveal="rise-slow">{t.services.headPrimary}</h2>
-      <p class="services__ghost" lang={otherLang} dir={otherLang === 'ar' ? 'rtl' : 'ltr'} data-reveal="fade" style="--delay:300ms">
-        {t.services.headGhost}
-      </p>
+      <p class="services__deck" data-reveal="fade" style="--delay:300ms">{t.services.deck}</p>
     </div>
     <div class="services__cards">
       {t.services.cards.map((card, i) => (

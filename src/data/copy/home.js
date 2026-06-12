@@ -33,8 +33,8 @@ export const home = {
 
     // 04 — services hub (dark)
     services: {
-      headPrimary: 'مستشار في بناء المشاريع الاستشاريّة والتدريبيّة. رائد أعمال وكاتب.',
-      headGhost: "Close the gap between where you are and where you want to be with Badr Shaqer's proven systems.",
+      headPrimary: 'أنظمة مجربة تنقلك من حيث أنت إلى حيث تريد أن تصل.',
+      deck: 'مستشار في بناء المشاريع الاستشارية والتدريبية · رائد أعمال وكاتب.',
       cards: [
         {
           tag: 'ابدأ معي',
@@ -200,7 +200,7 @@ export const home = {
 
     services: {
       headPrimary: "Close the gap between where you are and where you want to be with Badr Shaqer's proven systems.",
-      headGhost: 'مستشار في بناء المشاريع الاستشاريّة والتدريبيّة. رائد أعمال وكاتب.',
+      deck: 'Consultant in advisory & training ventures · entrepreneur & writer.',
       cards: [
         { tag: 'Start here', label: 'Book a consultation', href: PATHS.consultation.en, dot: 'available', cursor: 'BOOK' },
         { tag: 'Articles', label: '150+ articles on selling expertise', href: PATHS.articles.en, cursor: 'READ' },

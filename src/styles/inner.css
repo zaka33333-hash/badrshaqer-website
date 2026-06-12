@@ -14,7 +14,7 @@
   padding-block: clamp(7rem, 18vh, 11rem) clamp(3rem, 8vh, 5rem);
   overflow: clip;
 }
-.pagehero--tall { min-height: 92svh; }
+.pagehero--tall { min-height: 100svh; }
 /* small phones: content-sized hero so the primary CTA lands in view */
 @media (max-width: 480px) {
   .pagehero, .pagehero--tall { min-height: 0; padding-block: 6rem 2.6rem; }
@@ -63,7 +63,7 @@
   inset-inline-end: -2%;
   top: 8%;
   font-family: var(--display-en);
-  font-style: italic;
+  font-style: normal;
   font-weight: 500;
   font-size: clamp(8rem, 22vw, 22rem);
   line-height: 1;
@@ -84,7 +84,7 @@
 .chapter:last-of-type { border-bottom: 0; }
 .chapter__num {
   font-family: var(--display-en);
-  font-style: italic;
+  font-style: normal;
   font-size: clamp(2rem, 4vw, 3.4rem);
   line-height: 1;
   color: var(--theme-acc);
@@ -111,7 +111,7 @@
   margin-top: 1.8rem;
   max-width: 40ch;
 }
-:lang(en) .chapter__pull { font-style: italic; }
+:lang(en) .chapter__pull { font-style: normal; }
 
 /* ── credentials band ── */
 .credband {
@@ -222,7 +222,7 @@
   counter-increment: rg;
   display: block;
   font-family: var(--display-en);
-  font-style: italic;
+  font-style: normal;
   font-size: 1.3rem;
   color: var(--carmine);
   margin-bottom: 0.9rem;
@@ -259,7 +259,7 @@
   counter-increment: pl;
   display: block;
   font-family: var(--display-en);
-  font-style: italic;
+  font-style: normal;
   font-size: 1.3rem;
   color: var(--carmine);
   margin-bottom: 0.9rem;

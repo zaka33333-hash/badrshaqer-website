@@ -10,6 +10,12 @@
   display: grid;
   grid-template-rows: 1fr auto;
   isolation: isolate;
+  /* single source of truth for the name seam: the gap between the two
+     words AND the circle row are both derived from this, so they always
+     fill each other exactly — no dead space, at any width, either language. */
+  --seam: clamp(17rem, 21vw, 30rem);
+  --shape-d: calc(var(--seam) * 0.235);
+  --shape-step: calc(var(--seam) * 0.252);
 }
 .hero__backdrop {
   position: absolute;
@@ -60,19 +66,7 @@
   line-height: 1.45;
   max-width: 14ch;
   color: var(--cream);
-  text-shadow: 0 1px 14px rgba(13, 11, 7, 0.8), 0 1px 3px rgba(13, 11, 7, 0.9);
   z-index: 0;
-}
-/* soft local backing — keeps labels AA over the bright golden wall */
-.hero__role::before {
-  content: '';
-  position: absolute;
-  inset: -0.5em -0.8em;
-  z-index: -1;
-  background: rgba(13, 11, 7, 0.62);
-  border-radius: 1em;
-  filter: blur(14px);
-  pointer-events: none;
 }
 .hero__role--a {
   inset-inline-start: var(--gutter);
@@ -92,12 +86,16 @@
   z-index: 6;
   pointer-events: none;
 }
-.hero__shapes .shape { pointer-events: auto; cursor: grab; }
+.hero__shapes .shape { pointer-events: auto; cursor: grab; width: var(--shape-d); height: var(--shape-d); }
 .hero__shapes .shape:active { cursor: grabbing; }
-.hero__shapes .shape--flousak { width: clamp(64px, 9vw, 130px); height: clamp(64px, 9vw, 130px); left: 37%; bottom: 7%; }
-.hero__shapes .shape--media   { width: clamp(58px, 8.2vw, 118px); height: clamp(58px, 8.2vw, 118px); left: 45%; bottom: 4.5%; }
-.hero__shapes .shape--main    { width: clamp(62px, 8.8vw, 126px); height: clamp(62px, 8.8vw, 126px); left: 52%; bottom: 8%; }
-.hero__shapes .shape--mindset { width: clamp(56px, 8vw, 114px); height: clamp(56px, 8vw, 114px); left: 59%; bottom: 5%; }
+/* desktop: four equal circles that exactly fill the name seam, centred on
+   it. Positions are derived from --seam (same var the name gap uses), so the
+   row always fills the gap — no dead space — and tracks every viewport.
+   inset-inline-start (not left) auto-mirrors the row into the RTL gap. */
+.hero__shapes .shape--media   { inset-inline-start: calc(50% - 1.5 * var(--shape-step) - var(--shape-d) / 2); bottom: 9%; }
+.hero__shapes .shape--flousak { inset-inline-start: calc(50% - 0.5 * var(--shape-step) - var(--shape-d) / 2); bottom: 9%; }
+.hero__shapes .shape--main    { inset-inline-start: calc(50% + 0.5 * var(--shape-step) - var(--shape-d) / 2); bottom: 9%; }
+.hero__shapes .shape--mindset { inset-inline-start: calc(50% + 1.5 * var(--shape-step) - var(--shape-d) / 2); bottom: 9%; }
 
 .hero__scrollcue {
   position: absolute;
@@ -107,13 +105,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.6rem;
-  color: var(--cream);
-  padding: 0.55em 1em;
-  border-radius: 999px;
-  background: rgba(13, 11, 7, 0.82);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  gap: 0.7rem;
+  color: var(--brass-pale);
+  font-size: 0.62rem;
+  letter-spacing: 0.34em;
+  opacity: 0.8;
 }
 .hero__scrollcue::after {
   content: '';
@@ -129,25 +125,37 @@
   100% { transform: scaleY(0); transform-origin: bottom; }
 }
 
-/* the giant split name — flush to the bottom edge, slightly clipped */
+/* the giant split name — two short words centred, circles nestled in the
+   seam between them. A centred gap keeps the composition tight (no cavernous
+   void) and stays symmetric in RTL — the seam is always mid-stage. */
 .hero__name {
   position: relative;
   z-index: 4;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: baseline;
-  gap: 1vw;
+  gap: var(--seam);
   padding-inline: var(--gutter);
+  padding-block-end: clamp(0.5rem, 1.8vh, 1.4rem);
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(4.2rem, 15.5vw, 21rem);
+  font-size: clamp(4.2rem, 12vw, 15rem);
   line-height: 0.98;
   letter-spacing: -0.02em;
-  transform: translateY(0.07em);
   user-select: none;
   pointer-events: none;
 }
-.hero__name .w { display: inline-flex; overflow: clip; padding-block-start: 0.1em; }
+.hero__name .w { display: inline-flex; overflow: clip; padding-block-start: 0.1em; padding-block-end: 0.06em; }
+/* desktop: each word takes an equal half and hugs the centre, so the seam
+   the circles sit in is always dead-centre — identical in LTR and RTL,
+   no matter that the words differ in width between the two languages. */
+@media (min-width: 721px) {
+  /* each word fills an equal half and hugs the centre. Selected by adjacency
+     (not :first-child) because an a11y visually-hidden span is the real first
+     child — the first .w hugs centre-end, the second hugs centre-start. */
+  .hero__name .w { flex: 1 1 0; justify-content: flex-end; }
+  .hero__name .w + .w { justify-content: flex-start; }
+}
 .hero__name .w + .w { color: var(--carmine); }
 .hero__name .g { display: inline-block; will-change: transform; }
 
@@ -165,10 +173,14 @@
   }
   .hero__name .w { justify-content: center; }
   .hero__scrollcue { display: none; }
-  .hero__shapes .shape--flousak { left: 10%; bottom: 47%; }
-  .hero__shapes .shape--media   { left: 30%; bottom: 44%; }
-  .hero__shapes .shape--main    { left: 51%; bottom: 48%; }
-  .hero__shapes .shape--mindset { left: 70%; bottom: 44.5%; }
+  .hero__shapes .shape { width: clamp(68px, 19vw, 82px); height: clamp(68px, 19vw, 82px); }
+  /* mobile: four equal circles framing the centred title — a symmetric
+     halo, two above flanking the upper word, two hugging its sides.
+     left/right pairs are mirror-symmetric, so the frame holds in RTL too. */
+  .hero__shapes .shape--flousak { inset-inline-start: 9%;  inset-inline-end: auto; bottom: 47%; }
+  .hero__shapes .shape--main    { inset-inline-end: 9%;  inset-inline-start: auto; bottom: 47%; }
+  .hero__shapes .shape--media   { inset-inline-start: 5%; inset-inline-end: auto; bottom: 24%; }
+  .hero__shapes .shape--mindset { inset-inline-end: 5%;  inset-inline-start: auto; bottom: 24%; }
 }
 
 /* ── 02 · STATEMENT — light counterpoint ── */
@@ -254,7 +266,7 @@
 .promise__ctas { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
 .promise__story {
   font-family: var(--font-quote);
-  font-style: italic;
+  font-style: normal;
   font-size: 1.05rem;
   color: var(--brass-pale);
   border-bottom: 1px solid rgba(212, 180, 131, 0.4);
@@ -275,18 +287,14 @@
   max-width: 26ch;
   color: var(--cream);
 }
-.services__ghost {
+.services__deck {
   font-family: var(--font-statement);
   font-weight: 500;
-  font-size: clamp(1rem, 1.7vw, 1.4rem);
-  line-height: 1.5;
-  max-width: 38ch;
-  color: rgba(247, 243, 234, 0.38);
-  justify-self: end;
-  text-align: end;
+  font-size: clamp(1rem, 1.7vw, 1.35rem);
+  line-height: 1.55;
+  max-width: 44ch;
+  color: rgba(247, 243, 234, 0.52);
 }
-.services__ghost[dir='ltr'] { text-align: left; }
-.services__ghost[dir='rtl'] { text-align: right; }
 .services__cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -341,7 +349,7 @@
 [dir='rtl'] .services__card-arrow { --arrow-dir: -1; }
 [dir='rtl'] .services__card-arrow svg { transform: scaleX(-1); }
 .services__card:hover .services__card-arrow { opacity: 1; transform: none; }
-@media (max-width: 900px) { .services__cards { grid-template-columns: 1fr; } .services__ghost { justify-self: start; } }
+@media (max-width: 900px) { .services__cards { grid-template-columns: 1fr; } }
 
 /* ── 05 · PROOF — light, numbered rail + stats ── */
 .proof { background: var(--parchment); color: var(--ink); min-height: 100svh; }
@@ -353,7 +361,7 @@
   flex-direction: column;
   gap: 1.1rem;
   font-family: var(--display-en);
-  font-style: italic;
+  font-style: normal;
   font-size: clamp(0.9rem, 1.1vw, 1.1rem);
   color: rgba(13, 11, 7, 0.35);
 }
@@ -416,7 +424,7 @@
   font-size: 3.4rem;
   line-height: 0.6;
   color: var(--carmine);
-  font-style: italic;
+  font-style: normal;
 }
 .testimonials__text {
   font-family: var(--font-quote);
@@ -424,7 +432,7 @@
   line-height: 1.75;
   flex: 1;
 }
-:lang(en) .testimonials__text { font-style: italic; }
+:lang(en) .testimonials__text { font-style: normal; }
 .testimonials__author { display: flex; flex-direction: column; gap: 0.25rem; padding-top: 1rem; border-top: 1px solid rgba(13, 11, 7, 0.1); }
 .testimonials__name { font-family: var(--font-body); font-weight: 600; font-size: 0.95rem; }
 .testimonials__role { color: var(--ink-soft); }
@@ -440,7 +448,7 @@
   inset-inline-end: -4%;
   bottom: -6%;
   font-family: var(--display-en);
-  font-style: italic;
+  font-style: normal;
   font-weight: 500;
   font-size: clamp(18rem, 42vw, 44rem);
   line-height: 0.7;
@@ -470,7 +478,7 @@
 .consulting__step:last-child { border-bottom: 0; }
 .consulting__step-num {
   font-family: var(--display-en);
-  font-style: italic;
+  font-style: normal;
   font-size: 1.35rem;
   color: var(--carmine);
   line-height: 1.2;
@@ -610,7 +618,7 @@
   max-width: 30rem;
   margin-bottom: clamp(1.2rem, 2.5vh, 1.8rem);
 }
-:lang(en) .bookteaser__subtitle { font-style: italic; }
+:lang(en) .bookteaser__subtitle { font-style: normal; }
 .bookteaser__reasons { display: flex; flex-direction: column; gap: 0.9rem; margin-bottom: clamp(1.6rem, 3vh, 2.4rem); counter-reset: reason; }
 .bookteaser__reason {
   display: flex;
@@ -625,7 +633,7 @@
   content: counter(reason, decimal-leading-zero);
   counter-increment: reason;
   font-family: var(--display-en);
-  font-style: italic;
+  font-style: normal;
   font-size: 0.85rem;
   color: var(--carmine);
   flex-shrink: 0;

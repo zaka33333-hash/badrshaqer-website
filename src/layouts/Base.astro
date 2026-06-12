@@ -4,7 +4,7 @@
  * Handles: SEO (canonical, hreflang, OG/Twitter, JSON-LD), fonts,
  * loader, pill nav, full-screen menu, cursor, outro footer.
  */
-import { SITE, PATHS } from '../data/site.js';
+import { SITE, PATHS, other } from '../data/site.js';
 import { shared } from '../data/copy/shared.js';
 import Footer from '../components/Footer.astro';
 import Arrow from '../components/Arrow.astro';
@@ -30,6 +30,13 @@ const {
 const t = shared[lang];
 const dir = lang === 'ar' ? 'rtl' : 'ltr';
 const canonical = `${SITE.domain}${alt[lang]}`;
+// language toggle — links to the same page in the other language
+const altLang = other(lang);
+const langSwitch = {
+  href: alt[altLang],
+  label: altLang.toUpperCase(),
+  aria: altLang === 'ar' ? 'العربية' : 'English',
+};
 const og = ogImage || `${SITE.domain}/assets/og-${lang}.jpg`;
 
 const personLd = {
@@ -72,7 +79,6 @@ const ldGraph = { '@context': 'https://schema.org', '@graph': [personLd, website
       </>
     ) : (
       <>
-        <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/fraunces_v38_6NUT8FyLNQOQZAnv9ZwNpOskzP9Ddt0.woff2" />
         <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/bricolagegrotesque_v9_3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGIInHWVyNJ.woff2" />
       </>
     )}
@@ -162,14 +168,25 @@ const ldGraph = { '@context': 'https://schema.org', '@graph': [personLd, website
 
     <nav class="contact-pills" aria-label={t.a11y.contact}>
       {t.pills.map((p) => (
-        <a
-          href={p.href}
-          target={p.external ? '_blank' : undefined}
-          rel={p.external ? 'noopener noreferrer' : undefined}
-          data-cursor={p.cursor}
-          data-copy-email={p.copyEmail ? SITE.email : undefined}
-          data-copied-label={p.copyEmail ? t.emailCopied : undefined}
-        ><span>{p.label}</span></a>
+        p.langSwitch ? (
+          <a
+            class="contact-pills__lang"
+            href={langSwitch.href}
+            hreflang={altLang}
+            lang={altLang}
+            aria-label={langSwitch.aria}
+            data-cursor={langSwitch.label}
+          ><span>{langSwitch.label}</span></a>
+        ) : (
+          <a
+            href={p.href}
+            target={p.external ? '_blank' : undefined}
+            rel={p.external ? 'noopener noreferrer' : undefined}
+            data-cursor={p.cursor}
+            data-copy-email={p.copyEmail ? SITE.email : undefined}
+            data-copied-label={p.copyEmail ? t.emailCopied : undefined}
+          ><span>{p.label}</span></a>
+        )
       ))}
     </nav>
 

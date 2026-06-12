@@ -54,14 +54,17 @@ if (!reduceMotion) {
       yoyo: true,
       repeat: -1,
     });
+    let over = false;
+    shape.addEventListener('mouseenter', () => { over = true; gsap.to(shape, { scale: 1.22, duration: 0.38, ease: 'back.out(1.8)', overwrite: 'auto' }); });
+    shape.addEventListener('mouseleave', () => { over = false; gsap.to(shape, { scale: 1, duration: 0.45, ease: 'power3.out', overwrite: 'auto' }); });
     Draggable.create(shape, {
       type: 'x,y',
       bounds: document.querySelector('.hero'),
       inertia: true,
       edgeResistance: 0.82,
       zIndexBoost: true,
-      onPress() { gsap.to(shape, { scale: 1.08, duration: 0.25 }); },
-      onRelease() { gsap.to(shape, { scale: 1, duration: 0.4, ease: 'elastic.out(1, 0.5)' }); },
+      onPress() { gsap.to(shape, { scale: 1.12, duration: 0.2, overwrite: 'auto' }); },
+      onRelease() { gsap.to(shape, { scale: over ? 1.22 : 1, duration: 0.4, ease: 'elastic.out(1, 0.5)', overwrite: 'auto' }); },
     });
   });
 

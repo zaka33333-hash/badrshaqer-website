@@ -20,7 +20,7 @@ export const shared = {
     pills: [
       { label: 'بريد', href: `mailto:${SITE.email}`, cursor: 'EMAIL', copyEmail: true },
       { label: 'IG', href: SITE.instagram, cursor: 'IG', external: true },
-      { label: 'X', href: SITE.x, cursor: 'X', external: true },
+      { langSwitch: true },
       { label: 'TT', href: SITE.tiktok, cursor: 'TT', external: true },
     ],
     menu: [
@@ -73,7 +73,7 @@ export const shared = {
     pills: [
       { label: 'Email', href: `mailto:${SITE.email}`, cursor: 'EMAIL', copyEmail: true },
       { label: 'IG', href: SITE.instagram, cursor: 'IG', external: true },
-      { label: 'X', href: SITE.x, cursor: 'X', external: true },
+      { langSwitch: true },
       { label: 'TT', href: SITE.tiktok, cursor: 'TT', external: true },
     ],
     menu: [
