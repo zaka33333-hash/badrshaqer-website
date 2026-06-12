@@ -4,7 +4,7 @@ name: Deploy to GitHub Pages
 # into run commands (push/workflow_dispatch only).
 on:
   push:
-    branches: [main]
+    branches: [main, rebuild-v2]
   workflow_dispatch:
 
 permissions:
