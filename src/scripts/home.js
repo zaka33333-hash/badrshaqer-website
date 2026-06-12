@@ -118,7 +118,12 @@ document.addEventListener('astro:page-load', () => {
         .to(heroShapes, { scale: 1, duration: 1.1, ease: 'elastic.out(1, 0.55)', stagger: 0.07 }, 0.7);
       activeTweens.push(tl);
     };
-    document.addEventListener('loader:done', loaderDoneHandler, { once: true });
+    const loaderActive = document.getElementById('loader');
+    if (loaderActive) {
+      document.addEventListener('loader:done', loaderDoneHandler, { once: true });
+    } else {
+      loaderDoneHandler();
+    }
 
     /* ── hero exit: name splits apart, backdrop sinks (scrubbed) ── */
     const hero = document.querySelector('.hero');
