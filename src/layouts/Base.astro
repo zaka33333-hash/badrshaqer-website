@@ -64,6 +64,19 @@ const ldGraph = { '@context': 'https://schema.org', '@graph': [personLd, website
     <meta name="description" content={description} />
     <script>document.documentElement.classList.add('js');</script>
 
+    {/* critical display-font subsets — keep in sync with src/styles/fonts/*.css */}
+    {lang === 'ar' ? (
+      <>
+        <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/reemkufi_v28_2sDcZGJLip7W2J7v7wQzbWW5Kb8VZBHR.woff2" />
+        <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/alexandria_v6_UMBXrPdDqW66y0Y2usFeaijdA5E64BdCIg.woff2" />
+      </>
+    ) : (
+      <>
+        <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/fraunces_v38_6NUT8FyLNQOQZAnv9ZwNpOskzP9Ddt0.woff2" />
+        <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/bricolagegrotesque_v9_3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGIInHWVyNJ.woff2" />
+      </>
+    )}
+
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />

@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { PATHS, SITE } from '../data/site.js';
+import '../styles/inner.css';
+
+const lang = 'ar';
+---
+<Base
+  lang={lang}
+  title="404 · بدر شاكر"
+  description="الصفحة غير موجودة."
+  alt={{ ar: '/404', en: '/404' }}
+  firstTheme="dark"
+  noFooterCtas
+>
+  <section class="pagehero pagehero--tall stage" data-theme="dark">
+    <span class="pagehero__ghost" aria-hidden="true">404</span>
+    <div class="wrap">
+      <p class="pagehero__overline t-mono" data-reveal="fade">404 · Page not found</p>
+      <h1 class="t-display pagehero__head" data-reveal="rise-slow">
+        هذه الصفحة <em>غير موجودة.</em>
+      </h1>
+      <p class="pagehero__deck" data-reveal="rise-slow" style="--delay:200ms">
+        الرابط تغير أو لم يوجد يوما. الشيء المؤكد: شركتك ما زالت تحتاج أولويات.
+        <span lang="en" dir="ltr" style="display:block; margin-top:0.5rem; opacity:0.7">This page doesn't exist. Your priorities still do.</span>
+      </p>
+      <div class="pagehero__ctas" data-reveal="rise-fast" style="--delay:400ms">
+        <a class="cta cta--primary magnetic" data-cursor-style="button" data-cursor="HOME" href={PATHS.home.ar}>
+          <span>إلى الرئيسية</span>
+        </a>
+        <a class="cta cta--secondary magnetic" data-cursor="EN" href={PATHS.home.en}>
+          <span>English home</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>

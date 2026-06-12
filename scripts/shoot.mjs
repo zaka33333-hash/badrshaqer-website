@@ -25,7 +25,7 @@ const server = createServer(async (req, res) => {
     res.end('nf');
   }
 });
-await new Promise((r) => server.listen(4188, r));
+await new Promise((r) => server.listen(process.env.PORT || 4188, r));
 
 const [pagePath = '/', w = '1440', h = '900', label = 'shot', reduced = ''] = process.argv.slice(2);
 await mkdir('/tmp/bshots', { recursive: true });
@@ -43,7 +43,7 @@ page.on('console', (m) => { if (m.type() === 'error' || m.type() === 'warning') 
 page.on('requestfailed', (r) => failedReqs.push(`${r.url()} → ${r.failure()?.errorText}`));
 page.on('pageerror', (e) => consoleErrors.push(`pageerror: ${e.message}`));
 
-await page.goto(`http://localhost:4188${pagePath}`, { waitUntil: 'networkidle' });
+await page.goto(`http://localhost:${process.env.PORT || 4188}${pagePath}`, { waitUntil: 'networkidle' });
 await page.waitForTimeout(2600); // loader + intro
 
 const total = await page.evaluate(() => document.documentElement.scrollHeight);
