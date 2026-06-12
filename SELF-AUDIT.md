@@ -79,8 +79,7 @@ that remains is photographic: juanmora's hero is a real cinematic photo of its s
 stands on brand textures until the owner supplies the shot.
 
 ### Addendum — channel-logo draggables (post-v1 feedback)
-The four hero circles are now the real Almobadir channel logos: main (red) and
-mindset (green) pulled from the channels' YouTube avatars at 900px, فلوسك (blue)
-from its TikTok avatar at 1080px. **MEDIA is a generated stand-in** (white wordmark +
-cyan MEDIA pill on navy — Instagram blocks avatar fetch); swap the real file at
-`public/assets/channels/media.jpg` (square, ≥360px).
+The four hero circles are the real Almobadir channel logos (main, فلوسك, MEDIA,
+mindset), extracted at high resolution from the owner's Canva reference page
+(`scripts/extract-logos.mjs`) — all four are originals, circular-clipped PNGs at
+`public/assets/channels/`.
