@@ -119,7 +119,7 @@ const scenes = {
     </div>
     <div class="services__cards">
       {t.services.cards.map((card, i) => (
-        <a class="services__card" href={card.href} data-cursor={card.cursor} data-reveal="rise-fast" style={`--delay:${i * 140}ms`}>
+        <a class="services__card magnetic" href={card.href} data-cursor={card.cursor} data-reveal="rise-fast" style={`--delay:${i * 140}ms`}>
           <div class="services__card-top t-mono">
             <span>{card.tag}</span>
             <span class:list={['services__dot', { 'services__dot--available': card.dot === 'available' }]} aria-hidden="true"></span>

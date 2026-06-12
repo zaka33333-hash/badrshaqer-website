@@ -59,7 +59,7 @@ const bk = home[lang].book; // cover labels (approved)
     </h2>
     <div class="reasons-grid" style="margin-top: clamp(2rem, 5vh, 3rem)">
       {t.reasons.map((r, i) => (
-        <div class="reason-card" data-reveal="rise-fast" style={`--delay:${i * 130}ms`}>
+        <div class="reason-card magnetic" data-reveal="rise-fast" style={`--delay:${i * 130}ms`}>
           <h3>{r.head}</h3>
           <p>{r.body}</p>
         </div>

@@ -38,7 +38,7 @@ const ghost = program === 'consultant' ? '01' : '02';
         <p class="tracks__intro">{t.tracks.intro}</p>
         <div class="tracks__grid">
           {t.tracks.items.map((track) => (
-            <div class:list={['track', { 'track--featured': track.featured }]}>
+            <div class:list={['track', 'magnetic', { 'track--featured': track.featured }]} data-cursor="GO">
               <div class="track__top">
                 <h3 class="track__name">{track.name}</h3>
                 <p class="track__price">{track.price}</p>

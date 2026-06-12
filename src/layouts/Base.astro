@@ -8,6 +8,7 @@ import { SITE, PATHS, other } from '../data/site.js';
 import { shared } from '../data/copy/shared.js';
 import Footer from '../components/Footer.astro';
 import Arrow from '../components/Arrow.astro';
+import { ClientRouter } from 'astro:transitions';
 
 import '../styles/tokens.css';
 import '../styles/fonts/shared.css';
@@ -71,6 +72,7 @@ const ldGraph = { '@context': 'https://schema.org', '@graph': [personLd, website
     <title>{title}</title>
     <meta name="description" content={description} />
     <script>document.documentElement.classList.add('js');</script>
+    <ClientRouter />
 
     {/* critical display-font subsets — keep in sync with src/styles/fonts/*.css */}
     {lang === 'ar' ? (
@@ -159,7 +161,7 @@ const ldGraph = { '@context': 'https://schema.org', '@graph': [personLd, website
       </div>
     </nav>
 
-    <nav class="pillnav" aria-label={lang === 'ar' ? 'تنقل' : 'Navigation'}>
+    <nav class="pillnav" aria-label={lang === 'ar' ? 'تنقل' : 'Navigation'} transition:persist transition:name="pillnav">
       <a class="pillnav__link" href={t.nav.story.href}>{t.nav.story.label}</a>
       <a class="pillnav__logo" href={PATHS.home[lang]} aria-label={t.nav.home}>
         <img src={`${base}assets/badr-portrait.webp`} alt="" width="46" height="46" loading="eager" />
@@ -167,7 +169,7 @@ const ldGraph = { '@context': 'https://schema.org', '@graph': [personLd, website
       <a class="pillnav__link" href={t.nav.programs.href}>{t.nav.programs.label}</a>
     </nav>
 
-    <nav class="contact-pills" aria-label={t.a11y.contact}>
+    <nav class="contact-pills" aria-label={t.a11y.contact} transition:persist transition:name="contact-pills">
       {t.pills.map((p) => (
         p.langSwitch ? (
           <a
@@ -191,7 +193,7 @@ const ldGraph = { '@context': 'https://schema.org', '@graph': [personLd, website
       ))}
     </nav>
 
-    <div class="cursor" id="cursor" aria-hidden="true">
+    <div class="cursor" id="cursor" aria-hidden="true" transition:persist transition:name="cursor">
       <div class="cursor__ring"></div>
       <div class="cursor__dot"></div>
       <div class="cursor__label" id="cursorLabel"></div>
