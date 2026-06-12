@@ -421,7 +421,7 @@ body:has(:focus-visible) .cursor { display: none; }
   line-height: 0.92;
   letter-spacing: -0.02em;
   color: var(--cream);
-  transform: translateY(0.16em);
+  transform: translateY(0.08em);
   user-select: none;
 }
 .outro__name span:last-child { color: var(--brass-pale); }
@@ -435,7 +435,15 @@ body:has(:focus-visible) .cursor { display: none; }
   width: 100%;
   padding-block: 1.2rem;
   border-top: 1px solid rgba(212, 180, 131, 0.16);
-  color: rgba(247, 243, 234, 0.6);
+  color: rgba(247, 243, 234, 0.82);
+  position: relative;
+  z-index: 2;
+  background: rgba(8, 6, 5, 0.85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  margin-inline: calc(var(--gutter) * -1);
+  padding-inline: var(--gutter);
+  max-width: none;
 }
 .outro__meta a { padding: 0.5rem 0.4rem; display: inline-block; transition: color 200ms; }
 .outro__meta a:hover { color: var(--brass-pale); }

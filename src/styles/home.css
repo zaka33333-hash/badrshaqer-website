@@ -629,6 +629,23 @@
   color: var(--cream);
   min-height: 100svh;
 }
+/* AA scrim: the copy column needs ~0.88 ink over the bright photo pages */
+.whyme::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    var(--side-grad, 90deg),
+    rgba(13, 11, 7, 0.9) 0%,
+    rgba(13, 11, 7, 0.85) 52%,
+    rgba(13, 11, 7, 0.55) 78%,
+    rgba(13, 11, 7, 0.22) 100%
+  );
+}
+[dir='rtl'] .whyme::before { --side-grad: 270deg; }
+.whyme .wrap { position: relative; z-index: 1; }
 .whyme__intro {
   font-family: var(--font-statement);
   font-weight: 500;
