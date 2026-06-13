@@ -54,3 +54,25 @@ export const serviceLd = (lang) => ({
   url: SITE.domain + PATHS.consultation[lang],
   offers: { '@type': 'Offer', url: SITE.calendly },
 });
+
+// Almobadir — the publication Badr founds/writes; declared once so the
+// Person node has a credible organizational anchor.
+export const orgLd = () => ({
+  '@type': 'Organization',
+  '@id': `${SITE.domain}/#almobadir`,
+  name: 'Almobadir · المبادر',
+  url: SITE.almobadir,
+  founder: { '@id': PERSON_ID },
+  sameAs: [SITE.instagram, SITE.x, SITE.tiktok],
+});
+
+// FAQPage from a program's "questions this answers" pillars (head = question,
+// body = answer) — eligible for FAQ rich results.
+export const faqLd = (pillars) => ({
+  '@type': 'FAQPage',
+  mainEntity: pillars.map((p) => ({
+    '@type': 'Question',
+    name: p.head,
+    acceptedAnswer: { '@type': 'Answer', text: p.body },
+  })),
+});

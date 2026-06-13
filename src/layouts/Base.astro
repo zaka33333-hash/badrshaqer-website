@@ -5,6 +5,7 @@
  * loader, pill nav, full-screen menu, cursor, outro footer.
  */
 import { SITE, PATHS, other } from '../data/site.js';
+import { orgLd } from '../data/ld.js';
 import { shared } from '../data/copy/shared.js';
 import Footer from '../components/Footer.astro';
 import Arrow from '../components/Arrow.astro';
@@ -50,7 +51,7 @@ const personLd = {
   alternateName: lang === 'ar' ? 'Badr Shaqer' : 'بدر شاكر',
   jobTitle: lang === 'ar' ? 'مستشار المؤسسين' : 'Founder Advisor',
   url: SITE.domain + PATHS.home[lang],
-  image: `${SITE.domain}/assets/badr-portrait.webp`,
+  image: `${SITE.domain}${base}assets/badr-portrait.webp`,
   sameAs: [SITE.instagram, SITE.x, SITE.tiktok, SITE.almobadir],
   knowsAbout:
     lang === 'ar'
@@ -59,11 +60,29 @@ const personLd = {
 };
 const websiteLd = {
   '@type': 'WebSite',
-  url: SITE.domain + '/',
+  url: `${SITE.domain}${base}`,
   name: lang === 'ar' ? 'بدر شاكر · مستشار المؤسسين' : 'Badr Shaqer · Founder Advisor',
   inLanguage: lang,
 };
-const ldGraph = { '@context': 'https://schema.org', '@graph': [personLd, websiteLd, ...jsonLd] };
+
+// Auto breadcrumb: Home › current page, on every page except home. Page name
+// is the title minus its " · بدر شاكر / · Badr Shaqer" suffix.
+const isHome = alt[lang] === PATHS.home[lang];
+const crumbName = (title || '').split('·')[0].trim();
+const breadcrumbLd = isHome
+  ? null
+  : {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: t.nav.home, item: `${SITE.domain}${PATHS.home[lang]}` },
+        { '@type': 'ListItem', position: 2, name: crumbName, item: canonical },
+      ],
+    };
+
+const ldGraph = {
+  '@context': 'https://schema.org',
+  '@graph': [personLd, websiteLd, orgLd(), ...(breadcrumbLd ? [breadcrumbLd] : []), ...jsonLd],
+};
 ---
 <!doctype html>
 <html lang={lang} dir={dir}>
