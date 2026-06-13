@@ -293,30 +293,7 @@ const marquee = {
   </div>
 </section>
 
-<!-- ═══════ 09 · WHY ME ═══════ -->
-<section class="whyme stage stage--full" data-theme="dark">
-  <div class="whyme__backdrop" aria-hidden="true">
-    <img src={`${base}assets/whyme-photo.webp`} alt="" loading="lazy" width="1536" height="1024" />
-  </div>
-  <div class="wrap">
-    <p class="whyme__intro" data-reveal="fade">{t.whyMe.intro}</p>
-    <h2 class="t-statement whyme__head split-mask">
-      <Split text={t.whyMe.head.join(' ')} mode="words" step={80} />
-    </h2>
-    <div class="whyme__rule" aria-hidden="true"></div>
-    <div class="whyme__bullets">
-      {t.whyMe.bullets.map((b, i) => (
-        <p class="whyme__bullet" data-reveal="from-side" style={`--delay:${i * 160}ms`}>{b}</p>
-      ))}
-    </div>
-    <a class="cta cta--secondary magnetic" data-cursor="STORY" href={t.whyMe.cta.href} data-reveal="rise-fast" style="--delay:500ms">
-      <span>{t.whyMe.cta.label}</span>
-      <span class="cta__arrow"><Arrow /></span>
-    </a>
-  </div>
-</section>
-
-<!-- ═══════ 10 · PUBLICATION ═══════ -->
+<!-- ═══════ 09 · PUBLICATION ═══════ -->
 <section class="publication stage" id="sc-almobadir" data-theme="light">
   <div class="wrap">
     <div class="section-head" data-reveal="fade">
@@ -347,5 +324,28 @@ const marquee = {
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ═══════ 10 · WHY ME ═══════ -->
+<section class="whyme stage stage--full" data-theme="dark">
+  <div class="whyme__backdrop" aria-hidden="true">
+    <img src={`${base}assets/whyme-photo.webp`} alt="" loading="lazy" width="1536" height="1024" />
+  </div>
+  <div class="wrap">
+    <p class="whyme__intro" data-reveal="fade">{t.whyMe.intro}</p>
+    <h2 class="t-statement whyme__head split-mask">
+      <Split text={t.whyMe.head.join(' ')} mode="words" step={80} />
+    </h2>
+    <div class="whyme__rule" aria-hidden="true"></div>
+    <div class="whyme__bullets">
+      {t.whyMe.bullets.map((b, i) => (
+        <p class="whyme__bullet" data-reveal="from-side" style={`--delay:${i * 160}ms`}>{b}</p>
+      ))}
+    </div>
+    <a class="cta cta--secondary magnetic" data-cursor="STORY" href={t.whyMe.cta.href} data-reveal="rise-fast" style="--delay:500ms">
+      <span>{t.whyMe.cta.label}</span>
+      <span class="cta__arrow"><Arrow /></span>
+    </a>
   </div>
 </section>
