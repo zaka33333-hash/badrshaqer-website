@@ -3,7 +3,7 @@
  * Home page — all sections, one source of truth for both languages.
  * Structure follows the owner's 12-frame mock; copy from data/copy/home.js.
  */
-import { SITE } from '../data/site.js';
+import { SITE, digits } from '../data/site.js';
 import { shared } from '../data/copy/shared.js';
 import { home } from '../data/copy/home.js';
 import Split from './Split.astro';
@@ -44,7 +44,7 @@ const marquee = {
 <nav class="scenes" id="scenesNav" aria-label={s.a11y.mainMenu}>
   {scenes.map(([id, label], i) => (
     <a href={`#${id}`} class:list={['scenes__item', { 'is-active': i === 0 }]} data-target={id}>
-      <span class="scenes__num">{i + 1}</span>
+      <span class="scenes__num">{digits(i + 1, lang)}</span>
       <span class="scenes__line"></span>
       <span class="scenes__label">{label}</span>
     </a>
@@ -60,6 +60,13 @@ const marquee = {
   <div class="hero__scrim" aria-hidden="true"></div>
 
   <div class="hero__stagezone">
+    <p class="hero__folio t-mono" data-reveal="fade">
+      <span>{lang === 'ar' ? 'المبادر' : 'Almobadir'}</span>
+      <span class="hero__folio-dot" aria-hidden="true">·</span>
+      <span>{lang === 'ar' ? 'منشور الأعمال' : 'The business publication'}</span>
+      <span class="hero__folio-dot" aria-hidden="true">·</span>
+      <span>{digits(SITE.year, lang)}</span>
+    </p>
     <p class="hero__role hero__role--a">{s.roleA}</p>
     <p class="hero__role hero__role--b">{s.roleB}</p>
     <div class="hero__scrollcue t-mono" aria-hidden="true">{s.a11y.scrollCue}</div>
@@ -151,7 +158,7 @@ const marquee = {
 <section class="proof stage stage--full" id="sc-results" data-theme="light">
   <div class="wrap">
     <div class="section-head" data-reveal="fade">
-      <span class="section-head__num">01</span>
+      <span class="section-head__num">{digits('01', lang)}</span>
       <span class="section-head__line"></span>
       <span class="section-head__label">{sectionLabels.proof}</span>
     </div>
@@ -180,7 +187,7 @@ const marquee = {
 <!-- ═══════ 06 · TESTIMONIALS ═══════ -->
 <section class="testimonials stage" data-theme="light">
   <div class="section-head" data-reveal="fade">
-    <span class="section-head__num">02</span>
+    <span class="section-head__num">{digits('02', lang)}</span>
     <span class="section-head__line"></span>
     <span class="section-head__label">{sectionLabels.testimonials}</span>
   </div>
@@ -205,7 +212,7 @@ const marquee = {
   <div class="parallax-shape parallax-shape--circle" data-speed="0.6" style="bottom: 5%; right: -15%; border-color: rgba(200, 40, 30, 0.04); background: radial-gradient(circle, rgba(200, 40, 30, 0.02) 0%, transparent 60%);" aria-hidden="true"></div>
   <div class="wrap">
     <div class="section-head" data-reveal="fade">
-      <span class="section-head__num">03</span>
+      <span class="section-head__num">{digits('03', lang)}</span>
       <span class="section-head__line"></span>
       <span class="section-head__label">{sectionLabels.consulting}</span>
     </div>
@@ -220,7 +227,7 @@ const marquee = {
         <div class="consulting__steps">
           {t.consulting.steps.map((step, i) => (
             <div class="consulting__step" data-reveal="rise-fast" style={`--delay:${150 + i * 130}ms`}>
-              <span class="consulting__step-num">0{i + 1}</span>
+              <span class="consulting__step-num">{digits('0' + (i + 1), lang)}</span>
               <div>
                 <h3 class="consulting__step-head">{step.head}</h3>
                 <p class="consulting__step-body">{step.body}</p>
@@ -252,7 +259,7 @@ const marquee = {
 <section class="bookteaser stage stage--full" id="sc-book" data-theme="light">
   <div class="wrap">
     <div class="section-head" data-reveal="fade">
-      <span class="section-head__num">04</span>
+      <span class="section-head__num">{digits('04', lang)}</span>
       <span class="section-head__line"></span>
       <span class="section-head__label">{sectionLabels.book}</span>
     </div>
@@ -297,7 +304,7 @@ const marquee = {
 <section class="publication stage" id="sc-almobadir" data-theme="light">
   <div class="wrap">
     <div class="section-head" data-reveal="fade">
-      <span class="section-head__num">05</span>
+      <span class="section-head__num">{digits('05', lang)}</span>
       <span class="section-head__line"></span>
       <span class="section-head__label">{sectionLabels.publication}</span>
     </div>

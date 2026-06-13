@@ -1,4 +1,5 @@
 ---
+import { digits } from '../data/site.js';
 import { inner } from '../data/copy/inner.js';
 import { home } from '../data/copy/home.js';
 import PageHero from './PageHero.astro';
@@ -23,7 +24,7 @@ const stepsLabel = lang === 'ar' ? 'كيف تمشي الجلسة' : 'How the ses
 <section class="consulting stage" data-theme="light">
   <div class="wrap">
     <div class="section-head" data-reveal="fade">
-      <span class="section-head__num">01</span>
+      <span class="section-head__num">{digits('01', lang)}</span>
       <span class="section-head__line"></span>
       <span class="section-head__label">{stepsLabel}</span>
     </div>
@@ -32,7 +33,7 @@ const stepsLabel = lang === 'ar' ? 'كيف تمشي الجلسة' : 'How the ses
         <div class="consulting__steps" style="margin-top: 0">
           {c.steps.map((step, i) => (
             <div class="consulting__step" data-reveal="rise-fast" style={`--delay:${i * 130}ms`}>
-              <span class="consulting__step-num">0{i + 1}</span>
+              <span class="consulting__step-num">{digits('0' + (i + 1), lang)}</span>
               <div>
                 <h3 class="consulting__step-head">{step.head}</h3>
                 <p class="consulting__step-body">{step.body}</p>
@@ -63,7 +64,7 @@ const stepsLabel = lang === 'ar' ? 'كيف تمشي الجلسة' : 'How the ses
 <section class="inner-section inner-section--cloud stage" data-theme="light">
   <div class="wrap">
     <div class="section-head" data-reveal="fade">
-      <span class="section-head__num">02</span>
+      <span class="section-head__num">{digits('02', lang)}</span>
       <span class="section-head__line"></span>
       <span class="section-head__label">{t.forLabel}</span>
     </div>
