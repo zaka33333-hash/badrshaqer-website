@@ -340,34 +340,45 @@
   align-content: center;
   overflow: clip;
 }
-.statement__content {
+/* editorial, asymmetric — start-aligned oversized headline, the deck set
+   as an offset standfirst rather than a centred caption. */
+.statement__inner {
   position: relative;
   z-index: 2;
   display: grid;
-  justify-items: center;
-  gap: clamp(1.1rem, 3vh, 2rem);
-  padding-inline: var(--gutter);
+  gap: clamp(1.6rem, 4.5vh, 3rem);
 }
-.statement__eyebrow {
-  color: var(--carmine);
-  letter-spacing: 0.32em;
+.statement__kicker { display: flex; align-items: center; gap: 1rem; }
+.statement__rule {
+  height: 1px;
+  width: clamp(2.5rem, 9vw, 7rem);
+  background: var(--carmine);
+  opacity: 0.85;
+  transform-origin: inline-start;
 }
+@media (prefers-reduced-motion: no-preference) {
+  .statement__kicker:not(.is-in) .statement__rule { transform: scaleX(0); }
+  .statement__rule { transition: transform 0.9s var(--ease-out) 0.1s; }
+}
+.statement__eyebrow { color: var(--carmine); }
 .statement__line {
-  font-size: clamp(2.6rem, 7vw, 6.4rem);
-  max-width: 16ch;
-  margin-inline: auto;
-  text-align: center;
-  text-wrap: balance;
+  font-size: clamp(3rem, 9vw, 8.4rem);
+  max-width: 19ch;
+  text-align: start;
+  line-height: 1.02;
 }
 .statement__deck {
   font-family: var(--font-body);
-  font-size: clamp(1.02rem, 1.5vw, 1.25rem);
+  font-size: clamp(1.05rem, 1.5vw, 1.32rem);
   line-height: 1.7;
-  max-width: 38ch;
-  margin-inline: auto;
-  text-align: center;
+  max-width: 40ch;
+  justify-self: end;
+  text-align: start;
   color: var(--ink-soft);
-  text-wrap: balance;
+}
+@media (max-width: 720px) {
+  .statement__line { font-size: clamp(2.7rem, 12vw, 4.4rem); }
+  .statement__deck { justify-self: start; }
 }
 /* extra counterpoint shapes — a hollow ring + a solid dot to fill the canvas */
 

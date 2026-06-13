@@ -91,8 +91,11 @@ const marquee = {
 
 <!-- ═══════ 02 · STATEMENT ═══════ -->
 <section class="statement stage" data-theme="light">
-  <div class="statement__content">
-    <span class="statement__eyebrow t-mono" data-reveal="fade">{t.statement.eyebrow}</span>
+  <div class="statement__inner wrap">
+    <div class="statement__kicker" data-reveal="fade">
+      <span class="statement__rule" aria-hidden="true"></span>
+      <span class="statement__eyebrow t-mono">{t.statement.eyebrow}</span>
+    </div>
     <h2 class="t-statement statement__line split-mask">
       <SegHead segments={t.statement.head} />
     </h2>
