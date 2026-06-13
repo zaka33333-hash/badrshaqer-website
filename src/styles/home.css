@@ -505,7 +505,11 @@
 [dir='rtl'] .services__card-arrow { --arrow-dir: -1; }
 [dir='rtl'] .services__card-arrow svg { transform: scaleX(-1); }
 .services__card:hover .services__card-arrow { opacity: 1; transform: none; }
-@media (max-width: 900px) { .services__cards { grid-template-columns: 1fr; } }
+@media (max-width: 900px) {
+  .services__cards { grid-template-columns: 1fr; }
+  /* phone: cards hug their content instead of holding a hollow 11rem gap */
+  .services__card { min-height: 0; gap: 1.4rem; padding: 1.4rem 1.5rem; }
+}
 
 /* ── 05 · PROOF — light, stats ── */
 .proof { background: var(--surface); color: var(--ink); min-height: 100svh; }
