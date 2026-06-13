@@ -30,9 +30,3 @@ export const PATHS = {
 };
 
 export const other = (lang) => (lang === 'ar' ? 'en' : 'ar');
-
-// Arabic-first numerals: render ordinals/dates in Arabic-Indic digits for the
-// AR build, Western for EN. A small detail a Latin site structurally can't carry.
-const AR_DIGITS = '٠١٢٣٤٥٦٧٨٩';
-export const digits = (val, lang) =>
-  lang === 'ar' ? String(val).replace(/[0-9]/g, (d) => AR_DIGITS[+d]) : String(val);
