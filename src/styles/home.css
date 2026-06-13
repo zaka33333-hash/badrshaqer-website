@@ -160,9 +160,17 @@
   flex: 1 1 0;
   max-width: clamp(1.5rem, 10vw, 9rem);
   height: 1px;
-  background: linear-gradient(to right, transparent, rgba(212, 180, 131, 0.55));
+  transform-origin: center;
+  transition: transform 0.95s var(--ease-out) 0.15s;
 }
-.hero__folio::after { transform: scaleX(-1); }
+.hero__folio::before { background: linear-gradient(to right, transparent, rgba(212, 180, 131, 0.55)); }
+.hero__folio::after  { background: linear-gradient(to left,  transparent, rgba(212, 180, 131, 0.55)); }
+/* signature: the masthead rules draw open from the text outward once the
+   loader peels (synced via .is-drawn in home.js). */
+@media (prefers-reduced-motion: no-preference) {
+  .hero__folio:not(.is-drawn)::before,
+  .hero__folio:not(.is-drawn)::after { transform: scaleX(0); }
+}
 .hero__folio-dot { opacity: 0.5; }
 @media (max-width: 720px) {
   .hero__folio { top: 4rem; gap: 0.35rem 0.5rem; }

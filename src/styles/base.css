@@ -178,7 +178,9 @@ body:has(:focus-visible) { cursor: auto; }
   font-size: clamp(1.2rem, 1.8vw, 1.5rem);
   line-height: 1;
 }
-.section-head__line { height: 1px; background: currentColor; opacity: 0.18; }
+/* tapered editorial rule — solid at the kicker, trailing into the page */
+.section-head__line { height: 1px; background: linear-gradient(to right, currentColor, transparent); opacity: 0.28; }
+[dir='rtl'] .section-head__line { background: linear-gradient(to left, currentColor, transparent); }
 .section-head__label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--theme-soft); }
 
 .section-title {

@@ -12,6 +12,21 @@ if (!reduceMotion) {
   if (lenis) {
     lenis.on('scroll', ScrollTrigger.update);
     gsap.ticker.lagSmoothing(0);
+
+    // signature: the focus-areas marquee leans into scroll velocity, then
+    // springs back to upright. Registered once at module scope (lenis is a
+    // cross-page singleton); queries the marquee live so it no-ops off-home.
+    let mqSkew = 0, mqRaf = 0;
+    const mqDecay = () => {
+      mqSkew += (0 - mqSkew) * 0.08;
+      const m = document.querySelector('.marquee');
+      if (m) m.style.transform = Math.abs(mqSkew) > 0.01 ? `skewX(${mqSkew.toFixed(2)}deg)` : '';
+      mqRaf = Math.abs(mqSkew) > 0.01 ? requestAnimationFrame(mqDecay) : 0;
+    };
+    lenis.on('scroll', ({ velocity = 0 }) => {
+      mqSkew = Math.max(-6, Math.min(6, velocity * 0.32));
+      if (!mqRaf) mqRaf = requestAnimationFrame(mqDecay);
+    });
   }
 }
 
@@ -112,6 +127,8 @@ document.addEventListener('astro:page-load', () => {
     gsap.set(heroShapes, { scale: 0, transformOrigin: '50% 50%' });
 
     loaderDoneHandler = () => {
+      // editorial masthead rules draw open as the name rises
+      document.querySelector('.hero__folio')?.classList.add('is-drawn');
       const tl = gsap.timeline({ defaults: { ease: 'expo.out' } })
         .to(heroGlyphs, { yPercent: 0, duration: 1.35, stagger: 0.07 }, 0.05)
         .to(heroRoles, { opacity: 1, y: 0, duration: 0.9, stagger: 0.12 }, 0.55)
