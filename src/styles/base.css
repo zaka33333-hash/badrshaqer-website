@@ -15,6 +15,11 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
+/* The body background propagates to the page canvas (incl. overscroll
+   rubber-banding). Track the current section theme so the top/bottom
+   bounce never flashes the light parchment over a dark hero. */
+body[data-bg='dark'] { background: var(--ink); }
+body[data-bg='light'] { background: var(--surface); }
 
 /* film grain over everything — the cinematic glue */
 body::before {
