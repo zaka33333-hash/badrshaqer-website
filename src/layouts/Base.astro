@@ -29,6 +29,7 @@ const {
   jsonLd = [],
   firstTheme = 'dark',
   noFooterCtas = false,
+  preloadImage, // LCP hero image — preloaded so it paints sooner
 } = Astro.props;
 
 const t = shared[lang];
@@ -107,6 +108,8 @@ const ldGraph = {
         <link rel="preload" as="font" type="font/woff2" crossorigin href={`${base}fonts/generalsans-400.woff2`} />
       </>
     )}
+
+    {preloadImage && <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />}
 
     <link rel="icon" type="image/png" sizes="32x32" href={`${base}assets/favicon/favicon-32.png`} />
     <link rel="icon" type="image/png" sizes="16x16" href={`${base}assets/favicon/favicon-16.png`} />

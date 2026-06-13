@@ -5,6 +5,7 @@ import { home } from '../data/copy/home.js';
 import { PATHS } from '../data/site.js';
 import '../styles/home.css';
 
+const base = import.meta.env.BASE_URL;
 const lang = 'ar';
 const t = home[lang];
 const bookLd = {
@@ -14,7 +15,7 @@ const bookLd = {
   inLanguage: 'ar',
 };
 ---
-<Base lang={lang} title={t.meta.title} description={t.meta.description} alt={PATHS.home} jsonLd={[bookLd]} firstTheme="dark">
+<Base lang={lang} title={t.meta.title} description={t.meta.description} alt={PATHS.home} jsonLd={[bookLd]} firstTheme="dark" preloadImage={`${base}assets/hero-photo.webp`}>
   <HomePage lang={lang} />
   <script src="../scripts/home.js"></script>
 </Base>

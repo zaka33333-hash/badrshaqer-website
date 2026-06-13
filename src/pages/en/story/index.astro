@@ -6,11 +6,12 @@ import { PATHS } from '../../../data/site.js';
 import { profileLd } from '../../../data/ld.js';
 import '../../../styles/inner.css';
 
+const base = import.meta.env.BASE_URL;
 const lang = 'en';
 const t = inner.story[lang];
 const ld = profileLd(lang);
 ---
-<Base lang={lang} title={t.meta.title} description={t.meta.description} alt={PATHS.story} jsonLd={[ld]} firstTheme="dark">
+<Base lang={lang} title={t.meta.title} description={t.meta.description} alt={PATHS.story} jsonLd={[ld]} firstTheme="dark" preloadImage={`${base}assets/story-hero.webp`}>
   <StoryPage lang={lang}  />
   <script src="../../../scripts/inner.js"></script>
 </Base>
