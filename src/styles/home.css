@@ -333,7 +333,10 @@
 
 /* ── 02 · STATEMENT — light counterpoint ── */
 .statement {
-  background: var(--surface);
+  background:
+    radial-gradient(ellipse 60% 50% at 82% 18%, rgba(200, 40, 30, 0.06), transparent 60%),
+    radial-gradient(ellipse 55% 45% at 12% 88%, rgba(173, 125, 58, 0.07), transparent 65%),
+    var(--surface);
   color: var(--ink);
   min-height: 100svh;
   display: grid;
@@ -375,6 +378,19 @@
   justify-self: end;
   text-align: start;
   color: var(--ink-soft);
+}
+.statement__sign {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: clamp(0.5rem, 2vh, 1.5rem);
+  color: var(--brass-deep);
+}
+.statement__sign-rule {
+  height: 1px;
+  width: clamp(2.5rem, 7vw, 5rem);
+  background: currentColor;
+  opacity: 0.5;
 }
 @media (max-width: 720px) {
   .statement__line { font-size: clamp(2.7rem, 12vw, 4.4rem); }
@@ -469,12 +485,26 @@
 .services { background: var(--surface); color: var(--ink); min-height: 100svh; }
 .services__heads {
   display: grid;
-  gap: clamp(1rem, 3vh, 2rem);
+  justify-items: start;
+  gap: clamp(1rem, 3vh, 1.6rem);
   margin-bottom: clamp(3rem, 7vh, 5rem);
 }
+.services__kicker { display: flex; align-items: center; gap: 1rem; color: var(--carmine); }
+.services__kicker-rule {
+  height: 1px;
+  width: clamp(2rem, 6vw, 4rem);
+  background: var(--carmine);
+  opacity: 0.85;
+  transform-origin: inline-start;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .services__kicker:not(.is-in) .services__kicker-rule { transform: scaleX(0); }
+  .services__kicker-rule { transition: transform 0.9s var(--ease-out) 0.1s; }
+}
 .services__primary {
-  font-size: clamp(1.8rem, 4.2vw, 3.6rem);
-  max-width: 26ch;
+  font-size: clamp(2rem, 4.6vw, 4rem);
+  max-width: 24ch;
+  text-align: start;
   color: var(--ink);
 }
 .services__deck {

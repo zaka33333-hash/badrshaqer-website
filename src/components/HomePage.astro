@@ -100,6 +100,10 @@ const marquee = {
       <SegHead segments={t.statement.head} />
     </h2>
     <p class="statement__deck" data-reveal="rise-slow" style="--delay:200ms">{t.statement.deck}</p>
+    <div class="statement__sign t-mono" data-reveal="fade" style="--delay:350ms">
+      <span class="statement__sign-rule" aria-hidden="true"></span>
+      <span>{lang === 'ar' ? 'بدر شاكر — مستشار المؤسسين' : 'Badr Shaqer — Founder advisor'}</span>
+    </div>
   </div>
 </section>
 
@@ -144,6 +148,10 @@ const marquee = {
   <div class="ambient-glow" style="--glow-color:rgba(200,40,30,0.07); bottom: 15%; right: 10%; animation: ambient-float-1 20s ease-in-out infinite;" aria-hidden="true"></div>
   <div class="wrap">
     <div class="services__heads">
+      <div class="services__kicker" data-reveal="fade">
+        <span class="services__kicker-rule" aria-hidden="true"></span>
+        <span class="t-mono">{lang === 'ar' ? 'كيف أساعدك' : 'How I help'}</span>
+      </div>
       <h2 class="t-statement services__primary" data-reveal="rise-slow">{t.services.headPrimary}</h2>
       <p class="services__deck" data-reveal="fade" style="--delay:300ms">{t.services.deck}</p>
     </div>
