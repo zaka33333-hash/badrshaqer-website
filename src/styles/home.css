@@ -771,7 +771,7 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  inset-inline-start: 0;
+  left: 0;
   width: 26px;
   background: linear-gradient(to right, var(--carmine-deep), #6e140e);
   transform: rotateY(-84deg);
@@ -782,7 +782,7 @@
   position: absolute;
   top: 1.5%;
   bottom: 1.5%;
-  inset-inline-end: -10px;
+  right: -10px;
   width: 24px;
   background: repeating-linear-gradient(to right, #efe6d2 0px, #efe6d2 1.6px, #ded2b8 1.6px, #ded2b8 2.6px);
   transform: rotateY(82deg);
