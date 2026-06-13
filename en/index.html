@@ -1323,6 +1323,15 @@
     }
   </style>
 
+  <noscript>
+    <style>
+      /* Without JS the reveal observer never runs and the loader never lifts,
+         which would leave the page blank. Show everything immediately. */
+      .page-loader { display: none !important; }
+      [data-reveal] { opacity: 1 !important; transform: none !important; }
+    </style>
+  </noscript>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -1418,7 +1427,7 @@
 
       <div class="wrap hero__grid">
         <div class="hero__portrait" data-reveal="scale" data-tilt data-tilt-max="14" style="--delay:300ms">
-          <img src="../assets/badr-portrait.webp" alt="Badr Shaqer" />
+          <img src="../assets/badr-portrait.webp" alt="Badr Shaqer" width="960" height="960" decoding="async" />
         </div>
 
         <div class="hero__copy">
