@@ -104,27 +104,34 @@ const marquee = {
 </section>
 
 <!-- ═══════ 03 · PROMISE ═══════ -->
-<section class="promise stage stage--full" data-theme="dark">
-  <div class="ambient-glow" style="--glow-color:rgba(200,40,30,0.12); top: 10%; right: 10%; animation: ambient-float-1 22s ease-in-out infinite;" aria-hidden="true"></div>
-  <div class="ambient-glow" style="--glow-color:rgba(212,180,131,0.08); bottom: 10%; left: 5%; animation: ambient-float-2 26s ease-in-out infinite;" aria-hidden="true"></div>
-  <div class="wrap">
-    <p class="t-mono" data-reveal="fade" style="color: var(--brass-pale)">{t.promise.overline}</p>
-    <h2 class="t-display promise__head split-mask">
-      <SegHead segments={t.promise.head} />
-    </h2>
-    <p class="promise__body" data-reveal="rise-slow" style="--delay:250ms">{t.promise.body}</p>
-    <div class="promise__credentials t-mono" data-reveal="fade" style="--delay:450ms">
-      {t.promise.credentials.map((c) => <span>{c}</span>)}
-    </div>
-    <div class="promise__ctas" data-reveal="rise-fast" style="--delay:600ms">
-      <a class="cta cta--primary magnetic" data-cursor-style="button" data-cursor="BOOK" href={t.promise.ctaBook.href} target="_blank" rel="noopener noreferrer">
-        <span>{t.promise.ctaBook.label}</span>
-        <span class="cta__arrow"><Arrow /></span>
-      </a>
-      <a class="cta cta--secondary magnetic" data-cursor="READ" href={t.promise.ctaRead.href}>
-        <span>{t.promise.ctaRead.label}</span>
-      </a>
-      <a class="promise__story" data-cursor="STORY" href={t.promise.storyLink.href}>{t.promise.storyLink.label}</a>
+<section class="promise stage stage--full" data-theme="light">
+  <div class="wrap promise__grid">
+    <figure class="promise__media" data-reveal="scale">
+      <img src={`${base}assets/badr-portrait-photo.webp`} alt={lang === 'ar' ? 'بدر شاكر' : 'Badr Shaqer'} width="1200" height="800" loading="lazy" />
+      <figcaption class="promise__media-tag t-mono">{lang === 'ar' ? 'مستشار المؤسسين' : 'Founder advisor'}</figcaption>
+    </figure>
+    <div class="promise__copy">
+      <div class="promise__kicker" data-reveal="fade">
+        <span class="promise__rule" aria-hidden="true"></span>
+        <span class="t-mono">{t.promise.overline}</span>
+      </div>
+      <h2 class="t-display promise__head split-mask">
+        <SegHead segments={t.promise.head} />
+      </h2>
+      <p class="promise__body" data-reveal="rise-slow" style="--delay:250ms">{t.promise.body}</p>
+      <div class="promise__credentials t-mono" data-reveal="fade" style="--delay:450ms">
+        {t.promise.credentials.map((c) => <span>{c}</span>)}
+      </div>
+      <div class="promise__ctas" data-reveal="rise-fast" style="--delay:600ms">
+        <a class="cta cta--primary magnetic" data-cursor-style="button" data-cursor="BOOK" href={t.promise.ctaBook.href} target="_blank" rel="noopener noreferrer">
+          <span>{t.promise.ctaBook.label}</span>
+          <span class="cta__arrow"><Arrow /></span>
+        </a>
+        <a class="cta cta--secondary magnetic" data-cursor="READ" href={t.promise.ctaRead.href}>
+          <span>{t.promise.ctaRead.label}</span>
+        </a>
+        <a class="promise__story" data-cursor="STORY" href={t.promise.storyLink.href}>{t.promise.storyLink.label}</a>
+      </div>
     </div>
   </div>
 </section>

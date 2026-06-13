@@ -384,47 +384,86 @@
 
 /* ── 03 · PROMISE — dark serif chapter ── */
 .promise {
-  background:
-    radial-gradient(ellipse 70% 60% at 85% 10%, rgba(173, 125, 58, 0.16), transparent 60%),
-    radial-gradient(ellipse 60% 55% at 10% 95%, rgba(200, 40, 30, 0.12), transparent 65%),
-    var(--ink);
+  background: var(--surface);
+  color: var(--ink);
   min-height: 100svh;
 }
-.promise .wrap {
+.promise__grid {
   display: grid;
-  gap: clamp(1.6rem, 3vh, 2.4rem);
-  max-width: 62rem;
+  grid-template-columns: 0.82fr 1fr;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 5.5rem);
+  max-width: 80rem;
+}
+.promise__media {
+  position: relative;
+  margin: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  box-shadow: 0 50px 100px -45px rgba(13, 11, 7, 0.55);
+}
+.promise__media img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
+.promise__media-tag {
+  position: absolute;
+  inset-inline-start: 1rem;
+  bottom: 1rem;
+  color: var(--cream);
+  background: rgba(13, 11, 7, 0.42);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(212, 180, 131, 0.25);
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+}
+.promise__copy { display: grid; gap: clamp(1.25rem, 2.6vh, 1.9rem); }
+.promise__kicker { display: flex; align-items: center; gap: 1rem; color: var(--carmine); }
+.promise__rule {
+  height: 1px;
+  width: clamp(2rem, 6vw, 4rem);
+  background: var(--carmine);
+  opacity: 0.85;
+  transform-origin: inline-start;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .promise__kicker:not(.is-in) .promise__rule { transform: scaleX(0); }
+  .promise__rule { transition: transform 0.9s var(--ease-out) 0.1s; }
 }
 .promise__head {
-  font-size: clamp(3rem, 8.5vw, 7.6rem);
+  font-size: clamp(2.6rem, 5.6vw, 5.4rem);
   line-height: 1.04;
 }
 .promise__body {
   font-family: var(--font-quote);
-  font-size: clamp(1.25rem, 2vw, 1.75rem);
-  line-height: 1.8;
-  max-width: 36rem;
-  color: var(--cream);
+  font-size: clamp(1.12rem, 1.6vw, 1.5rem);
+  line-height: 1.7;
+  max-width: 34rem;
+  color: var(--ink-soft);
 }
 .promise__credentials {
   display: flex;
   gap: 1.4rem;
   flex-wrap: wrap;
-  color: rgba(247, 243, 234, 0.7);
+  color: var(--ink-soft);
 }
 .promise__credentials span { display: inline-flex; align-items: center; gap: 0.5rem; }
-.promise__credentials span + span::before { content: '·'; color: var(--brass); }
+.promise__credentials span + span::before { content: '·'; color: var(--carmine); }
 .promise__ctas { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
 .promise__story {
   font-family: var(--font-quote);
   font-style: normal;
   font-size: 1.05rem;
-  color: var(--brass-pale);
-  border-bottom: 1px solid rgba(212, 180, 131, 0.4);
+  color: var(--brass-deep);
+  border-bottom: 1px solid rgba(138, 93, 36, 0.45);
   padding-block: 0.5rem 0.2rem;
   transition: color 220ms, border-color 220ms;
 }
-.promise__story:hover { color: var(--cream); border-color: var(--cream); }
+.promise__story:hover { color: var(--ink); border-color: var(--ink); }
+@media (max-width: 860px) {
+  .promise__grid { grid-template-columns: 1fr; gap: clamp(1.6rem, 6vw, 2.4rem); }
+  .promise__media { aspect-ratio: 16 / 11; }
+  .promise__head { font-size: clamp(2.6rem, 11vw, 4rem); }
+}
 
 /* ── 04 · SERVICES HUB — light, bilingual headline + 3 cards ── */
 .services { background: var(--surface); color: var(--ink); min-height: 100svh; }
