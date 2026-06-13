@@ -123,6 +123,9 @@ body:has(:focus-visible) { cursor: auto; }
 :lang(en) .t-display { font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0; font-weight: 560; }
 .t-display em { font-style: normal; color: var(--theme-acc); }
 :lang(en) .t-display em { font-style: normal; font-variation-settings: 'opsz' 144, 'SOFT' 60, 'WONK' 1; }
+/* General Sans has no italic — keep headline emphasis upright (accent colour),
+   never a synthesized slant that the reveal mask clips. */
+.t-statement em { font-style: normal; color: var(--theme-acc); }
 
 .t-statement {
   font-family: var(--font-statement);

@@ -27,4 +27,7 @@ document.addEventListener('astro:after-swap', () => {
   el.classList.remove('is-covering');
   void el.offsetWidth;
   el.classList.add('is-revealing');
+  // once revealed, drop the class so the panel returns to its hidden idle
+  // state (visibility:hidden) — no lingering sliver at the top edge
+  el.addEventListener('transitionend', () => el.classList.remove('is-revealing'), { once: true });
 });

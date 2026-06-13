@@ -86,13 +86,16 @@
   transform: scaleY(0);
   transform-origin: bottom;
   will-change: transform;
+  visibility: hidden; /* fully out of paint when idle — no 1px sliver at the edge */
 }
 .page-wipe.is-covering {
+  visibility: visible;
   transform: scaleY(1);
   transform-origin: bottom;
   transition: transform 460ms var(--ease-osmo);
 }
 .page-wipe.is-revealing {
+  visibility: visible;
   transform: scaleY(0);
   transform-origin: top;
   transition: transform 560ms var(--ease-osmo);

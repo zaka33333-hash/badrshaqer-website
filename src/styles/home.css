@@ -173,10 +173,14 @@
    it. Positions are derived from --seam (same var the name gap uses), so the
    row always fills the gap — no dead space — and tracks every viewport.
    inset-inline-start (not left) auto-mirrors the row into the RTL gap. */
-.hero__shapes .shape--media   { inset-inline-start: calc(50% - 1.5 * var(--shape-step) - var(--shape-d) / 2); bottom: 9%; }
-.hero__shapes .shape--flousak { inset-inline-start: calc(50% - 0.5 * var(--shape-step) - var(--shape-d) / 2); bottom: 9%; }
-.hero__shapes .shape--main    { inset-inline-start: calc(50% + 0.5 * var(--shape-step) - var(--shape-d) / 2); bottom: 9%; }
-.hero__shapes .shape--mindset { inset-inline-start: calc(50% + 1.5 * var(--shape-step) - var(--shape-d) / 2); bottom: 9%; }
+/* --seam-mid: the seam sits a touch left of viewport-centre because the two
+   words differ in width — nudge the whole row there so it never collides with
+   the right-hand word. */
+.hero__shapes { --seam-mid: 46%; }
+.hero__shapes .shape--media   { inset-inline-start: calc(var(--seam-mid) - 1.5 * var(--shape-step) - var(--shape-d) / 2); bottom: 9%; }
+.hero__shapes .shape--flousak { inset-inline-start: calc(var(--seam-mid) - 0.5 * var(--shape-step) - var(--shape-d) / 2); bottom: 9%; }
+.hero__shapes .shape--main    { inset-inline-start: calc(var(--seam-mid) + 0.5 * var(--shape-step) - var(--shape-d) / 2); bottom: 9%; }
+.hero__shapes .shape--mindset { inset-inline-start: calc(var(--seam-mid) + 1.5 * var(--shape-step) - var(--shape-d) / 2); bottom: 9%; }
 
 .hero__scrollcue {
   position: absolute;
