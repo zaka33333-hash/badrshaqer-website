@@ -283,20 +283,24 @@ const marquee = {
     </div>
     <div class="bookteaser__grid">
       <div class="bookteaser__stagezone" data-reveal="scale">
-        <div class="bookteaser__book" aria-hidden="true">
-          <div class="bookteaser__spine"></div>
-          <div class="bookteaser__pages"></div>
-          <div class="bookteaser__face">
-            <div class="bookteaser__face-top t-mono">
-              <span>{t.book.coverTop[0]}</span><span>{t.book.coverTop[1]}</span>
+        {lang === 'en' ? (
+          <img class="book-3d" src={`${base}assets/book-3d.webp`} alt="How to Sell Like a Drug Dealer — book by Badr Shaqer" width="539" height="907" loading="lazy" />
+        ) : (
+          <div class="bookteaser__book" aria-hidden="true">
+            <div class="bookteaser__spine"></div>
+            <div class="bookteaser__pages"></div>
+            <div class="bookteaser__face">
+              <div class="bookteaser__face-top t-mono">
+                <span>{t.book.coverTop[0]}</span><span>{t.book.coverTop[1]}</span>
+              </div>
+              <div class="bookteaser__face-title">{t.book.coverTitle}</div>
+              <div class="bookteaser__face-bottom t-mono">
+                <span>{t.book.coverBottom[0]}</span><span>{t.book.coverBottom[1]}</span>
+              </div>
             </div>
-            <div class="bookteaser__face-title">{t.book.coverTitle}</div>
-            <div class="bookteaser__face-bottom t-mono">
-              <span>{t.book.coverBottom[0]}</span><span>{t.book.coverBottom[1]}</span>
-            </div>
+            <div class="bookteaser__shadow"></div>
           </div>
-          <div class="bookteaser__shadow"></div>
-        </div>
+        )}
       </div>
       <div>
         <h2 class="t-display bookteaser__head split-mask">

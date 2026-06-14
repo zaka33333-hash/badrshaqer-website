@@ -744,19 +744,19 @@
   align-items: center;
 }
 .bookteaser__stagezone { perspective: 1400px; display: grid; place-items: center; min-height: clamp(20rem, 50vh, 30rem); }
-/* photoreal cover render — feather its dark studio backdrop into the section */
-.bookhero__render {
+/* transparent cut-out cover — depth added via CSS: a shape-following drop
+   shadow grounds it, and a gentle float gives it life. Works on any surface. */
+.book-3d {
   width: 100%;
-  max-width: 36rem;
+  max-width: 21rem;
   height: auto;
   display: block;
-  -webkit-mask-image: radial-gradient(ellipse 94% 92% at 50% 46%, #000 56%, transparent 100%);
-  mask-image: radial-gradient(ellipse 94% 92% at 50% 46%, #000 56%, transparent 100%);
+  filter: drop-shadow(0 34px 46px rgba(13, 11, 7, 0.5)) drop-shadow(0 10px 16px rgba(13, 11, 7, 0.34));
 }
 @media (prefers-reduced-motion: no-preference) {
-  .bookhero__render { animation: book-float 4.5s ease-in-out infinite alternate; }
+  .book-3d { animation: book-float 4.8s ease-in-out infinite alternate; }
 }
-@keyframes book-float { from { transform: translateY(4px); } to { transform: translateY(-10px); } }
+@keyframes book-float { from { transform: translateY(5px); } to { transform: translateY(-11px); } }
 .bookteaser__book {
   position: relative;
   width: clamp(13rem, 21vw, 19rem);

@@ -9,9 +9,9 @@ const { lang = 'ar' } = Astro.props;
 const t = inner.book[lang];
 const bk = home[lang].book; // cover labels (approved)
 const base = import.meta.env.BASE_URL;
-// Photoreal cover render (EN only for now). AR keeps the CSS book so the
+// Transparent cut-out cover render (EN only). AR keeps the CSS book so the
 // Arabic title shows correctly until an Arabic render exists.
-const bookRender = lang === 'en' ? `${base}assets/book-render-en.webp` : null;
+const bookRender = lang === 'en' ? `${base}assets/book-3d.webp` : null;
 ---
 <!-- hero: dark, the floating book + title -->
 <section class="pagehero pagehero--tall stage" data-theme="dark">
@@ -36,7 +36,7 @@ const bookRender = lang === 'en' ? `${base}assets/book-render-en.webp` : null;
       </div>
       <div class="bookteaser__stagezone" data-reveal="scale">
         {bookRender ? (
-          <img class="bookhero__render" src={bookRender} alt="How to Sell Like a Drug Dealer — book by Badr Shaqer" width="1536" height="1024" loading="eager" />
+          <img class="book-3d" src={bookRender} alt="How to Sell Like a Drug Dealer — book by Badr Shaqer" width="539" height="907" loading="eager" />
         ) : (
           <div class="bookteaser__book" aria-hidden="true">
             <div class="bookteaser__spine"></div>
