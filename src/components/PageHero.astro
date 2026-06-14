@@ -1,10 +1,10 @@
 ---
 import SegHead from './SegHead.astro';
-const { overline, head, deck, deckStrong, ghost, tall = false, photo } = Astro.props;
+const { overline, head, deck, deckStrong, ghost, tall = false, photo, flipRtl = false } = Astro.props;
 ---
 <section class:list={['pagehero', 'stage', { 'pagehero--tall': tall, 'pagehero--photo': !!photo }]} data-theme="dark">
   {photo && (
-    <div class="pagehero__backdrop" aria-hidden="true">
+    <div class:list={['pagehero__backdrop', { 'pagehero__backdrop--fliprtl': flipRtl }]} aria-hidden="true">
       <img src={photo} alt="" fetchpriority="high" />
     </div>
   )}

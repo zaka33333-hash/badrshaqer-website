@@ -9,8 +9,9 @@ const { lang = 'ar' } = Astro.props;
 const t = inner.consultation[lang];
 const c = home[lang].consulting; // approved steps + card
 const stepsLabel = lang === 'ar' ? 'كيف تمشي الجلسة' : 'How the session runs';
+const base = import.meta.env.BASE_URL;
 ---
-<PageHero overline={t.hero.overline} head={t.hero.head} deck={t.hero.deck} deckStrong={t.hero.deckStrong} ghost="90" tall>
+<PageHero overline={t.hero.overline} head={t.hero.head} deck={t.hero.deck} deckStrong={t.hero.deckStrong} ghost="90" tall photo={`${base}assets/consultation-thinking.webp`} flipRtl>
   <div class="pagehero__ctas" data-reveal="rise-fast" style="--delay:450ms">
     <a class="cta cta--primary magnetic" data-cursor-style="button" data-cursor="BOOK" href={c.card.cta.href} target="_blank" rel="noopener noreferrer">
       <span>{c.card.cta.label}</span>

@@ -31,6 +31,11 @@
   object-fit: cover;
   object-position: center 30%;
 }
+/* consultation portrait: frame the subject (right-of-centre in the source),
+   and mirror in RTL so he sits opposite the text — Arabic copy starts on the
+   right, so he lands on the left. */
+.pagehero__backdrop--fliprtl img { object-position: 72% 18%; }
+[dir='rtl'] .pagehero__backdrop--fliprtl img { transform: scaleX(-1); }
 .pagehero--photo::before {
   content: '';
   position: absolute;
