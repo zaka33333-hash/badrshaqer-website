@@ -1323,6 +1323,15 @@
     }
   </style>
 
+  <noscript>
+    <style>
+      /* Without JS the reveal observer never runs and the loader never lifts,
+         which would leave the page blank. Show everything immediately. */
+      .page-loader { display: none !important; }
+      [data-reveal] { opacity: 1 !important; transform: none !important; }
+    </style>
+  </noscript>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -1395,7 +1404,7 @@
   <!-- ═════════════ CONTACT PILLS (top-right) ═════════════ -->
   <nav class="contact-pills" aria-label="Contact">
     <a href="mailto:badr@almobadir.com" data-cursor-style="link" data-cursor="EMAIL"><span>Email</span></a>
-    <a href="https://twitter.com/badrshaqer" target="_blank" rel="noopener" data-cursor-style="link" data-cursor="X"><span>X</span></a>
+    <a href="https://x.com/badrshaqer" target="_blank" rel="noopener" data-cursor-style="link" data-cursor="X"><span>X</span></a>
     <a href="https://instagram.com/badrshaqer" target="_blank" rel="noopener" data-cursor-style="link" data-cursor="IG"><span>IG</span></a>
     <a href="https://www.tiktok.com/@badrshaqer" target="_blank" rel="noopener" data-cursor-style="link" data-cursor="TT"><span>TT</span></a>
   </nav>
@@ -1418,7 +1427,7 @@
 
       <div class="wrap hero__grid">
         <div class="hero__portrait" data-reveal="scale" data-tilt data-tilt-max="14" style="--delay:300ms">
-          <img src="../assets/badr-portrait.webp" alt="Badr Shaqer" />
+          <img src="../assets/badr-portrait.webp" alt="Badr Shaqer" width="960" height="960" decoding="async" />
         </div>
 
         <div class="hero__copy">
@@ -1683,7 +1692,7 @@
         <nav class="outro__socials" aria-label="Social profiles">
           <a href="https://instagram.com/badrshaqer" target="_blank" rel="noopener">Instagram</a>
           <a href="https://www.tiktok.com/@badrshaqer" target="_blank" rel="noopener">TikTok</a>
-          <a href="https://twitter.com/badrshaqer" target="_blank" rel="noopener">X</a>
+          <a href="https://x.com/badrshaqer" target="_blank" rel="noopener">X</a>
           <a href="https://almobadir.com" target="_blank" rel="noopener">Almobadir</a>
         </nav>
       </div>
