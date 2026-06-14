@@ -744,6 +744,19 @@
   align-items: center;
 }
 .bookteaser__stagezone { perspective: 1400px; display: grid; place-items: center; min-height: clamp(20rem, 50vh, 30rem); }
+/* photoreal cover render — feather its dark studio backdrop into the section */
+.bookhero__render {
+  width: 100%;
+  max-width: 36rem;
+  height: auto;
+  display: block;
+  -webkit-mask-image: radial-gradient(ellipse 94% 92% at 50% 46%, #000 56%, transparent 100%);
+  mask-image: radial-gradient(ellipse 94% 92% at 50% 46%, #000 56%, transparent 100%);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .bookhero__render { animation: book-float 4.5s ease-in-out infinite alternate; }
+}
+@keyframes book-float { from { transform: translateY(4px); } to { transform: translateY(-10px); } }
 .bookteaser__book {
   position: relative;
   width: clamp(13rem, 21vw, 19rem);

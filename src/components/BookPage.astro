@@ -8,6 +8,10 @@ import Arrow from './Arrow.astro';
 const { lang = 'ar' } = Astro.props;
 const t = inner.book[lang];
 const bk = home[lang].book; // cover labels (approved)
+const base = import.meta.env.BASE_URL;
+// Photoreal cover render (EN only for now). AR keeps the CSS book so the
+// Arabic title shows correctly until an Arabic render exists.
+const bookRender = lang === 'en' ? `${base}assets/book-render-en.webp` : null;
 ---
 <!-- hero: dark, the floating book + title -->
 <section class="pagehero pagehero--tall stage" data-theme="dark">
@@ -31,16 +35,20 @@ const bk = home[lang].book; // cover labels (approved)
         <p class="t-mono" data-reveal="fade" style="--delay:600ms; margin-top: 1.4rem; color: rgba(247,243,234,0.55)">{t.noteLang}</p>
       </div>
       <div class="bookteaser__stagezone" data-reveal="scale">
-        <div class="bookteaser__book" aria-hidden="true">
-          <div class="bookteaser__spine"></div>
-          <div class="bookteaser__pages"></div>
-          <div class="bookteaser__face">
-            <div class="bookteaser__face-top t-mono"><span>{bk.coverTop[0]}</span><span>{bk.coverTop[1]}</span></div>
-            <div class="bookteaser__face-title">{bk.coverTitle}</div>
-            <div class="bookteaser__face-bottom t-mono"><span>{bk.coverBottom[0]}</span><span>{bk.coverBottom[1]}</span></div>
+        {bookRender ? (
+          <img class="bookhero__render" src={bookRender} alt="How to Sell Like a Drug Dealer — book by Badr Shaqer" width="1536" height="1024" loading="eager" />
+        ) : (
+          <div class="bookteaser__book" aria-hidden="true">
+            <div class="bookteaser__spine"></div>
+            <div class="bookteaser__pages"></div>
+            <div class="bookteaser__face">
+              <div class="bookteaser__face-top t-mono"><span>{bk.coverTop[0]}</span><span>{bk.coverTop[1]}</span></div>
+              <div class="bookteaser__face-title">{bk.coverTitle}</div>
+              <div class="bookteaser__face-bottom t-mono"><span>{bk.coverBottom[0]}</span><span>{bk.coverBottom[1]}</span></div>
+            </div>
+            <div class="bookteaser__shadow"></div>
           </div>
-          <div class="bookteaser__shadow"></div>
-        </div>
+        )}
       </div>
     </div>
   </div>
