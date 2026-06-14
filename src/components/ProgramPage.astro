@@ -8,10 +8,10 @@ const { lang = 'ar', program = 'consultant' } = Astro.props;
 const t = inner.programs[program][lang];
 const ghost = program === 'consultant' ? '01' : '02';
 const base = import.meta.env.BASE_URL;
-// Build/consultant gets the confident portrait backdrop; systemize stays plain for now.
-const heroPhoto = program === 'consultant' ? `${base}assets/program-consultant.webp` : undefined;
+// Each program has its own portrait backdrop (consultant: arms crossed; systemize: clasped hands).
+const heroPhoto = `${base}assets/program-${program}.webp`;
 ---
-<PageHero overline={t.hero.overline} head={t.hero.head} deck={t.hero.deck} ghost={ghost} tall photo={heroPhoto} flipRtl={!!heroPhoto}>
+<PageHero overline={t.hero.overline} head={t.hero.head} deck={t.hero.deck} ghost={ghost} tall photo={heroPhoto} flipRtl>
   <div class="pagehero__ctas" data-reveal="rise-fast" style="--delay:450ms">
     <a class="cta cta--primary magnetic" data-cursor-style="button" data-cursor="ASK" href={t.cta.primary.href}>
       <span>{t.cta.primary.label}</span>
